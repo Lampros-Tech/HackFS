@@ -1,0 +1,28 @@
+.navbar-main{
+    
+    display: flex;
+    align-items: center;
+    align-content: center;
+    border: 1px solid black;
+    padding: 10px 20px;
+    font-size: 18px;
+
+    .navbar-left{
+
+    }
+    .navbar-middle{
+        flex-grow:1;
+
+        .searchbar{
+            margin-left: 20px;
+        }
+    }
+    .navbar-right{
+        ul{
+            list-style: none;
+            display: flex;
+            gap:10px;
+            margin: 0px !important;
+        }
+    }
+}
