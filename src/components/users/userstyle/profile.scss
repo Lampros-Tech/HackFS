@@ -1,0 +1,41 @@
+.main-container {
+  max-width: 100%;
+  width: 97.2307692rem;
+  margin: 10px auto;
+  align-items: center;
+  padding: 10px;
+}
+
+.first-block {
+  img {
+    display: inline-flex;
+    width: 128px;
+    height: 128px;
+  }
+  .user-info {
+    display: inline-block;
+    align-items: center;
+
+    h1 {
+      display: block;
+      width: auto;
+    }
+    p {
+      display: block;
+      width: auto;
+    }
+  }
+}
+
+.nav-user {
+  list-style-type: none;
+  text-align: left;
+  margin: 0;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 5px;
+
+  button {
+    margin: 5px;
+  }
+}
