@@ -1,20 +1,68 @@
-import React, { useRef } from 'react';
-import "./Questions.css"
+import React, { useEffect, useRef, useState } from 'react';
+import "./Questions.scss"
 import { Editor } from '@tinymce/tinymce-react';
-import Select from 'react-select'
-const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' }
-  ]
+import { WithContext as ReactTags } from 'react-tag-input';
+import { NFTStorage, File, Blob } from 'nft.storage'
+  const KeyCodes = {
+    comma: 188,
+    enter: 13
+  };
+  const delimiters = [KeyCodes.comma, KeyCodes.enter];
+  
 const AddQuestions = () => {
+    const [Question,setQuestion] = useState("");
     const editorRef = useRef(null);
+    const [title,setTitle] = useState("");
   const log = () => {
         if (editorRef.current) 
         {
             console.log(editorRef.current.getContent());
         }
     }
+    const [tags, setTags] = React.useState([
+
+      ]);
+    const handleAddition = tag => {
+        setTags([...tags, tag]);
+        console.log(tag)
+      };
+    async function  Datastoring  ()
+    {
+      if (editorRef.current) 
+      {
+        console.log(title)
+        console.log(editorRef.current.getContent())
+        setQuestion(editorRef.current.getContent())
+        console.log(Question);
+
+          const NFT_STORAGE_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDZCMjc1MmQzOTgwQmI3NzU0RWFEYzlmY0JFZTVkMDQ4MmZhNTk5MjUiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY1Nzc5NTgwMzI3MywibmFtZSI6IlByYXNhbm5hJ3MgQVBJIn0.YjmHyD-94m4wuSuFX2zW4H8aLt1PNN5xg5Ri7Bgqi9M'
+          const client = new NFTStorage({ token: NFT_STORAGE_TOKEN })
+    
+        const metadata =  await client.storeCar({
+            name:title,
+            description:Question,
+            tags:tags
+            })  
+            
+        console.log(await metadata)
+
+      }
+    }
+
+    
+      
+      const handleTagClick = index => {
+        console.log('The tag at index ' + index + ' was clicked');
+      };
+      const handleDelete = i => {
+        setTags(tags.filter((tag, index) => index !== i));
+      };
+
+
+        //nft storage
+        
+
+      
     return(
         <>
            <div className="question_heading">
@@ -30,7 +78,7 @@ const AddQuestions = () => {
                     </div>
                     <div className="tittle_textfield">
                         
-                    <input type="text" className="input_title" placeholder='Enter Title of Quetion here'/>
+                    <input type="text" className="input_title" placeholder='Enter Title of Quetion here' onChange={(e)=>{setTitle(e.target.value)}}/>
 
                     </div>
                 </div>
@@ -99,18 +147,24 @@ const AddQuestions = () => {
                         <div className='tag_title'>
                             Tags
                         </div>
-                        <div>
-                        <Select 
-                            options={options}
-                            isMulti
-                            multiValueLabel
+                        <div className='tag-input'>
+                        <ReactTags
+                            tags={tags}
+                            delimiters={delimiters}
+                            handleDelete={handleDelete}
+                            handleAddition={handleAddition}
+                            handleTagClick={handleTagClick}
+                            inputFieldPosition="inline"
+                            autocomplete
                         />
                         </div>
                         
                 </div>
+                <button onClick={Datastoring}>Log</button>
            </div>
         </>
     )
 }
+
 
 export default AddQuestions;
