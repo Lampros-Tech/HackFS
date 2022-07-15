@@ -9,19 +9,33 @@ export default function UserProfile() {
     <>
       <section className="profile-block">
         <div className="left-block">
-          <h3>Profile Left Block</h3>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi
-            explicabo animi reiciendis consectetur iusto accusantium voluptate!
-            Harum dignissimos exercitationem commodi delectus natus molestias
-            explicabo libero? Voluptate repudiandae praesentium quis maxime at,
-            unde neque consequuntur exercitationem! Dolores alias porro esse.
-            Atque mollitia nobis a cumque, adipisci tenetur dolore maiores autem
-            non? Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Voluptas iusto nesciunt doloribus nemo delectus, amet laudantium
-            suscipit quisquam necessitatibus nihil aliquid placeat debitis
-            laborum
-          </p>
+          <h3>Stats</h3>
+          <div className="stats card">
+            <div className="stats-inner-block">
+              <div>1000</div>
+              <div className="stats-title">score</div>
+            </div>
+            <div className="stats-inner-block">
+              <div>1000</div>
+              <div className="stats-title">questions</div>
+            </div>
+            <div className="stats-inner-block">
+              <div>1000</div>
+              <div className="stats-title">answers</div>
+            </div>
+            <div className="stats-inner-block">
+              <div>1000</div>
+              <div className="stats-title">articles</div>
+            </div>
+            <div className="stats-inner-block">
+              <div>1000</div>
+              <div className="stats-title">rewards</div>
+            </div>
+            <div className="stats-inner-block">
+              <div>1000</div>
+              <div className="stats-title">tips</div>
+            </div>
+          </div>
         </div>
         <div className="right-block">
           <div className="about-block">
@@ -57,8 +71,10 @@ export default function UserProfile() {
           <div className="tags-block">
             <div className="card-title">
               <h3>Top Tags</h3>
-              <button>Score</button>
-              <button>Newest</button>
+              <div className="filter-btns">
+                <button className="tag-button">Score</button>
+                <button className="tag-button">Newest</button>
+              </div>
             </div>
             <div className="card">
               <p>
@@ -74,8 +90,10 @@ export default function UserProfile() {
           <div className="post-block">
             <div className="card-title">
               <h3>Top Posts</h3>
-              <button>Score</button>
-              <button>Newest</button>
+              <div className="filter-btns">
+                <button className="tag-button">Score</button>
+                <button className="tag-button">Newest</button>
+              </div>
             </div>
             <div className="card">
               <p>
