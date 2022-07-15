@@ -1,25 +1,20 @@
 /********************* DEPENDENCIES ********************/
-<<<<<<< Updated upstream
-import React, { useState, useRef, useEffect } from 'react';
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom' // react-router v4/v5
-import Cookies from 'universal-cookie';
+import React, { useState, useRef, useEffect } from "react";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom"; // react-router v4/v5
+import Cookies from "universal-cookie";
 
 /********************* WEB3 DEPENDENCIES ********************/
 import { WalletLinkConnector } from "@web3-react/walletlink-connector";
 // import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
 // import { InjectedConnector } from "@web3-react/injected-connector";
-import { useWeb3React } from '@web3-react/core';
+import { useWeb3React } from "@web3-react/core";
 // import Web3 from 'web3';
-import { ethers } from 'ethers';
+import { ethers } from "ethers";
 
 /********************* IMAGES ********************/
 import metamask from "./components/mm.png";
 import coinbase from "./components/cbw.png";
 // import walletconnect from "./components/wc.png";
-=======
-import React from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom"; // react-router v4/v5
->>>>>>> Stashed changes
 
 /********************* COMPONENTS ********************/
 import Navbar from "./components/Navbar";
@@ -36,25 +31,16 @@ import SingleUser from "./components/users/SingleUser";
 import Login from "./components/login/Login";
 
 /********************* CSS CLASS ********************/
-<<<<<<< Updated upstream
-import './index.css';
-import './App.scss';
-
-
-
-=======
 import "./index.css";
-import "./App.css";
->>>>>>> Stashed changes
+import "./App.scss";
 
 const App = () => {
-
   const { activate, deactivate } = useWeb3React();
   const [openWalletOption, setOpenWalletOption] = useState(false);
   // const [address, setAddress] = useState("");
   const [haveMetamask, sethaveMetamask] = useState(true);
-  const [accountAddress, setAccountAddress] = useState('');
-  const [accountBalance, setAccountBalance] = useState('');
+  const [accountAddress, setAccountAddress] = useState("");
+  const [accountBalance, setAccountBalance] = useState("");
   const [isConnected, setIsConnected] = useState(false);
 
   const { ethereum } = window;
@@ -65,7 +51,7 @@ const App = () => {
   const CoinbaseWallet = new WalletLinkConnector({
     url: `https://mainnet.infura.io/v3/${process.env.INFURA_KEY}`,
     appName: "Web3-react Demo",
-    supportedChainIds: [1, 3, 4, 5, 42, 137]
+    supportedChainIds: [1, 3, 4, 5, 42, 137],
   });
 
   // const WalletConnect = new WalletConnectConnector({
@@ -80,14 +66,14 @@ const App = () => {
 
   const wrapperRef = useRef(null);
 
-  window.ethereum.on('accountsChanged', function (accounts) {
+  window.ethereum.on("accountsChanged", function (accounts) {
     let acc = accounts[0];
     if (!acc) {
       setIsConnected(false);
-      cookie.remove('account');
+      cookie.remove("account");
       window.location.reload();
     }
-  })
+  });
 
   useEffect(() => {
     const { ethereum } = window;
@@ -106,11 +92,11 @@ const App = () => {
         sethaveMetamask(false);
       }
       const accounts = await ethereum.request({
-        method: 'eth_requestAccounts',
+        method: "eth_requestAccounts",
       });
       let balance = await provider.getBalance(accounts[0]);
       let bal = ethers.utils.formatEther(balance);
-      cookie.set('account', accounts[0], { path: '/', maxAge: 3600 });
+      cookie.set("account", accounts[0], { path: "/", maxAge: 3600 });
       setAccountBalance(bal);
       setIsConnected(true);
       setOpenWalletOption(false);
@@ -119,12 +105,11 @@ const App = () => {
     }
   };
 
-
   function useOutsideAlerter(ref) {
     useEffect(() => {
       /*
        * Alert if clicked on outside of element
-      */
+       */
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {
           setOpenWalletOption(false);
@@ -163,38 +148,46 @@ const App = () => {
             <Route path="/login" element={<Login />} />
           </Routes>
         </Router>
-        {
-          openWalletOption
-            ?
-            <div className='alert-main'>
-              <div className='alert-box' ref={wrapperRef}>
-                <div className='alert-header'>
-                  <div className='title'>
-                    CONNECT
+        {openWalletOption ? (
+          <div className="alert-main">
+            <div className="alert-box" ref={wrapperRef}>
+              <div className="alert-header">
+                <div className="title">CONNECT</div>
+              </div>
+              <div className="alert-container">
+                <div className="alert-holder">
+                  <div className="image">
+                    <img
+                      src={metamask}
+                      onClick={() => {
+                        connectWallet();
+                      }}
+                      title="metamask"
+                      className="mm"
+                      alt="metamask"
+                    />
                   </div>
-                </div>
-                <div className='alert-container'>
-                  <div className='alert-holder'>
-                    <div className='image'>
-                      <img src={metamask} onClick={() => { connectWallet() }} title="metamask" className="mm" alt="metamask" />
-                    </div>
-                    <div className='image'>
-                      <img src={coinbase} onClick={() => { activate(CoinbaseWallet) }} title="coinbase" className="mm" alt="coinbase" />
-                    </div>
-                    {/* <div className='image'>
+                  <div className="image">
+                    <img
+                      src={coinbase}
+                      onClick={() => {
+                        activate(CoinbaseWallet);
+                      }}
+                      title="coinbase"
+                      className="mm"
+                      alt="coinbase"
+                    />
+                  </div>
+                  {/* <div className='image'>
                       <img src={walletconnect} onClick={() => { activate(WalletConnect) }} className="mm" alt="wallet connect image" />
                     </div> */}
-                  </div>
                 </div>
               </div>
             </div>
-            :
-            null
-        }
-
+          </div>
+        ) : null}
       </div>
     </>
-
   );
 };
 
