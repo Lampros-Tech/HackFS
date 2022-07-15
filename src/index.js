@@ -6,14 +6,25 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 
+/*************** WEB3 Dependencies ***********************/
+import { Web3ReactProvider } from '@web3-react/core'
+import { Web3Provider } from "@ethersproject/providers";
+
 const container = document.getElementById('root');
 const root = createRoot(container);
 
+function getLibrary(provider) {
+  return new Web3Provider(provider);
+}
+
+
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <Web3ReactProvider getLibrary={getLibrary}>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </Web3ReactProvider>
   </React.StrictMode>
 );
 
