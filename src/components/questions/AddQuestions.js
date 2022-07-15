@@ -1,11 +1,170 @@
-import React from "react";
-
+import React, { useEffect, useRef, useState } from 'react';
+import "./Questions.scss"
+import { Editor } from '@tinymce/tinymce-react';
+import { WithContext as ReactTags } from 'react-tag-input';
+import { NFTStorage, File, Blob } from 'nft.storage'
+  const KeyCodes = {
+    comma: 188,
+    enter: 13
+  };
+  const delimiters = [KeyCodes.comma, KeyCodes.enter];
+  
 const AddQuestions = () => {
+    const [Question,setQuestion] = useState("");
+    const editorRef = useRef(null);
+    const [title,setTitle] = useState("");
+  const log = () => {
+        if (editorRef.current) 
+        {
+            console.log(editorRef.current.getContent());
+        }
+    }
+    const [tags, setTags] = React.useState([
+
+      ]);
+    const handleAddition = tag => {
+        setTags([...tags, tag]);
+        console.log(tag)
+      };
+    async function  Datastoring  ()
+    {
+      if (editorRef.current) 
+      {
+        console.log(title)
+        console.log(editorRef.current.getContent())
+        setQuestion(editorRef.current.getContent())
+        console.log(Question);
+
+          const NFT_STORAGE_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDZCMjc1MmQzOTgwQmI3NzU0RWFEYzlmY0JFZTVkMDQ4MmZhNTk5MjUiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY1Nzc5NTgwMzI3MywibmFtZSI6IlByYXNhbm5hJ3MgQVBJIn0.YjmHyD-94m4wuSuFX2zW4H8aLt1PNN5xg5Ri7Bgqi9M'
+          const client = new NFTStorage({ token: NFT_STORAGE_TOKEN })
+    
+        const metadata =  await client.storeCar({
+            name:title,
+            description:Question,
+            tags:tags
+            })  
+            
+        console.log(await metadata)
+
+      }
+    }
+
+    
+      
+      const handleTagClick = index => {
+        console.log('The tag at index ' + index + ' was clicked');
+      };
+      const handleDelete = i => {
+        setTags(tags.filter((tag, index) => index !== i));
+      };
+
+
+        //nft storage
+        
+
+      
     return(
         <>
-            Add Questions
+           <div className="question_heading">
+                Ask a Question here
+           </div>
+           <div className="Question_fields">
+                <div className="tittle">
+                    <div className="tittle-heading">
+                        Tittle:
+                    </div>
+                    <div className="tittle_instruction">
+                        Be spacific and Image you are asking question to another question.
+                    </div>
+                    <div className="tittle_textfield">
+                        
+                    <input type="text" className="input_title" placeholder='Enter Title of Quetion here' onChange={(e)=>{setTitle(e.target.value)}}/>
+
+                    </div>
+                </div>
+                <div className="body">
+                    <div className="body_tittle">
+                        Body:
+                    </div>
+                    <div className="body_instruction">
+                        Include all information someone would need to aswer the question.
+                    </div>
+                    <div className="body_textfield">
+                    <Editor
+                            apiKey=''
+                            onInit={(evt, editor) => editorRef.current = editor}
+                            initialValue="<p>This is the initial content of the editor.</p>"
+                            init={{
+                            height: 500,
+                            menubar: true,
+                            plugins: [
+                                'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                                'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                                'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
+                            ],
+                            toolbar: 'undo redo | blocks | ' +
+                                'bold italic forecolor | alignleft aligncenter ' +
+                                'alignright alignjustify | bullist numlist outdent indent | ' +
+                                'removeformat | image',
+                                image_title: true,
+                                automatic_uploads: true,
+                                file_picker_types: 'image',
+                                file_picker_callback: function (callback, value, meta) {
+                                    if (meta.filetype == 'image') {
+                                        var input = document.getElementById('my-file');
+                                        input.click();
+                                        input.onchange = function () {
+                                            var file = input.files[0];
+                                            var reader = new FileReader();
+                                            reader.onload = function (e) {
+                                                console.log('name',e.target.result);
+                                                callback(e.target.result, {
+                                                    alt: file.name
+                                                });
+                                            };
+                                            reader.readAsDataURL(file);
+                                        };
+                                    }
+                                },
+                                paste_data_images: true,
+
+                                content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+                            }}
+                            // tinymce.init({
+                            //     selector: 'textarea',  // change this value according to your HTML
+                            //     plugins: 'image',
+                            //     toolbar: 'image',
+                            //     image_list: [
+                            //       { title: 'My image 1', value: 'https://www.example.com/my1.gif' },
+                            //       { title: 'My image 2', value: 'http://www.moxiecode.com/my2.gif' }
+                            //     ]
+                            //   });
+                        />
+                    </div>
+
+                </div>
+                <div className='tag'>
+                        <div className='tag_title'>
+                            Tags
+                        </div>
+                        <div className='tag-input'>
+                        <ReactTags
+                            tags={tags}
+                            delimiters={delimiters}
+                            handleDelete={handleDelete}
+                            handleAddition={handleAddition}
+                            handleTagClick={handleTagClick}
+                            inputFieldPosition="inline"
+                            autocomplete
+                        />
+                        </div>
+                        
+                </div>
+                <button onClick={Datastoring}>Log</button>
+           </div>
         </>
     )
 }
+
 
 export default AddQuestions;

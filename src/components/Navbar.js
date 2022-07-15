@@ -34,21 +34,23 @@ const Navbar = ({ setOpenWalletOption }) => {
                         <li>
                             <Link to="/info">Crypto News</Link>
                         </li>
-                        <li>
-                            <Link to="/ask-question">Ask Question</Link>
-                        </li>
-                        <li>
-                            <Link to='/add-article'>Add Article</Link>
-                        </li>
-                        <li>
-                            <Link to='/message/<id>'>Messages</Link>
-                        </li>
                         {
                             address
                                 ?
-                                <li>
-                                    <Link to='profile'>Profile</Link>
-                                </li>
+                                <>
+                                    <li>
+                                        <Link to="/ask-question">Ask Question</Link>
+                                    </li>
+                                    <li>
+                                        <Link to='/add-article'>Add Article</Link>
+                                    </li>
+                                    <li>
+                                        <Link to='/message/<id>'>Messages</Link>
+                                    </li>
+                                    <li>
+                                        <Link to='profile'>Profile</Link>
+                                    </li>
+                                </>
                                 :
                                 <li>
                                     <button className='connect-btn' onClick={() => { setOpenWalletOption(true) }} >Connect</button>
