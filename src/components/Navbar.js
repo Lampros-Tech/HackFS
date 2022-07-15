@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Cookies from "universal-cookie";
 import "../styles/Navbar/navbar.scss"
-const Navbar = () => {
+const Navbar = ({ setOpenWalletOption }) => {
+    const cookie = new Cookies();
+    const [address, setAddress] = useState(cookie.get('account'))
+
+    useEffect(()=>{
+        const addr = cookie.get('account');
+        if(addr){
+            setAddress(addr)
+        }
+    },[cookie])
+
     return (
         <>
             <div className="navbar-main">
@@ -32,12 +43,17 @@ const Navbar = () => {
                         <li>
                             <Link to='/message/<id>'>Messages</Link>
                         </li>
-                        <li>
-                            <Link to='profile'>Profile</Link>
-                        </li>
-                        <li>
-                            <button>Connect</button>
-                        </li>
+                        {
+                            address
+                                ?
+                                <li>
+                                    <Link to='profile'>Profile</Link>
+                                </li>
+                                :
+                                <li>
+                                    <button className='connect-btn' onClick={() => { setOpenWalletOption(true) }} >Connect</button>
+                                </li>
+                        }
                     </ul>
                 </div>
             </div>
