@@ -131,22 +131,24 @@ const App = () => {
       <div className="App">
         <Router>
           <Navbar setOpenWalletOption={setOpenWalletOption} />
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route exact path="/info" element={<CryptoInfo />} />
-            <Route path="/ask-question" element={<AddQuestions />} />
-            <Route path="/find-question" element={<DisplayQuestions />} />
-            <Route
-              path="/single-question/:id"
-              element={<SingleQuestion id={1} />}
-            />
-            <Route path="/add-article" element={<AddArticle />} />
-            <Route path="/message/:id" element={<Chat id={1} />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/find-profile" element={<FindUsers />} />
-            <Route path="/user/:id" element={<SingleUser id={1} />} />
-            <Route path="/login" element={<Login />} />
-          </Routes>
+          <div className="main-content">
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route exact path="/info" element={<CryptoInfo />} />
+              <Route path="/ask-question" element={<AddQuestions />} />
+              <Route path="/find-question" element={<DisplayQuestions />} />
+              <Route
+                path="/single-question/:id"
+                element={<SingleQuestion id={1} />}
+              />
+              <Route path="/add-article" element={<AddArticle />} />
+              <Route path="/message/:id" element={<Chat id={1} />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/find-profile" element={<FindUsers />} />
+              <Route path="/user/:id" element={<SingleUser id={1} />} />
+              <Route path="/login" element={<Login />} />
+            </Routes>
+          </div>
         </Router>
         {openWalletOption ? (
           <div className="alert-main">
