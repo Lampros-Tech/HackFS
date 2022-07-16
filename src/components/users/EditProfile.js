@@ -15,11 +15,16 @@ export default function EditProfile({ closeModal }) {
             <h1>Edit Your Profile</h1>
           </div>
           <div className="body">
+            <h3>Display Name</h3>
+            <input className="input-edit-profile" type="text" placeholder="Your Good Name" />
+            <h3>Change Email</h3>
+            <input className="input-edit-profile" type="text" placeholder="email" />
+            <h3>About me</h3>
             <Editor
               onInit={(evt, editor) => (editorRef.current = editor)}
-              initialValue="<p>This is the initial content of the editor.</p>"
+              initialValue="<p>Tell the world about yourself.</p>"
               init={{
-                height: 500,
+                height: 200,
                 menubar: false,
                 plugins: [
                   "advlist autolink lists link image charmap print preview anchor",
@@ -37,7 +42,7 @@ export default function EditProfile({ closeModal }) {
             />
           </div>
           <div className="footer">
-            <button
+            <button className="save"
               onClick={() => {
                 closeModal(false);
               }}
@@ -45,7 +50,7 @@ export default function EditProfile({ closeModal }) {
             >
               Cancel
             </button>
-            <button>Continue</button>
+            <button className="save" >Continue</button>
           </div>
         </div>
       </div>

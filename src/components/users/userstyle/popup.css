@@ -10,7 +10,7 @@
 }
 
 .modalContainer {
-  width: 50rem;
+  width: 40rem;
   height: auto;
   border-radius: 12px;
   background-color: white;
@@ -20,10 +20,19 @@
   padding: 25px;
 }
 
+.input-edit-profile {
+  width: 100%;
+  border: 2px solid #eee;
+  border-radius: 10px;
+  height: 30px;
+  padding: 0 2%;
+}
+
 .modalContainer .title {
   display: inline-block;
   text-align: center;
-  margin-top: 10px;
+  font-size: 0.7rem;
+
 }
 
 .titleCloseBtn {
@@ -50,11 +59,12 @@
   height: 45px;
   margin: 10px;
   border: none;
-  background-color: cornflowerblue;
+  background-color: #64d488;
   color: white;
   border-radius: 8px;
   font-size: 20px;
   cursor: pointer;
+
 }
 
 #cancelBtn {

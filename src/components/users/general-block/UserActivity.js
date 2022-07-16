@@ -6,7 +6,19 @@ export default function UserActivity() {
     <>
       <section className="activity-block">
         <div className="left-block">
-          <h3>Activity Left Block</h3>
+          <div>
+            <nav className="nav-bar">
+              <ul className="nav-bar-ul">
+                <li className="nav-bar-li"> <span className="li-title">Summary</span></li>
+                <li className="nav-bar-li"> <span className="li-title">Answers</span></li>
+                <li className="nav-bar-li"> <span className="li-title">Questions</span></li>
+                <li className="nav-bar-li"> <span className="li-title">Badges</span></li>
+                <li className="nav-bar-li"> <span className="li-title">Score</span></li>
+                <li className="nav-bar-li"> <span className="li-title">Articals</span></li>
+                <li className="nav-bar-li"> <span className="li-title">Tags</span></li>
+              </ul>
+            </nav>
+          </div>
         </div>
         <div className="right-block">
           <div className="about-block">
@@ -42,8 +54,10 @@ export default function UserActivity() {
           <div className="tags-block">
             <div className="card-title">
               <h3>Top Tags</h3>
-              <button>Score</button>
-              <button>Newest</button>
+              <div className="filter-btns">
+                <button className="tag-button">Score</button>
+                <button className="tag-button">Newest</button>
+              </div>
             </div>
             <div className="card">
               <p>
@@ -59,8 +73,10 @@ export default function UserActivity() {
           <div className="post-block">
             <div className="card-title">
               <h3>Top Posts</h3>
-              <button>Score</button>
-              <button>Newest</button>
+              <div className="filter-btns">
+                <button className="tag-button">Score</button>
+                <button className="tag-button">Newest</button>
+              </div>
             </div>
             <div className="card">
               <p>
@@ -70,6 +86,7 @@ export default function UserActivity() {
                 sapiente saepe temporibus sed numquam! Iusto dolorem ea
                 perferendis nulla quaerat eius sit dolor, incidunt odit, natus
                 impedit. Suscipit iure nostrum nesciunt. Culpa, odit?
+
               </p>
             </div>
           </div>
