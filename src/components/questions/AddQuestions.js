@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import "./Questions.scss"
 import { Editor } from '@tinymce/tinymce-react';
 import { WithContext as ReactTags } from 'react-tag-input';
-import { NFTStorage, File, Blob } from 'nft.storage'
-  const KeyCodes = {
+import {create } from 'ipfs-http-client';
+const KeyCodes = {
     comma: 188,
     enter: 13
   };
@@ -13,15 +13,20 @@ const AddQuestions = () => {
     const [Question,setQuestion] = useState("");
     const editorRef = useRef(null);
     const [title,setTitle] = useState("");
-  const log = () => {
+    
+
+   
+
+
+
+
+    const log = () => {
         if (editorRef.current) 
         {
             console.log(editorRef.current.getContent());
         }
     }
-    const [tags, setTags] = React.useState([
-
-      ]);
+    const [tags, setTags] = useState([]);
     const handleAddition = tag => {
         setTags([...tags, tag]);
         console.log(tag)
@@ -34,19 +39,13 @@ const AddQuestions = () => {
         console.log(editorRef.current.getContent())
         setQuestion(editorRef.current.getContent())
         console.log(Question);
-
-          const NFT_STORAGE_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDZCMjc1MmQzOTgwQmI3NzU0RWFEYzlmY0JFZTVkMDQ4MmZhNTk5MjUiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY1Nzc5NTgwMzI3MywibmFtZSI6IlByYXNhbm5hJ3MgQVBJIn0.YjmHyD-94m4wuSuFX2zW4H8aLt1PNN5xg5Ri7Bgqi9M'
-          const client = new NFTStorage({ token: NFT_STORAGE_TOKEN })
-    
-        const metadata =  await client.storeCar({
-            name:title,
-            description:Question,
-            tags:tags
-            })  
-            
-        console.log(await metadata)
-
       }
+        //nft storage
+        const client = create("https://ipfs.infura.io:5001/api/v0")
+        const StringTitle = JSON.stringify(title);
+        const Stringtags = JSON.stringify(tags);
+        const { cid } = await client.add([StringTitle,Question,Stringtags])
+        console.log(cid);
     }
 
     
@@ -58,38 +57,45 @@ const AddQuestions = () => {
         setTags(tags.filter((tag, index) => index !== i));
       };
 
+    //    //useState 
+    //     const [emps,setEmps] = useState([
+    //         {title:title},{Question:Question},{tags:tags}
+    //     ])
+    //     useEffect(
+    //     ()=>{
+    //             console.log(emps)
+    //         },[title, Question, tags])
 
         //nft storage
-        
-
-      
     return(
         <>
            <div className="question_heading">
                 Ask a Question here
            </div>
            <div className="Question_fields">
-                <div className="tittle">
-                    <div className="tittle-heading">
-                        Tittle:
+                <div className="title">
+                    <div className="title-heading">
+                        Title:
                     </div>
-                    <div className="tittle_instruction">
-                        Be spacific and Image you are asking question to another question.
+                    <div className="title_instruction">
+                        Be spacific and Imagine you are asking question to another person.
                     </div>
-                    <div className="tittle_textfield">
+                    <div className="title_textfield">
                         
                     <input type="text" className="input_title" placeholder='Enter Title of Quetion here' onChange={(e)=>{setTitle(e.target.value)}}/>
 
                     </div>
                 </div>
                 <div className="body">
-                    <div className="body_tittle">
+                    <div className="body_title">
                         Body:
                     </div>
                     <div className="body_instruction">
                         Include all information someone would need to aswer the question.
                     </div>
                     <div className="body_textfield">
+                    <input id="my-file" type="file" name="my-file" style={{display:"none"}} onChange="" />
+
                     <Editor
                             apiKey=''
                             onInit={(evt, editor) => editorRef.current = editor}
@@ -160,7 +166,9 @@ const AddQuestions = () => {
                         </div>
                         
                 </div>
-                <button onClick={Datastoring}>Log</button>
+                <div className='submit-btn-parent'>
+                    <button onClick={Datastoring} className="submit-btn">Submit the Question</button>
+                </div>
            </div>
         </>
     )
