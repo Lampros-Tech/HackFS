@@ -40,6 +40,7 @@ const Profile = () => {
               setProfile(true);
               setActivity(false);
             }}
+            className={showProfile ? `active` : ``}
           >
             Profile
           </button>
@@ -48,6 +49,7 @@ const Profile = () => {
               setActivity(true);
               setProfile(false);
             }}
+            className={showActivity ? `active` : ``}
           >
             Activity
           </button>

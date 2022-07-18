@@ -55,7 +55,10 @@ export default function UserProfile() {
           </div>
           <div className="badges-block">
             <div className="card-title">
-              <h3>Badges</h3>
+              <div className="title">
+                <h3>Badges</h3>
+              </div>
+              <span className="view-all-rpl-btn">view all badges</span>
             </div>
             <div className="card">
               <p>
@@ -70,7 +73,10 @@ export default function UserProfile() {
           </div>
           <div className="tags-block">
             <div className="card-title">
-              <h3>Top Tags</h3>
+              <div className="title">
+                <h3>Tags</h3>
+                <span className="view-all">view all tags</span>
+              </div>
               <div className="filter-btns">
                 <button className="tag-button">Score</button>
                 <button className="tag-button">Newest</button>
@@ -89,10 +95,21 @@ export default function UserProfile() {
           </div>
           <div className="post-block">
             <div className="card-title">
-              <h3>Top Posts</h3>
-              <div className="filter-btns">
-                <button className="tag-button">Score</button>
-                <button className="tag-button">Newest</button>
+              <div className="title">
+                <h3>Posts</h3>
+                <span className="view-all">view all answers</span>
+              </div>
+              <div className="btns-grp">
+                <div className="filter-btns-all">
+                  <button className="tag-button">All</button>
+                  <button className="tag-button">Questions</button>
+                  <button className="tag-button">Answers</button>
+                  <button className="tag-button">Articles</button>
+                </div>
+                <div className="filter-btns">
+                  <button className="tag-button">Score</button>
+                  <button className="tag-button">Newest</button>
+                </div>
               </div>
             </div>
             <div className="card">

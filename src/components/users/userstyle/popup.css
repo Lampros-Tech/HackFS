@@ -1,3 +1,7 @@
+.tox-notifications-container {
+  display: none;
+}
+
 .modalBackground {
   width: 100vw;
   height: 100vh;
@@ -32,7 +36,6 @@
   display: inline-block;
   text-align: center;
   font-size: 0.7rem;
-
 }
 
 .titleCloseBtn {
@@ -64,7 +67,6 @@
   border-radius: 8px;
   font-size: 20px;
   cursor: pointer;
-
 }
 
 #cancelBtn {

@@ -3,12 +3,11 @@
 
   .left-block {
     margin: 0.25%;
-
   }
 
   .right-block {
     margin: 0.25%;
-    margin-left: 2.5%;
+    margin-left: 5%;
   }
 }
 
@@ -19,22 +18,42 @@
   width: 100%;
   padding-left: 0%;
 
-
   .nav-bar-li {
     align-items: center;
     min-width: 10rem;
     padding: 0.5rem;
     list-style: none;
-    border-radius: 1000px;
     cursor: pointer;
+    margin-top: 5%;
+    margin-bottom: 5%;
   }
+  // .nav-bar-li:first-of-type {
+  //   margin-top: 0;
+  // }
 
   .nav-bar-li:hover {
     background-color: #d9d9d9;
+    // border-radius: 1000px;
   }
 
   span {
     padding: 0% 10%;
     font-size: 13px;
   }
+}
+
+.view-all {
+  color: #6a737c;
+  font-size: 13px;
+  display: flex;
+  justify-content: flex-start;
+  cursor: pointer;
+}
+
+.view-all-rpl-btn {
+  color: #6a737c;
+  font-size: 13px;
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
 }
