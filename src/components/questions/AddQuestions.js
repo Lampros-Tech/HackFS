@@ -13,13 +13,6 @@ const AddQuestions = () => {
     const [Question,setQuestion] = useState("");
     const editorRef = useRef(null);
     const [title,setTitle] = useState("");
-    
-
-   
-
-
-
-
     const log = () => {
         if (editorRef.current) 
         {
@@ -170,6 +163,7 @@ const AddQuestions = () => {
                     <button onClick={Datastoring} className="submit-btn">Submit the Question</button>
                 </div>
            </div>
+           
         </>
     )
 }
