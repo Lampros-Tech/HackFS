@@ -34,6 +34,12 @@ import Login from "./components/login/Login";
 import "./index.css";
 import "./App.scss";
 
+import Stack from "./artifacts/contracts/Stack.sol/Stack.json";
+import customToken from "./artifacts/contracts/customToken.sol/customToken.json";
+
+const StackAddress = "0x4f2c50445F93bCA971Ca42830700f3a1a0D12554";
+const customTokenAddress = "0xE6A15ffDe86fA2764a00433049a65c30e70d8eBf";
+
 const App = () => {
   const { activate, deactivate } = useWeb3React();
   const [openWalletOption, setOpenWalletOption] = useState(false);
@@ -43,10 +49,58 @@ const App = () => {
   const [accountBalance, setAccountBalance] = useState("");
   const [isConnected, setIsConnected] = useState(false);
 
+  //
+  const [loading, setLoading] = useState(true);
+  const [account, setAccount] = useState(null);
+  const [tokenContract, setTokenContract] = useState({});
+  const [mainContract, setMainContract] = useState({});
+  let [error, setErr] = useState(null);
+
+  const web3Handler = async () => {
+    let accounts = await window.ethereum
+      .request({
+        method: "eth_requestAccounts",
+      })
+      .catch((err) => {
+        error = err.code;
+        setErr(error);
+      });
+    setAccount(connected);
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    let networkName = await provider.getNetwork();
+    let chainId = networkName.chainId;
+    window.ethereum.on("chainChanged", (chainId) => {
+      window.location.reload();
+    });
+
+    if (chainId !== 4) {
+      alert("Please connect to rinkeby network");
+    }
+    window.ethereum.on("accountsChanged", async function (accounts) {
+      setAccount(connected);
+      await web3Handler();
+    });
+    loadContracts(signer);
+  };
+  const loadContracts = async (signer) => {
+    const fstToken = new ethers.Contract(
+      customTokenAddress,
+      customToken.abi,
+      signer
+    );
+    setTokenContract(fstToken);
+    const factStation = new ethers.Contract(StackAddress, Stack.abi, signer);
+    setMainContract(factStation);
+    setLoading(false);
+  };
+
   const { ethereum } = window;
   const provider = new ethers.providers.Web3Provider(window.ethereum);
 
   const cookie = new Cookies();
+
+  const connected = cookie.get("account");
 
   const CoinbaseWallet = new WalletLinkConnector({
     url: `https://mainnet.infura.io/v3/${process.env.INFURA_KEY}`,
@@ -84,7 +138,16 @@ const App = () => {
       sethaveMetamask(true);
     };
     checkMetamaskAvailability();
+    if (setIsConnected(true)) {
+      console.log("yes");
+    }
   }, [ethereum]);
+
+  useEffect(() => {
+    if (connected) {
+      web3Handler();
+    }
+  }, [connected]);
 
   const connectWallet = async () => {
     try {
@@ -134,18 +197,88 @@ const App = () => {
           <div className="main-content">
             <Routes>
               <Route exact path="/" element={<Home />} />
-              <Route exact path="/info" element={<CryptoInfo />} />
-              <Route path="/ask-question" element={<AddQuestions />} />
-              <Route path="/find-question" element={<DisplayQuestions />} />
+              <Route
+                exact
+                path="/info"
+                element={
+                  <CryptoInfo
+                    tokenContract={tokenContract}
+                    mainContract={mainContract}
+                    web3Handler={web3Handler}
+                    account={account}
+                  />
+                }
+              />
+              <Route
+                path="/ask-question"
+                element={
+                  <AddQuestions
+                    tokenContract={tokenContract}
+                    mainContract={mainContract}
+                    web3Handler={web3Handler}
+                    account={account}
+                  />
+                }
+              />
+              <Route
+                path="/find-question"
+                element={
+                  <DisplayQuestions
+                    tokenContract={tokenContract}
+                    mainContract={mainContract}
+                    web3Handler={web3Handler}
+                    account={account}
+                  />
+                }
+              />
               <Route
                 path="/single-question/:id"
-                element={<SingleQuestion id={1} />}
+                element={
+                  <SingleQuestion
+                    id={1}
+                    tokenContract={tokenContract}
+                    mainContract={mainContract}
+                    web3Handler={web3Handler}
+                    account={account}
+                  />
+                }
               />
-              <Route path="/add-article" element={<AddArticle />} />
+              <Route
+                path="/add-article"
+                element={
+                  <AddArticle
+                    tokenContract={tokenContract}
+                    mainContract={mainContract}
+                    web3Handler={web3Handler}
+                    account={account}
+                  />
+                }
+              />
               <Route path="/message/:id" element={<Chat id={1} />} />
-              <Route path="/profile" element={<Profile />} />
+              <Route
+                path="/profile"
+                element={
+                  <Profile
+                    tokenContract={tokenContract}
+                    mainContract={mainContract}
+                    web3Handler={web3Handler}
+                    account={account}
+                  />
+                }
+              />
               <Route path="/find-profile" element={<FindUsers />} />
-              <Route path="/user/:id" element={<SingleUser id={1} />} />
+              <Route
+                path="/user/:id"
+                element={
+                  <SingleUser
+                    id={1}
+                    tokenContract={tokenContract}
+                    mainContract={mainContract}
+                    web3Handler={web3Handler}
+                    account={account}
+                  />
+                }
+              />
               <Route path="/login" element={<Login />} />
             </Routes>
           </div>
