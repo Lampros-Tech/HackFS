@@ -1,36 +1,59 @@
 .activity-block {
-  border: 1px solid grey;
-  padding: 1%;
   display: inline-flex;
 
   .left-block {
-    border: 1px solid grey;
     margin: 0.25%;
-    max-width: 25%;
-    padding: 0.5%;
   }
 
   .right-block {
-    border: 1px solid grey;
     margin: 0.25%;
-    padding: 0.5%;
+    margin-left: 5%;
   }
 }
-.card-title {
-  display: inline-flex;
-  width: 100%;
-  align-items: center;
 
-  h3 {
-    width: 90%;
-    float: inline-start;
+.nav-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-left: 0%;
+
+  .nav-bar-li {
+    align-items: center;
+    min-width: 10rem;
+    padding: 0.5rem;
+    list-style: none;
+    cursor: pointer;
+    margin-top: 5%;
+    margin-bottom: 5%;
   }
-  button {
-    margin: 0;
-    padding: 5px 5px;
+  // .nav-bar-li:first-of-type {
+  //   margin-top: 0;
+  // }
+
+  .nav-bar-li:hover {
+    background-color: #d9d9d9;
+    // border-radius: 1000px;
+  }
+
+  span {
+    padding: 0% 10%;
+    font-size: 13px;
   }
 }
-.card {
-  border: 1px solid grey;
-  padding: 0.5%;
+
+.view-all {
+  color: #6a737c;
+  font-size: 13px;
+  display: flex;
+  justify-content: flex-start;
+  cursor: pointer;
+}
+
+.view-all-rpl-btn {
+  color: #6a737c;
+  font-size: 13px;
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
 }
