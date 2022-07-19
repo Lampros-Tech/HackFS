@@ -6,7 +6,7 @@ async function main() {
 
   await custom.deployed();
 
-  console.log("CustomToken deployed to:", custom.address); // 0xE6A15ffDe86fA2764a00433049a65c30e70d8eBf
+  console.log("CustomToken deployed to:", custom.address); // 0x5Dae69A81418d21d7F24dB9cFfE6D2446CCFA18e
 }
 
 main()

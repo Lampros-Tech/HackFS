@@ -1,9 +1,9 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "D:\\Lampros_Project\\HackFS\\contracts\\customToken.sol": {
-      "lastModificationDate": 1658127702135,
-      "contentHash": "e46a9b8395becdcaae556d756d1737fa",
+    "C:\\Lampros_Projects\\HackFS\\HackFS\\contracts\\customToken.sol": {
+      "lastModificationDate": 1658222791388,
+      "contentHash": "79cea15c14c44dd3eaaa2537faee3a7e",
       "sourceName": "contracts/customToken.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -39,8 +39,8 @@
         "customToken"
       ]
     },
-    "D:\\Lampros_Project\\HackFS\\node_modules\\@openzeppelin\\contracts\\token\\ERC20\\ERC20.sol": {
-      "lastModificationDate": 1658127867295,
+    "C:\\Lampros_Projects\\HackFS\\HackFS\\node_modules\\@openzeppelin\\contracts\\token\\ERC20\\ERC20.sol": {
+      "lastModificationDate": 1658205738838,
       "contentHash": "af7bd64e1cfefbf6cb07f2adc1a25392",
       "sourceName": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
       "solcConfig": {
@@ -78,9 +78,9 @@
         "ERC20"
       ]
     },
-    "D:\\Lampros_Project\\HackFS\\contracts\\Stack.sol": {
-      "lastModificationDate": 1658126558863,
-      "contentHash": "360731f2556acec79068b40935632059",
+    "C:\\Lampros_Projects\\HackFS\\HackFS\\contracts\\Stack.sol": {
+      "lastModificationDate": 1658222384200,
+      "contentHash": "df5de70937c23900a79f86c3c98d5cf8",
       "sourceName": "contracts/Stack.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -113,8 +113,8 @@
         "Stack"
       ]
     },
-    "D:\\Lampros_Project\\HackFS\\node_modules\\@openzeppelin\\contracts\\token\\ERC20\\IERC20.sol": {
-      "lastModificationDate": 1658127867379,
+    "C:\\Lampros_Projects\\HackFS\\HackFS\\node_modules\\@openzeppelin\\contracts\\token\\ERC20\\IERC20.sol": {
+      "lastModificationDate": 1658205753089,
       "contentHash": "ad7c2d0af148c8f9f097d65deeb4da6b",
       "sourceName": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
       "solcConfig": {
@@ -148,8 +148,8 @@
         "IERC20"
       ]
     },
-    "D:\\Lampros_Project\\HackFS\\node_modules\\@openzeppelin\\contracts\\token\\ERC20\\extensions\\IERC20Metadata.sol": {
-      "lastModificationDate": 1658127867380,
+    "C:\\Lampros_Projects\\HackFS\\HackFS\\node_modules\\@openzeppelin\\contracts\\token\\ERC20\\extensions\\IERC20Metadata.sol": {
+      "lastModificationDate": 1658205753259,
       "contentHash": "909ab67fc5c25033fe6cd364f8c056f9",
       "sourceName": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
       "solcConfig": {
@@ -185,8 +185,8 @@
         "IERC20Metadata"
       ]
     },
-    "D:\\Lampros_Project\\HackFS\\node_modules\\@openzeppelin\\contracts\\utils\\Context.sol": {
-      "lastModificationDate": 1658127867261,
+    "C:\\Lampros_Projects\\HackFS\\HackFS\\node_modules\\@openzeppelin\\contracts\\utils\\Context.sol": {
+      "lastModificationDate": 1658205724746,
       "contentHash": "5f2c5c4b6af2dd4551027144797bc8be",
       "sourceName": "@openzeppelin/contracts/utils/Context.sol",
       "solcConfig": {

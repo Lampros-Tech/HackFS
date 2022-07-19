@@ -1,6 +1,7 @@
 //SPDX-License-Identifier:MIT
 
 pragma solidity ^0.8.0;
+//import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "./Stack.sol";
 
@@ -8,7 +9,8 @@ contract customToken is ERC20 {
     address payable owner;
     uint256 initialSupply;
     uint256 tokenPrice = 0.00001 ether;
-    Stack s = Stack(0xF43B5D563A452e3Be1607c1934f5616A86288616);
+    uint withdrawEligibleScore = 10000;
+    Stack s = Stack(0x5a98d2f1533C6b01479129A2D6D11FAFFdA5c7E3);
 
     constructor(uint256 _initialSupply) ERC20("ASK2WEB3 Token", "ASK") {
         owner = payable(msg.sender);
@@ -72,5 +74,25 @@ contract customToken is ERC20 {
         s.setUserTotalTip(user, totaltip);
         //transfer money
         transfer(user, amount);
+    }
+
+    
+    function claimRewards() public payable{
+        address user = msg.sender;
+        uint totalscore = s.getTotalScore(user);
+        uint totalredeem = s.getTotalRedeem(user);
+        require(
+            totalscore>=withdrawEligibleScore,
+            "Not eligible to withdraw yet."
+        );
+        if(totalscore>0){
+            if(transferr(owner, user, 100)){
+            totalscore= totalscore-withdrawEligibleScore;
+            s.setTotalScore(user,totalscore);
+            totalredeem += 100;
+            s.setTotalRedeem(user,totalredeem);
+            }
+        }
+        
     }
 }
