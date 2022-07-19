@@ -9,13 +9,17 @@ contract customToken is ERC20 {
     address payable owner;
     uint256 initialSupply;
     uint256 tokenPrice = 0.00001 ether;
-    uint withdrawEligibleScore = 10000;
-    Stack s = Stack(0x5a98d2f1533C6b01479129A2D6D11FAFFdA5c7E3);
+    uint256 withdrawEligibleScore = 10000;
+    address maincontract;
+    Stack s = Stack(maincontract);
 
-    constructor(uint256 _initialSupply) ERC20("ASK2WEB3 Token", "ASK") {
+    constructor(uint256 _initialSupply, address mainContract)
+        ERC20("ASK2WEB3 Token", "ASK")
+    {
         owner = payable(msg.sender);
         _mint(owner, _initialSupply);
         initialSupply = _initialSupply;
+        mainContract = maincontract;
     }
 
     function decimals() public pure override returns (uint8) {
@@ -76,23 +80,21 @@ contract customToken is ERC20 {
         transfer(user, amount);
     }
 
-    
-    function claimRewards() public payable{
+    function claimRewards() public payable {
         address user = msg.sender;
-        uint totalscore = s.getTotalScore(user);
-        uint totalredeem = s.getTotalRedeem(user);
+        uint256 totalscore = s.getTotalScore(user);
+        uint256 totalredeem = s.getTotalRedeem(user);
         require(
-            totalscore>=withdrawEligibleScore,
+            totalscore >= withdrawEligibleScore,
             "Not eligible to withdraw yet."
         );
-        if(totalscore>0){
-            if(transferr(owner, user, 100)){
-            totalscore= totalscore-withdrawEligibleScore;
-            s.setTotalScore(user,totalscore);
-            totalredeem += 100;
-            s.setTotalRedeem(user,totalredeem);
+        if (totalscore > 0) {
+            if (transferr(owner, user, 100)) {
+                totalscore = totalscore - withdrawEligibleScore;
+                s.setTotalScore(user, totalscore);
+                totalredeem += 100;
+                s.setTotalRedeem(user, totalredeem);
             }
         }
-        
     }
 }

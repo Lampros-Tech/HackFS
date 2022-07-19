@@ -33,7 +33,6 @@ const AddArticle = () => {
     }
     setArticle(editorRef.current.getContent());
     console.log(typeof editorRef.current.getContent());
-
     console.log(Article);
     //nft storage
     const client = create("https://ipfs.infura.io:5001/api/v0");

@@ -2,9 +2,23 @@ import React, { useRef, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { WithContext as ReactTags } from "react-tag-input";
 
-export default function EditProfile({ closeModal }) {
+export default function EditProfile({ mainContract, closeModal }) {
   const editorRef = useRef(null);
   const [tags, setTags] = useState([]);
+
+  const KeyCodes = {
+    comma: 188,
+    enter: 13,
+  };
+  const delimiters = [KeyCodes.comma, KeyCodes.enter];
+
+  //
+  const [name, setName] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [designation, setDesignation] = useState(null);
+  const [description, setDescription] = useState(null);
+  const [tag, setTag] = useState([]);
+
   const handleAddition = (tag) => {
     setTags([...tags, tag]);
     console.log(tag);
@@ -15,11 +29,26 @@ export default function EditProfile({ closeModal }) {
   const handleDelete = (i) => {
     setTags(tags.filter((tag, index) => index !== i));
   };
-  const KeyCodes = {
-    comma: 188,
-    enter: 13,
-  };
-  const delimiters = [KeyCodes.comma, KeyCodes.enter];
+
+  const getUserDetails = async (e) => {
+    setDescription(editorRef.current.getContent());
+    // console.log(name);
+    // console.log(email);
+    // console.log(designation);
+    // console.log(description);
+    // console.log(typeof editorRef.current.getContent());
+    // console.log(tags);
+    
+    const tagList = [];
+    for(let i=0;i<tags.length;i++){
+      console.log(tags[i].text);
+      tagList[i] = tags[i].text;
+    }
+    console.log(tagList);
+    console.log(mainContract);
+    const tx= await mainContract.createProfile(name,"abcdef",email,designation,tagList);
+    await tx.wait();
+  }
 
   return (
     <>
@@ -59,18 +88,21 @@ export default function EditProfile({ closeModal }) {
               className="input-edit-profile"
               type="text"
               placeholder="Your Good Name"
+              onChange={(event) => setName(event.target.value)}
             />
             <h3>Change Email</h3>
             <input
               className="input-edit-profile"
               type="text"
               placeholder="Email"
+              onChange={(event) => setEmail(event.target.value)}
             />
             <h3>Designation</h3>
             <input
               className="input-edit-profile"
               type="text"
               placeholder="e.g. 'Full Stack Developer'"
+              onChange={(event) => setDesignation(event.target.value)}
             />
             <h3>About me</h3>
             <Editor
@@ -89,6 +121,29 @@ export default function EditProfile({ closeModal }) {
                   "bold italic backcolor | alignleft aligncenter " +
                   "alignright alignjustify | bullist numlist outdent indent | " +
                   "removeformat | help",
+
+                  image_title: true,
+                  automatic_uploads: true,
+                  file_picker_types: "image",
+                  file_picker_callback: function (callback, value, meta) {
+                    if (meta.filetype == "image") {
+                      var input = document.getElementById("my-file");
+                      input.click();
+                      input.onchange = function () {
+                        var file = input.files[0];
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                          console.log("name", e.target.result);
+                          callback(e.target.result, {
+                            alt: file.name,
+                          });
+                        };
+                        reader.readAsDataURL(file);
+                      };
+                    }
+                  },
+                  paste_data_images: true,
+
                 content_style:
                   "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
               }}
@@ -116,7 +171,7 @@ export default function EditProfile({ closeModal }) {
             >
               Cancel
             </button>
-            <button className="save">Continue</button>
+            <button className="save" onClick={(e) => getUserDetails()}>Continue</button>
           </div>
         </div>
       </div>

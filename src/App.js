@@ -34,11 +34,11 @@ import Login from "./components/login/Login";
 import "./index.css";
 import "./App.scss";
 
-import Stack from "./artifacts/contracts/Stack.sol/Stack.json";
+import Stack from "./artifacts/contracts/Stack.sol/Stack.json"
 import customToken from "./artifacts/contracts/customToken.sol/customToken.json";
 
-const StackAddress = "0x4f2c50445F93bCA971Ca42830700f3a1a0D12554";
-const customTokenAddress = "0xE6A15ffDe86fA2764a00433049a65c30e70d8eBf";
+const StackAddress = "0xAc513D71FAfDB832DE52B8Be97052f08668bF4fa";
+const customTokenAddress = "0x844fC307f49d5574Cd37375d6bB95E786785234F";
 
 const App = () => {
   const { activate, deactivate } = useWeb3React();
@@ -84,15 +84,20 @@ const App = () => {
     loadContracts(signer);
   };
   const loadContracts = async (signer) => {
-    const fstToken = new ethers.Contract(
+    const tokencontract = new ethers.Contract(
       customTokenAddress,
       customToken.abi,
       signer
     );
-    setTokenContract(fstToken);
-    const factStation = new ethers.Contract(StackAddress, Stack.abi, signer);
-    setMainContract(factStation);
+    setTokenContract(tokencontract);
+    const maincontract = new ethers.Contract(StackAddress, Stack.abi, signer);
+    setMainContract(maincontract);
     setLoading(false);
+    // console.log("token")
+    // console.log(tokenContract)
+    // console.log("contract")
+    // console.log(maincontract)
+
   };
 
   const { ethereum } = window;
@@ -259,13 +264,11 @@ const App = () => {
                 path="/profile"
                 element={
                   <Profile
-                    tokenContract={tokenContract}
                     mainContract={mainContract}
                     web3Handler={web3Handler}
-                    account={account}
                   />
                 }
-              />
+              />        
               <Route path="/find-profile" element={<FindUsers />} />
               <Route
                 path="/user/:id"
