@@ -13,6 +13,10 @@
   align-items: center;
 }
 
+/* .img {
+  display: inline-flex;
+  float: right;
+} */
 .modalContainer {
   width: 40rem;
   height: auto;
@@ -33,9 +37,23 @@
 }
 
 .modalContainer .title {
-  display: inline-block;
+  display: inline-flex;
   text-align: center;
   font-size: 0.7rem;
+  justify-content: space-between;
+  align-items: center;
+  color: #808080;
+}
+svg {
+  height: 16px;
+  width: 16px;
+  cursor: pointer;
+}
+svg:hover {
+  fill: red;
+  transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transition: 0.5s;
 }
 
 .titleCloseBtn {
@@ -58,14 +76,14 @@
 }
 
 .modalContainer .footer button {
-  width: 150px;
+  width: 100px;
   height: 45px;
   margin: 10px;
   border: none;
   background-color: #64d488;
   color: white;
   border-radius: 8px;
-  font-size: 20px;
+  font-size: 1.2rem;
   cursor: pointer;
 }
 
