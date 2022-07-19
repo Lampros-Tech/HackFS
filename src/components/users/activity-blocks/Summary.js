@@ -9,7 +9,7 @@ export default function Summary() {
         <div className="card-title">
           <div className="title">
             <h3>Answers</h3>
-            <span className="view-all">view all answers</span>
+            {/* <span className="view-all">view all answers</span> */}
           </div>
           <div className="filter-btns">
             <button className="tag-button">Score</button>
@@ -31,7 +31,7 @@ export default function Summary() {
         <div className="card-title">
           <div className="title">
             <h3>Questions</h3>
-            <span className="view-all">view all questions</span>
+            {/* <span className="view-all">view all questions</span> */}
           </div>
           <div className="filter-btns">
             <button className="tag-button">Score</button>
@@ -54,7 +54,7 @@ export default function Summary() {
           <div className="title">
             <h3>Badges</h3>
           </div>
-          <span className="view-all-rpl-btn">view all badges</span>
+          {/* <span className="view-all-rpl-btn">view all badges</span> */}
         </div>
         <div className="card">
           <p>
@@ -72,7 +72,7 @@ export default function Summary() {
           <div className="title">
             <h3>Prominences</h3>
           </div>
-          <span className="view-all-rpl-btn">view all prominences</span>
+          {/* <span className="view-all-rpl-btn">view all prominences</span> */}
         </div>
         <div className="card">
           <p>
@@ -89,7 +89,7 @@ export default function Summary() {
         <div className="card-title">
           <div className="title">
             <h3>Tags</h3>
-            <span className="view-all">view all tags</span>
+            {/* <span className="view-all">view all tags</span> */}
           </div>
           <div className="filter-btns">
             <button className="tag-button">Score</button>
@@ -111,7 +111,7 @@ export default function Summary() {
         <div className="card-title">
           <div className="title">
             <h3>Articles</h3>
-            <span className="view-all">view all answers</span>
+            {/* <span className="view-all">view all answers</span> */}
           </div>
           <div className="filter-btns">
             <button className="tag-button">Score</button>
