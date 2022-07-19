@@ -261,8 +261,77 @@
 }
 .Answers
 {
+  width: 80%;
+  margin: 0 auto;
+  padding:10px;
+  margin-top: 20px;
+}
+.Answer-component
+{
+  border: #000 2px solid;
+  padding: 10px;
+}
+
+.Answer-heading
+{
   margin-top: 20px;
   width:100%;
   text-align: center;
   font-size: 1.5rem;
+}
+.Answer_title
+{
+  border-bottom: #000 1px dashed;
+  padding: 5px;
+  font-size:1rem;
+  margin-bottom: 10px;
+  text-align: justify;
+}
+.Answer-description
+{
+  padding: 5px;
+  text-align: justify;
+}
+.Answer-engagement
+{
+  display: flex;
+  border-top: #000 0.5px dashed;
+  margin-top: 20px;
+  padding-top: 20px;
+
+}
+.answer-voting
+{
+  width: 25% !important;
+}
+.flex-grow
+{
+  flex-grow: 1;
+}
+.Text-area
+{
+  text-align: center;
+  margin-top: 20px;
+}
+.featured-image
+{
+  border: #000 1px solid;
+  height: 100px;
+  text-align: center;
+  margin-top: 20px;
+}
+.uploaded_image
+{
+  height: auto;
+  margin-bottom: 20px;
+}
+.input-featured-image
+{
+  width: 80%;
+  height: 20px;
+}
+.Uploaded-image
+{
+  height: 100px;
+  
 }

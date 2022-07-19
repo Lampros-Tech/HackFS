@@ -3,7 +3,7 @@ import "./Questions.scss"
 import { Editor } from '@tinymce/tinymce-react';
 import { WithContext as ReactTags } from 'react-tag-input';
 import {create } from 'ipfs-http-client';
-
+import UploadHeroImage from "./upload-to-cloud"
 
 const KeyCodes = {
     comma: 188,
@@ -11,7 +11,6 @@ const KeyCodes = {
   };
 const delimiters = [KeyCodes.comma, KeyCodes.enter];
 const AddArticle = () => {
-    const [Article,setArticle] = useState();
     const editorRef = useRef(null);
     const [title,setTitle] = useState("");
     const [tags, setTags] = useState([]);
@@ -29,27 +28,55 @@ const AddArticle = () => {
       };
 
 
-      
+      const [heroImg,setHeroImage] =  useState(null)
+
       async function  DataStoring  ()
     {
 
       if (editorRef.current) 
       {
         console.log(title)
-        
       }
-      setArticle(editorRef.current.getContent())
+      console.log(editorRef.current.getContent())
       console.log(typeof(editorRef.current.getContent()))
      
-      console.log(Article);
         //nft storage
         const client = create("https://ipfs.infura.io:5001/api/v0")
         const StringTitle = JSON.stringify(title);
         const Stringtags = JSON.stringify(tags);
-        const { cid } = await client.add([StringTitle,Article,Stringtags])
+        const { cid } = await client.add([StringTitle,editorRef.current.getContent(),Stringtags,heroImg])
         console.log(cid);
     }
 
+
+    // function for uploading hero image
+    const client = create('https://ipfs.infura.io:5001/api/v0')
+    const [uploadImage,setUploadedImage] = useState();
+    const heroImage = useRef(null); 
+    function reset ()
+    {
+        setHeroImage(null)
+    }
+    async function UploadImage(e)
+    {
+        const file = e.target.files[0];
+        console.log(file);
+        setHeroImage(file);
+       
+        try
+        {
+            const added = await client.add(file)
+            const url = `https://ipfs.infura.io/ipfs/${added.path}`
+            setUploadedImage(url);
+            console.log(url);
+
+
+        }
+        catch (error) 
+        {
+            console.log('Error uploading file: ', error)
+        }  
+    }
     return(
         <>
             <div className="question_heading">
@@ -67,6 +94,29 @@ const AddArticle = () => {
                         <input type="text" className="input_title" placeholder='Enter Title of Article here' onChange={(e)=>{setTitle(e.target.value)}}/>
                     </div>
                 </div>
+                <div className='featured-image'>
+                    {
+                        heroImg
+                        ?
+                        <>
+                            <img src={uploadImage} className="uploaded_image" />
+                            <button onClick={(e)=>{reset()}}>
+                                Cancel
+                            </button>
+                         </>
+                        :
+                            <div onClick={(e)=> {heroImage.current.click()}}><UploadHeroImage/></div>
+                    }
+                </div>
+                <input
+                    type="file"
+                    name="hero-image"
+                    
+                    className='input-featured-image'
+                    ref = {heroImage}
+                    onChange={(e)=>{UploadImage(e)}}
+                    hidden
+                />
                 <div className="body">
                     <div className="body_title">
                         Body:
@@ -126,7 +176,7 @@ const AddArticle = () => {
                             //       { title: 'My image 2', value: 'http://www.moxiecode.com/my2.gif' }
                             //     ]
                             //   });
-                        />
+                    />
                     </div>
 
                 </div>

@@ -37,7 +37,7 @@ const AddQuestions = () => {
         const client = create("https://ipfs.infura.io:5001/api/v0")
         const StringTitle = JSON.stringify(title);
         const Stringtags = JSON.stringify(tags);
-        const { cid } = await client.add([StringTitle,Question,Stringtags])
+        const { cid } = await client.add([StringTitle,editorRef.current.getContent(),Stringtags])
         console.log(cid);
     }
 
