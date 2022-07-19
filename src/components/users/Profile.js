@@ -8,14 +8,24 @@ import EditProfile from "./EditProfile";
 import "./userstyle/profile.scss";
 import "./general-block/userprofile.scss";
 import "./userstyle/popup.css";
+import {useEffect } from "react";
 
-const Profile = () => {
+
+const Profile = ({mainContract}) => {
   const [showProfile, setProfile] = useState(true);
   const [showActivity, setActivity] = useState(false);
   const [buttonPopup, setButtonPopup] = useState(false);
+
+  const getProfileData = async (e) => {
+    console.log(mainContract);
+  }
+
+  useEffect(() => {
+    getProfileData();
+  },[mainContract]);
   return (
     <>
-      {buttonPopup && <EditProfile closeModal={setButtonPopup} />}
+      {buttonPopup && <EditProfile closeModal={setButtonPopup} mainContract={mainContract}/>}
       <section className="main-container">
         <div className="first-block">
           <img src={useravtar} alt="user avatar" height="128px" width="128px" />
@@ -31,7 +41,7 @@ const Profile = () => {
             >
               Edit Profile
             </button>
-            <button>Score</button>
+            <button>Claim Rewards</button>
           </div>
         </div>
         <div className="nav-user">
@@ -40,6 +50,7 @@ const Profile = () => {
               setProfile(true);
               setActivity(false);
             }}
+            className={showProfile ? `active` : ``}
           >
             Profile
           </button>
@@ -48,6 +59,7 @@ const Profile = () => {
               setActivity(true);
               setProfile(false);
             }}
+            className={showActivity ? `active` : ``}
           >
             Activity
           </button>

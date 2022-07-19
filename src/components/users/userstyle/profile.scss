@@ -17,6 +17,7 @@
   }
   .user-info {
     flex-direction: column;
+    margin-left: 2%;
   }
   .btns {
     width: auto;
@@ -24,9 +25,9 @@
 
     button {
       padding: 5px 10px;
-      border: 0;
+      border: 1px solid #838c95;
       border-radius: 4px;
-      background-color: #f1f1f1;
+      background: none;
       font-size: 15px;
       cursor: pointer;
       outline: none;
@@ -37,8 +38,7 @@
     }
 
     button:hover {
-      background-color: #666;
-      color: white;
+      background: #e3e6e8;
     }
   }
 }
@@ -46,21 +46,39 @@
 .nav-user {
   list-style-type: none;
   text-align: left;
-  margin: 0;
+  margin-top: 2%;
   padding: 5px 0;
 
+  .active {
+    background: black;
+    color: white;
+  }
+  .active:hover {
+    background: black;
+    color: white;
+  }
   button {
     margin: 0.25%;
     padding: 5px 10px;
     border: 0;
-    border-radius: 4px;
-    background-color: #f6f6f6;
+    border-radius: 5px;
+    background: none;
     font-size: 18px;
     cursor: pointer;
     outline: none;
   }
   button:hover {
-    background-color: #666;
-    color: white;
+    background: #f1f2f3;
+    border-radius: 5px;
   }
+}
+
+.active-li {
+  border-left: 2px solid black;
+  border-radius: 0%;
+}
+
+.active-li:hover {
+  border-left: 2px solid black;
+  border-radius: 0%;
 }

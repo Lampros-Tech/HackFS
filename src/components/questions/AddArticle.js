@@ -2,13 +2,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import "./Questions.scss"
 import { Editor } from '@tinymce/tinymce-react';
 import { WithContext as ReactTags } from 'react-tag-input';
-import {create } from 'ipfs-http-client';
 import UploadHeroImage from "./upload-to-cloud"
+import { create, CID } from "ipfs-http-client";
+import { prototype } from "stream";
 
 const KeyCodes = {
-    comma: 188,
-    enter: 13
-  };
+  comma: 188,
+  enter: 13,
+};
 const delimiters = [KeyCodes.comma, KeyCodes.enter];
 const AddArticle = () => {
     const editorRef = useRef(null);
@@ -46,7 +47,8 @@ const AddArticle = () => {
         const Stringtags = JSON.stringify(tags);
         const { cid } = await client.add([StringTitle,editorRef.current.getContent(),Stringtags,heroImg])
         console.log(cid);
-    }
+    console.log(cid._baseCache);
+  }
 
 
     // function for uploading hero image
@@ -111,7 +113,6 @@ const AddArticle = () => {
                 <input
                     type="file"
                     name="hero-image"
-                    
                     className='input-featured-image'
                     ref = {heroImage}
                     onChange={(e)=>{UploadImage(e)}}
@@ -177,33 +178,30 @@ const AddArticle = () => {
                             //     ]
                             //   });
                     />
-                    </div>
-
-                </div>
-                <div className='tag'>
-                        <div className='tag_title'>
-                            Tags
-                        </div>
-                        <div className='tag-input'>
-                            <ReactTags
-                                tags={tags}
-                                delimiters={delimiters}
-                                handleDelete={handleDelete}
-                                handleAddition={handleAddition}
-                                handleTagClick={handleTagClick}
-                                inputFieldPosition="inline"
-                                autocomplete
-                            />
-                        </div>
-                        
-                </div>
-                <div className='submit-btn-parent'>
-                    <button  className="submit-btn" onClick={DataStoring}>Submit the Article</button>
-                </div>
-           </div>
-
-        </>
-    )
-}
+          </div>
+        </div>
+        <div className="tag">
+          <div className="tag_title">Tags</div>
+          <div className="tag-input">
+            <ReactTags
+              tags={tags}
+              delimiters={delimiters}
+              handleDelete={handleDelete}
+              handleAddition={handleAddition}
+              handleTagClick={handleTagClick}
+              inputFieldPosition="inline"
+              autocomplete
+            />
+          </div>
+        </div>
+        <div className="submit-btn-parent">
+          <button className="submit-btn" onClick={DataStoring}>
+            Submit the Article
+          </button>
+        </div>
+      </div>
+    </>
+  );
+};
 
 export default AddArticle;
