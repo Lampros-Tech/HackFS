@@ -31,7 +31,7 @@ const Profile = () => {
             >
               Edit Profile
             </button>
-            <button>Score</button>
+            <button>Claim Rewards</button>
           </div>
         </div>
         <div className="nav-user">
