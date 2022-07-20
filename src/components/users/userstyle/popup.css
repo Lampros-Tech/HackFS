@@ -1,10 +1,7 @@
-<<<<<<< Updated upstream
 .tox-notifications-container {
   display: none;
 }
 
-=======
->>>>>>> Stashed changes
 .modalBackground {
   width: 100vw;
   height: 100vh;
@@ -16,13 +13,10 @@
   align-items: center;
 }
 
-<<<<<<< Updated upstream
 /* .img {
   display: inline-flex;
   float: right;
 } */
-=======
->>>>>>> Stashed changes
 .modalContainer {
   width: 40rem;
   height: auto;
@@ -43,7 +37,6 @@
 }
 
 .modalContainer .title {
-<<<<<<< Updated upstream
   display: inline-flex;
   text-align: center;
   font-size: 0.7rem;
@@ -51,7 +44,7 @@
   align-items: center;
   color: #808080;
 }
-svg {
+ svg{
   height: 16px;
   width: 16px;
   cursor: pointer;
@@ -61,12 +54,6 @@ svg:hover {
   transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transition: 0.5s;
-=======
-  display: inline-block;
-  text-align: center;
-  font-size: 0.7rem;
-
->>>>>>> Stashed changes
 }
 
 .titleCloseBtn {
@@ -89,31 +76,17 @@ svg:hover {
 }
 
 .modalContainer .footer button {
-<<<<<<< Updated upstream
   width: 100px;
-=======
-  width: 150px;
->>>>>>> Stashed changes
   height: 45px;
   margin: 10px;
   border: none;
   background-color: #64d488;
   color: white;
   border-radius: 8px;
-<<<<<<< Updated upstream
   font-size: 1.2rem;
   cursor: pointer;
-=======
-  font-size: 20px;
-  cursor: pointer;
-
->>>>>>> Stashed changes
 }
 
 #cancelBtn {
   background-color: crimson;
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes

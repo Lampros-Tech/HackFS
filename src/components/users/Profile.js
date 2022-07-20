@@ -4,13 +4,6 @@ import useravtar from "./man.png";
 import UserProfile from "./general-block/UserProfile";
 import UserActivity from "./general-block/UserActivity";
 import EditProfile from "./EditProfile";
-<<<<<<< Updated upstream
-=======
-
-import "./userstyle/profile.scss";
-import "./general-block/userprofile.scss";
-import "./userstyle/popup.css";
->>>>>>> Stashed changes
 
 import "./userstyle/profile.scss";
 import "./general-block/userprofile.scss";
@@ -22,7 +15,6 @@ const Profile = ({mainContract}) => {
   const [showProfile, setProfile] = useState(true);
   const [showActivity, setActivity] = useState(false);
   const [buttonPopup, setButtonPopup] = useState(false);
-<<<<<<< Updated upstream
 
   const getProfileData = async (e) => {
     console.log(mainContract);
@@ -34,11 +26,6 @@ const Profile = ({mainContract}) => {
   return (
     <>
       {buttonPopup && <EditProfile closeModal={setButtonPopup} mainContract={mainContract}/>}
-=======
-  return (
-    <>
-      {buttonPopup && <EditProfile closeModal={setButtonPopup} />}
->>>>>>> Stashed changes
       <section className="main-container">
         <div className="first-block">
           <img src={useravtar} alt="user avatar" height="128px" width="128px" />
@@ -54,11 +41,7 @@ const Profile = ({mainContract}) => {
             >
               Edit Profile
             </button>
-<<<<<<< Updated upstream
             <button>Claim Rewards</button>
-=======
-            <button>Score</button>
->>>>>>> Stashed changes
           </div>
         </div>
         <div className="nav-user">

@@ -14,27 +14,16 @@
     "@web3-react/injected-connector": "^6.0.7",
     "@web3-react/walletconnect-connector": "^6.2.13",
     "@web3-react/walletlink-connector": "^6.2.14",
-<<<<<<< Updated upstream
-=======
-    "antd": "^4.21.7",
->>>>>>> Stashed changes
     "assert": "^2.0.0",
     "axios": "^0.27.2",
     "cipher-base": "^1.0.4",
     "crypto-browserify": "^3.12.0",
     "crypto-js": "^4.1.1",
-<<<<<<< Updated upstream
     "history": "^5.3.0",
     "ipfs-http-client": "^57.0.3",
     "nft.storage": "^6.4.0",
     "node-fetch": "^3.2.8",
     "npm": "^6.14.7",
-=======
-    "ethers": "^5.6.9",
-    "history": "^5.3.0",
-    "ipfs-http-client": "^57.0.3",
-    "nft.storage": "^6.4.0",
->>>>>>> Stashed changes
     "react": "^18.2.0",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",

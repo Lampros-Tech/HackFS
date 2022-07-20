@@ -13,16 +13,6 @@ const AddQuestions = () => {
     const [Question,setQuestion] = useState("");
     const editorRef = useRef(null);
     const [title,setTitle] = useState("");
-<<<<<<< Updated upstream
-=======
-    
-
-   
-
-
-
-
->>>>>>> Stashed changes
     const log = () => {
         if (editorRef.current) 
         {

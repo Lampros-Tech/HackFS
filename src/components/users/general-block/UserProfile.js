@@ -73,14 +73,10 @@ export default function UserProfile() {
           </div>
           <div className="tags-block">
             <div className="card-title">
-<<<<<<< Updated upstream
               <div className="title">
                 <h3>Tags</h3>
                 {/* <span className="view-all">view all tags</span> */}
               </div>
-=======
-              <h3>Top Tags</h3>
->>>>>>> Stashed changes
               <div className="filter-btns">
                 <button className="tag-button">Score</button>
                 <button className="tag-button">Newest</button>
@@ -99,7 +95,6 @@ export default function UserProfile() {
           </div>
           <div className="post-block">
             <div className="card-title">
-<<<<<<< Updated upstream
               <div className="title">
                 <h3>Posts</h3>
                 {/* <span className="view-all">view all answers</span> */}
@@ -115,12 +110,6 @@ export default function UserProfile() {
                   <button className="tag-button">Score</button>
                   <button className="tag-button">Newest</button>
                 </div>
-=======
-              <h3>Top Posts</h3>
-              <div className="filter-btns">
-                <button className="tag-button">Score</button>
-                <button className="tag-button">Newest</button>
->>>>>>> Stashed changes
               </div>
             </div>
             <div className="card">
