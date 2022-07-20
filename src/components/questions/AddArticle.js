@@ -47,7 +47,7 @@ const AddArticle = () => {
         const Stringtags = JSON.stringify(tags);
         const { cid } = await client.add([StringTitle,editorRef.current.getContent(),Stringtags,heroImg])
         console.log(cid);
-    console.log(cid._baseCache);
+    // console.log(cid._baseCache);
   }
 
 

@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { WithContext as ReactTags } from "react-tag-input";
 
-export default function EditProfile({ mainContract, closeModal }) {
+export default function EditProfile({ mainContract, account, closeModal }) {
   const editorRef = useRef(null);
   const [tags, setTags] = useState([]);
 
@@ -13,10 +13,10 @@ export default function EditProfile({ mainContract, closeModal }) {
   const delimiters = [KeyCodes.comma, KeyCodes.enter];
 
   //
-  const [name, setName] = useState(null);
-  const [email, setEmail] = useState(null);
-  const [designation, setDesignation] = useState(null);
-  const [description, setDescription] = useState(null);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [designation, setDesignation] = useState("");
+  const [description, setDescription] = useState("");
   const [tag, setTag] = useState([]);
 
   const handleAddition = (tag) => {
@@ -30,20 +30,19 @@ export default function EditProfile({ mainContract, closeModal }) {
     setTags(tags.filter((tag, index) => index !== i));
   };
 
-  const getUserDetails = async (e) => {    
-    console.log(name);
-    console.log(email);
-    console.log(designation);
-    console.log(description);
-    console.log(tags);
+  const getUserDetails = async (e) => {      
+    // console.log(name);
+    // console.log(email);
+    // console.log(designation);
+    // console.log(description);
+    // console.log(tags);
     
     const tagList = [];
     for(let i=0;i<tags.length;i++){
-      console.log(tags[i].text);
       tagList[i] = tags[i].text;
     }
-    console.log(tagList);
-    // console.log(mainContract);
+    // console.log(tagList);
+    console.log(mainContract);
     const tx= await mainContract.createProfile(name,email,designation,description,tagList);
     await tx.wait();
   }
@@ -103,12 +102,8 @@ export default function EditProfile({ mainContract, closeModal }) {
               onChange={(event) => setDesignation(event.target.value)}
             />
             <h3>About me</h3>
-            <input
-              className="input-edit-profile"
-              type="text"
-              placeholder="somthing about yourself"
-              onChange={(event) => setDescription(event.target.value)}
-            />            
+            <textarea  className="input-edit-profile-about-me" id="w3review" name="w3review" rows="4"  placeholder="Somthing About Yourself" onChange={(event) => setDescription(event.target.value)}></textarea>
+                       
             <h3>Tags</h3>
             <div>
               <ReactTags

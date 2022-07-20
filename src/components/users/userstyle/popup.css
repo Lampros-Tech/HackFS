@@ -36,6 +36,14 @@
   padding: 0 2%;
 }
 
+.input-edit-profile-about-me {
+  width: 100%;
+  border: 2px solid #eee;
+  border-radius: 10px;
+  height: auto;
+  padding: 2% 2%;
+}
+
 .modalContainer .title {
   display: inline-flex;
   text-align: center;
