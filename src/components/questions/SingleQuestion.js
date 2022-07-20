@@ -145,7 +145,7 @@ const SingleQuestion = ({id}) => {
 
                 </div>
             </div>
-           
+
         </>
     )
 }

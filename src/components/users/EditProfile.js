@@ -30,14 +30,12 @@ export default function EditProfile({ mainContract, closeModal }) {
     setTags(tags.filter((tag, index) => index !== i));
   };
 
-  const getUserDetails = async (e) => {
-    setDescription(editorRef.current.getContent());
-    // console.log(name);
-    // console.log(email);
-    // console.log(designation);
-    // console.log(description);
-    // console.log(typeof editorRef.current.getContent());
-    // console.log(tags);
+  const getUserDetails = async (e) => {    
+    console.log(name);
+    console.log(email);
+    console.log(designation);
+    console.log(description);
+    console.log(tags);
     
     const tagList = [];
     for(let i=0;i<tags.length;i++){
@@ -45,8 +43,8 @@ export default function EditProfile({ mainContract, closeModal }) {
       tagList[i] = tags[i].text;
     }
     console.log(tagList);
-    console.log(mainContract);
-    const tx= await mainContract.createProfile(name,"abcdef",email,designation,tagList);
+    // console.log(mainContract);
+    const tx= await mainContract.createProfile(name,email,designation,description,tagList);
     await tx.wait();
   }
 
@@ -65,7 +63,7 @@ export default function EditProfile({ mainContract, closeModal }) {
           </div> */}
           <div className="title">
             <h1>Edit Your Profile</h1>
-            <svg
+            <svg className="svg-close"
               onClick={() => closeModal(false)}
               version="1.1"
               id="Capa_1"
@@ -105,49 +103,12 @@ export default function EditProfile({ mainContract, closeModal }) {
               onChange={(event) => setDesignation(event.target.value)}
             />
             <h3>About me</h3>
-            <Editor
-              onInit={(evt, editor) => (editorRef.current = editor)}
-              initialValue="<p>Tell the world about yourself.</p>"
-              init={{
-                height: 200,
-                menubar: false,
-                plugins: [
-                  "advlist autolink lists link image charmap print preview anchor",
-                  "searchreplace visualblocks code fullscreen",
-                  "insertdatetime media table paste code help wordcount",
-                ],
-                toolbar:
-                  "undo redo | formatselect | " +
-                  "bold italic backcolor | alignleft aligncenter " +
-                  "alignright alignjustify | bullist numlist outdent indent | " +
-                  "removeformat | help",
-
-                  image_title: true,
-                  automatic_uploads: true,
-                  file_picker_types: "image",
-                  file_picker_callback: function (callback, value, meta) {
-                    if (meta.filetype == "image") {
-                      var input = document.getElementById("my-file");
-                      input.click();
-                      input.onchange = function () {
-                        var file = input.files[0];
-                        var reader = new FileReader();
-                        reader.onload = function (e) {
-                          console.log("name", e.target.result);
-                          callback(e.target.result, {
-                            alt: file.name,
-                          });
-                        };
-                        reader.readAsDataURL(file);
-                      };
-                    }
-                  },
-                  paste_data_images: true,
-
-                content_style:
-                  "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
-              }}
-            />
+            <input
+              className="input-edit-profile"
+              type="text"
+              placeholder="somthing about yourself"
+              onChange={(event) => setDescription(event.target.value)}
+            />            
             <h3>Tags</h3>
             <div>
               <ReactTags

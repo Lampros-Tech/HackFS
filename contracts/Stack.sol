@@ -39,10 +39,10 @@ contract Stack {
     mapping(address => uint256[]) public userToArticle;
     struct UserInfo {
         address user;
-        string userImageCID;
         string name;
         string email;
         string designation;
+        string aboutUSer;
         uint256 noOfQuestions;
         uint256 noOfAnswers;
         uint256 totalScore;
@@ -77,7 +77,7 @@ contract Stack {
         userToQuestions[msg.sender].push(q_id);
         addressToUser[msg.sender].noOfQuestions += 1;
         addressToUser[msg.sender].totalScore += 5;
-        addressToUser[msg.sender].reputationScore +=5;
+        addressToUser[msg.sender].reputationScore += 5;
         for (uint256 i = 0; i < tag_name.length; i++) {
             addressToTagToScore[msg.sender][tag_name[i]] += 5;
             if (addressToUser[msg.sender].isTagAdded[tag_name[i]] == false) {
@@ -99,14 +99,14 @@ contract Stack {
         idToQuestion[qid].q_upvote += 1;
         address user = idToQuestion[qid].user;
         addressToUser[user].totalScore += 5;
-        addressToUser[msg.sender].reputationScore +=5;
+        addressToUser[msg.sender].reputationScore += 5;
     }
 
     function q_downvote(uint256 qid) public {
         idToQuestion[qid].q_downvote += 1;
         address user = idToQuestion[qid].user;
         addressToUser[user].totalScore -= 5;
-        addressToUser[msg.sender].reputationScore -=5;
+        addressToUser[msg.sender].reputationScore -= 5;
     }
 
     //Answers---------------------------------------------------------------------
@@ -117,7 +117,7 @@ contract Stack {
         idToQuestion[qid].ans_id.push(a_id);
         addressToUser[msg.sender].noOfAnswers += 1;
         addressToUser[msg.sender].totalScore += 5;
-        addressToUser[msg.sender].reputationScore +=5;
+        addressToUser[msg.sender].reputationScore += 5;
     }
 
     function getAnswer(uint256 aid) public view returns (AnswerInfo memory) {
@@ -128,14 +128,14 @@ contract Stack {
         idToAnswer[aid].a_upvote += 1;
         address user = idToAnswer[aid].user;
         addressToUser[user].totalScore += 5;
-        addressToUser[msg.sender].reputationScore +=5;
+        addressToUser[msg.sender].reputationScore += 5;
     }
 
     function a_downvote(uint256 aid) public {
         idToAnswer[aid].a_downvote += 1;
         address user = idToAnswer[aid].user;
         addressToUser[user].totalScore -= 5;
-        addressToUser[msg.sender].reputationScore -=5;
+        addressToUser[msg.sender].reputationScore -= 5;
     }
 
     //Articles---------------------------------------------------------------------
@@ -150,7 +150,7 @@ contract Stack {
         );
         userToArticle[msg.sender].push(article_id);
         addressToUser[msg.sender].totalScore += 5;
-        addressToUser[msg.sender].reputationScore +=5;
+        addressToUser[msg.sender].reputationScore += 5;
     }
 
     function getArticle(uint256 articleid)
@@ -167,18 +167,18 @@ contract Stack {
 
     function createProfile(
         string memory name,
-        string memory userImageCID,
         string memory email,
         string memory designation,
+        string memory aboutUser,
         string[] memory listOfTags
     ) public {
         users.push(msg.sender);
         UserInfo storage user = addressToUser[msg.sender];
         user.user = msg.sender;
         user.name = name;
-        user.userImageCID = userImageCID;
         user.email = email;
         user.designation = designation;
+        user.aboutUSer = aboutUser;
         user.noOfQuestions = 0;
         user.noOfAnswers = 0;
         user.totalScore = 0;
@@ -194,7 +194,7 @@ contract Stack {
         address user = idToAnswer[aid].user;
         idToAnswer[aid].isApproved = true;
         addressToUser[user].totalScore += 5;
-        addressToUser[msg.sender].reputationScore +=5;
+        addressToUser[msg.sender].reputationScore += 5;
     }
 
     function getAllUserQuestionsId() public view returns (uint256[] memory) {
@@ -249,21 +249,19 @@ contract Stack {
         addressToUser[user].totalTip = totaltip;
     }
 
-
-    function getTotalScore(address user) public view returns(uint){
+    function getTotalScore(address user) public view returns (uint256) {
         return addressToUser[user].totalScore;
     }
 
-    function getTotalRedeem(address user) public view returns(uint){
+    function getTotalRedeem(address user) public view returns (uint256) {
         return addressToUser[user].totalRedeem;
     }
 
-    function setTotalScore(address user, uint score) public{
-        addressToUser[user].totalScore=score;
+    function setTotalScore(address user, uint256 score) public {
+        addressToUser[user].totalScore = score;
     }
 
-    function setTotalRedeem(address user, uint redeem) public{
+    function setTotalRedeem(address user, uint256 redeem) public {
         addressToUser[user].totalRedeem += redeem;
     }
 }
-
