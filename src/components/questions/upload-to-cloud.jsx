@@ -1,13 +1,13 @@
 import { Transform } from "stream";
-
 function Upload() {
 	const style ={
 		enableBackground:'new 0 0 417.535 417.535',
 		height: '100px',
 	}
   return (
+	
 	<>
-		
+	<div className="upload-to-cloud-svg">		
 			
  			<svg version="1.1" id="Capa_1"   x="0px" y="0px"
 				viewBox="0 0 417.535 417.535" style={style} >
@@ -58,6 +58,7 @@ function Upload() {
 			<g>
 			</g>
 			</svg>
+			</div>
 		</>
   )
 }
