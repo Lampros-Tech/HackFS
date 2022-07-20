@@ -5,7 +5,7 @@ import Coin from "./Coin";
 import "./Cryptoinfo-style/Coin.scss";
 import CryptoArticle from "./CryptoArticle";
 import "./Cryptoinfo-style/Article.scss";
-import CryptoNews from "./CryptoNews";
+import CryptoNews from "./Cryptonews";
 import "./Cryptoinfo-style/News.scss";
 
 const CryptoInfo = ({id}) => {

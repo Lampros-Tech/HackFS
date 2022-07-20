@@ -1,9 +1,14 @@
-import React, { useRef, useState } from "react";
-import { Editor } from "@tinymce/tinymce-react";
+import React, { useState } from "react";
+// import { Editor } from "@tinymce/tinymce-react";
 import { WithContext as ReactTags } from "react-tag-input";
 
+<<<<<<< HEAD
 export default function EditProfile({ mainContract, account, closeModal }) {
   const editorRef = useRef(null);
+=======
+export default function EditProfile({ mainContract, closeModal }) {
+  // const editorRef = useRef(null);
+>>>>>>> 947ca4d85a384351f9370f5f98aecda70d230091
   const [tags, setTags] = useState([]);
 
   const KeyCodes = {
@@ -13,11 +18,19 @@ export default function EditProfile({ mainContract, account, closeModal }) {
   const delimiters = [KeyCodes.comma, KeyCodes.enter];
 
   //
+<<<<<<< HEAD
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [designation, setDesignation] = useState("");
   const [description, setDescription] = useState("");
   const [tag, setTag] = useState([]);
+=======
+  const [name, setName] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [designation, setDesignation] = useState(null);
+  const [description, setDescription] = useState(null);
+  // const [tag, setTag] = useState([]);
+>>>>>>> 947ca4d85a384351f9370f5f98aecda70d230091
 
   const handleAddition = (tag) => {
     setTags([...tags, tag]);
@@ -30,6 +43,7 @@ export default function EditProfile({ mainContract, account, closeModal }) {
     setTags(tags.filter((tag, index) => index !== i));
   };
 
+<<<<<<< HEAD
   const getUserDetails = async (e) => {      
     // console.log(name);
     // console.log(email);
@@ -44,25 +58,40 @@ export default function EditProfile({ mainContract, account, closeModal }) {
     // console.log(tagList);
     console.log(mainContract);
     const tx= await mainContract.createProfile(name,email,designation,description,tagList);
+=======
+  const getUserDetails = async (e) => {
+    console.log(name);
+    console.log(email);
+    console.log(designation);
+    console.log(description);
+    console.log(tags);
+
+    const tagList = [];
+    for (let i = 0; i < tags.length; i++) {
+      console.log(tags[i].text);
+      tagList[i] = tags[i].text;
+    }
+    console.log(tagList);
+    // console.log(mainContract);
+    const tx = await mainContract.createProfile(
+      name,
+      email,
+      designation,
+      description,
+      tagList
+    );
+>>>>>>> 947ca4d85a384351f9370f5f98aecda70d230091
     await tx.wait();
-  }
+  };
 
   return (
     <>
       <div className="modalBackground">
         <div className="modalContainer">
-          {/* <div className="titleCloseBtn">
-            <img
-              onClick={() => closeModal(false)}
-              src={cancleButton}
-              alt="user avatar"
-              height="16px"
-              width="16px"
-            />
-          </div> */}
           <div className="title">
             <h1>Edit Your Profile</h1>
-            <svg className="svg-close"
+            <svg
+              className="svg-close"
               onClick={() => closeModal(false)}
               version="1.1"
               id="Capa_1"
@@ -102,8 +131,17 @@ export default function EditProfile({ mainContract, account, closeModal }) {
               onChange={(event) => setDesignation(event.target.value)}
             />
             <h3>About me</h3>
+<<<<<<< HEAD
             <textarea  className="input-edit-profile-about-me" id="w3review" name="w3review" rows="4"  placeholder="Somthing About Yourself" onChange={(event) => setDescription(event.target.value)}></textarea>
                        
+=======
+            <input
+              className="input-edit-profile"
+              type="text"
+              placeholder="somthing about yourself"
+              onChange={(event) => setDescription(event.target.value)}
+            />
+>>>>>>> 947ca4d85a384351f9370f5f98aecda70d230091
             <h3>Tags</h3>
             <div>
               <ReactTags
@@ -127,7 +165,9 @@ export default function EditProfile({ mainContract, account, closeModal }) {
             >
               Cancel
             </button>
-            <button className="save" onClick={(e) => getUserDetails()}>Continue</button>
+            <button className="save" onClick={(e) => getUserDetails()}>
+              Continue
+            </button>
           </div>
         </div>
       </div>

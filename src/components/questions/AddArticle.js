@@ -45,9 +45,13 @@ const AddArticle = () => {
         const client = create("https://ipfs.infura.io:5001/api/v0")
         const StringTitle = JSON.stringify(title);
         const Stringtags = JSON.stringify(tags);
-        const { cid } = await client.add([StringTitle,editorRef.current.getContent(),Stringtags,heroImg])
+        const { cid } = await client.add([StringTitle,editorRef.current.getContent(),Stringtags,uploadImage])
         console.log(cid);
+<<<<<<< HEAD
     // console.log(cid._baseCache);
+=======
+        console.log(cid._baseCache);
+>>>>>>> 947ca4d85a384351f9370f5f98aecda70d230091
   }
 
 
@@ -113,7 +117,7 @@ const AddArticle = () => {
                 <input
                     type="file"
                     name="hero-image"
-                    className='input-featured-image'
+                    className='aa_input-featured-image'
                     ref = {heroImage}
                     onChange={(e)=>{UploadImage(e)}}
                     hidden

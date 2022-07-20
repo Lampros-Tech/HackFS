@@ -34,7 +34,7 @@ import Login from "./components/login/Login";
 import "./index.css";
 import "./App.scss";
 
-import Stack from "./artifacts/contracts/Stack.sol/Stack.json"
+import Stack from "./artifacts/contracts/Stack.sol/Stack.json";
 import customToken from "./artifacts/contracts/customToken.sol/customToken.json";
 
 const StackAddress = "0xe76734cFCcfDDD819A2245bc2f68E3da8129f7D6";
@@ -97,7 +97,6 @@ const App = () => {
     // console.log(tokenContract)
     // console.log("contract")
     // console.log(maincontract)
-
   };
 
   const { ethereum } = window;
@@ -269,8 +268,16 @@ const App = () => {
                     account={account}
                   />
                 }
-              />        
-              <Route path="/find-profile" element={<FindUsers />} />
+              />
+              <Route
+                path="/find-profile"
+                element={
+                  <FindUsers
+                    mainContract={mainContract}
+                    web3Handler={web3Handler}
+                  />
+                }
+              />
               <Route
                 path="/user/:id"
                 element={
