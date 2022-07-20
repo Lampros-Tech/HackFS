@@ -287,23 +287,32 @@
 }
 .featured-image
 {
+  margin: 0 auto;
   border: #000 1px solid;
-  height: 100px;
+  max-width: 250px;
+  width: 100%;
+
+  height: auto;
+  padding: 20px;
   text-align: center;
   margin-top: 20px;
 }
-.uploaded_image
-{
-  height: auto;
-  margin-bottom: 20px;
-}
-.input-featured-image
+
+.aa_input-featured-image
 {
   width: 80%;
   height: 20px;
 }
-.Uploaded-image
+.uploaded_image
 {
-  height: 100px;
-  
+  margin:0 auto;
+  display: block;
+  width: 200px !important;
+  overflow: hidden !important;
+  margin-bottom: 10px;
+}
+.upload-to-cloud-svg
+{
+  width:200px;
+  height:auto;
 }
