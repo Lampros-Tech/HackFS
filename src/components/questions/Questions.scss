@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 .question_heading {
   text-align: center;
   font-size: 2rem;
@@ -39,7 +38,7 @@
 }
 .tag {
   border-radius: 10px;
-=======
+}
 .question_heading
 {
     text-align: center;
@@ -83,33 +82,21 @@
 }
 .tag{
   border-radius: 10px ;
->>>>>>> Stashed changes
   border-color: #f88d8d;
   border-style: dashed;
   border-width: 2px;
   padding: 10px;
 }
-<<<<<<< Updated upstream
 .tag_title {
   margin-bottom: 10px;
 }
 .tag-input {
   border-radius: 10px;
-=======
-.tag_title
-{
-  margin-bottom: 10px;
-}
-.tag-input
-{
-  border-radius: 10px ;
->>>>>>> Stashed changes
   border-color: gray;
   border-style: dashed;
   border-width: 0.5px;
   padding: 10px;
 }
-<<<<<<< Updated upstream
 .submit-btn {
   margin-top: 20px;
   margin-bottom: 10px;
@@ -122,14 +109,6 @@
 
 //tag style
 
-=======
-
-
-
-//tag style
-
-
->>>>>>> Stashed changes
 /* Example Styles for React Tags*/
 .app {
   padding: 40px;
@@ -167,13 +146,10 @@
   font-size: 12px;
   border: 1px solid #eee;
   min-width: 150px;
-<<<<<<< Updated upstream
   // Added by Jaydip Patel
   border-radius: 10px;
   padding: 0 8%;
   //
-=======
->>>>>>> Stashed changes
 }
 
 .ReactTags__editInput {
@@ -231,7 +207,6 @@
   cursor: pointer;
   background: none;
   color: white;
-<<<<<<< Updated upstream
 }
 .single_Question {
   width: 80%;
@@ -300,12 +275,80 @@
 .rotate {
   transform: rotate(180deg);
 }
-.Answers {
+.Answers
+{
+  width: 80%;
+  margin: 0 auto;
+  padding:10px;
+  margin-top: 20px;
+}
+.Answer-component
+{
+  border: #000 2px solid;
+  padding: 10px;
+}
+
+.Answer-heading
+{
   margin-top: 20px;
   width: 100%;
   text-align: center;
   font-size: 1.5rem;
 }
-=======
+
+.Answer_title
+{
+  border-bottom: #000 1px dashed;
+  padding: 5px;
+  font-size:1rem;
+  margin-bottom: 10px;
+  text-align: justify;
 }
->>>>>>> Stashed changes
+.Answer-description
+{
+  padding: 5px;
+  text-align: justify;
+}
+.Answer-engagement
+{
+  display: flex;
+  border-top: #000 0.5px dashed;
+  margin-top: 20px;
+  padding-top: 20px;
+
+}
+.answer-voting
+{
+  width: 25% !important;
+}
+.flex-grow
+{
+  flex-grow: 1;
+}
+.Text-area
+{
+  text-align: center;
+  margin-top: 20px;
+}
+.featured-image
+{
+  border: #000 1px solid;
+  height: 100px;
+  text-align: center;
+  margin-top: 20px;
+}
+.uploaded_image
+{
+  height: auto;
+  margin-bottom: 20px;
+}
+.input-featured-image
+{
+  width: 80%;
+  height: 20px;
+}
+.Uploaded-image
+{
+  height: 100px;
+  
+}
