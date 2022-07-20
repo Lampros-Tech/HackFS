@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import React, { useRef, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { WithContext as ReactTags } from "react-tag-input";
@@ -49,11 +50,19 @@ export default function EditProfile({ mainContract, closeModal }) {
     const tx= await mainContract.createProfile(name,"abcdef",email,designation,tagList);
     await tx.wait();
   }
+=======
+import React, { useRef } from "react";
+import { Editor } from "@tinymce/tinymce-react";
+
+export default function EditProfile({ closeModal }) {
+  const editorRef = useRef(null);
+>>>>>>> Stashed changes
 
   return (
     <>
       <div className="modalBackground">
         <div className="modalContainer">
+<<<<<<< Updated upstream
           {/* <div className="titleCloseBtn">
             <img
               onClick={() => closeModal(false)}
@@ -104,6 +113,19 @@ export default function EditProfile({ mainContract, closeModal }) {
               placeholder="e.g. 'Full Stack Developer'"
               onChange={(event) => setDesignation(event.target.value)}
             />
+=======
+          <div className="titleCloseBtn">
+            <button onClick={() => closeModal(false)}> X </button>
+          </div>
+          <div className="title">
+            <h1>Edit Your Profile</h1>
+          </div>
+          <div className="body">
+            <h3>Display Name</h3>
+            <input className="input-edit-profile" type="text" placeholder="Your Good Name" />
+            <h3>Change Email</h3>
+            <input className="input-edit-profile" type="text" placeholder="email" />
+>>>>>>> Stashed changes
             <h3>About me</h3>
             <Editor
               onInit={(evt, editor) => (editorRef.current = editor)}
@@ -121,6 +143,7 @@ export default function EditProfile({ mainContract, closeModal }) {
                   "bold italic backcolor | alignleft aligncenter " +
                   "alignright alignjustify | bullist numlist outdent indent | " +
                   "removeformat | help",
+<<<<<<< Updated upstream
 
                   image_title: true,
                   automatic_uploads: true,
@@ -144,10 +167,13 @@ export default function EditProfile({ mainContract, closeModal }) {
                   },
                   paste_data_images: true,
 
+=======
+>>>>>>> Stashed changes
                 content_style:
                   "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
               }}
             />
+<<<<<<< Updated upstream
             <h3>Tags</h3>
             <div>
               <ReactTags
@@ -164,6 +190,11 @@ export default function EditProfile({ mainContract, closeModal }) {
           <div className="footer">
             <button
               className="save"
+=======
+          </div>
+          <div className="footer">
+            <button className="save"
+>>>>>>> Stashed changes
               onClick={() => {
                 closeModal(false);
               }}
@@ -171,7 +202,11 @@ export default function EditProfile({ mainContract, closeModal }) {
             >
               Cancel
             </button>
+<<<<<<< Updated upstream
             <button className="save" onClick={(e) => getUserDetails()}>Continue</button>
+=======
+            <button className="save" >Continue</button>
+>>>>>>> Stashed changes
           </div>
         </div>
       </div>
