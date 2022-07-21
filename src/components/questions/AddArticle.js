@@ -47,11 +47,7 @@ const AddArticle = () => {
         const Stringtags = JSON.stringify(tags);
         const { cid } = await client.add([StringTitle,editorRef.current.getContent(),Stringtags,uploadImage])
         console.log(cid);
-<<<<<<< HEAD
     // console.log(cid._baseCache);
-=======
-        console.log(cid._baseCache);
->>>>>>> 947ca4d85a384351f9370f5f98aecda70d230091
   }
 
 

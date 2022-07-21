@@ -36,7 +36,7 @@ const CryptoInfo = () => {
       </div>
       <div className="crypto-main-container">
         <CryptoArticle />
-        <Cryptonews />
+        <Cryptonews/>
       </div>
     </>
   );
