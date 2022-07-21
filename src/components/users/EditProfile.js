@@ -30,20 +30,27 @@ export default function EditProfile({ mainContract, account, closeModal }) {
     setTags(tags.filter((tag, index) => index !== i));
   };
 
-  const getUserDetails = async (e) => {      
+  const getUserDetails = async (e) => {
     // console.log(name);
     // console.log(email);
     // console.log(designation);
     // console.log(description);
     // console.log(tags);
-    
+
     const tagList = [];
-    for(let i=0;i<tags.length;i++){
+    for (let i = 0; i < tags.length; i++) {
       tagList[i] = tags[i].text;
     }
     // console.log(tagList);
     console.log(mainContract);
-    const tx= await mainContract.createProfile(name,email,designation,description,tagList);
+    const tx = await mainContract.createProfile(
+      name,
+      "hjsf",
+      email,
+      designation,
+      description,
+      tagList
+    );
     await tx.wait();
   };
 
@@ -94,8 +101,15 @@ export default function EditProfile({ mainContract, account, closeModal }) {
               onChange={(event) => setDesignation(event.target.value)}
             />
             <h3>About me</h3>
-            <textarea  className="input-edit-profile-about-me" id="w3review" name="w3review" rows="4"  placeholder="Somthing About Yourself" onChange={(event) => setDescription(event.target.value)}></textarea>
-                       
+            <textarea
+              className="input-edit-profile-about-me"
+              id="w3review"
+              name="w3review"
+              rows="4"
+              placeholder="Somthing About Yourself"
+              onChange={(event) => setDescription(event.target.value)}
+            ></textarea>
+
             <h3>Tags</h3>
             <div>
               <ReactTags

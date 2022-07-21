@@ -79,8 +79,8 @@
       ]
     },
     "C:\\Lampros_Projects\\HackFS\\HackFS\\contracts\\Stack.sol": {
-      "lastModificationDate": 1658306887723,
-      "contentHash": "7ab6009ed0f24c919790634c0d555fe0",
+      "lastModificationDate": 1658388465879,
+      "contentHash": "b3a87fc44c8fa0fd2209342dc37c9f8c",
       "sourceName": "contracts/Stack.sol",
       "solcConfig": {
         "version": "0.8.4",
