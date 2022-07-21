@@ -44,7 +44,6 @@ const Cryptonews = () => {
               </div>
             ))}
             {/* <div className="fakeimg-1">Image</div> */}
-            
           </div>
         </div>
       </div>

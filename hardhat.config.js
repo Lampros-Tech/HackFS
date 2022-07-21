@@ -16,5 +16,5 @@ module.exports = {
   },
 };
 
-// stack - 0xe76734cFCcfDDD819A2245bc2f68E3da8129f7D6
-// token - 0xA6252028766C0C010Df8DF49c20EC4EEe2291504
+// stack - 0x59841E54b680B6844BcCac30eaB05a39Fb9219Ad
+// token - 0x7d5Bdd082eDb9cbea402fDE1c53b1a708Fbb236D
