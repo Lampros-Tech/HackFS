@@ -5,8 +5,6 @@ import axios from "axios";
 import "./Cryptoinfo-style/News.scss";
 
 const Cryptonews = () => {
-<<<<<<< HEAD
-=======
   const [apiData, setApiData] = useState();
 
   useEffect(() => {
@@ -29,7 +27,6 @@ const Cryptonews = () => {
   const first7ApiData = apiData?.slice(9.7);
   console.log("ready");
 
->>>>>>> f9f275a0ea19c7552a09b74690978a048671599b
   return (
     <>
       <div className="crypto-news">
