@@ -1,15 +1,47 @@
-<<<<<<< Updated upstream
-import React from "react";
+// import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
 import "./Cryptoinfo-style/News.scss";
 
 const CryptoNews = () => {
+  const [apiData, setApiData] = useState();
+ 
+  useEffect(() => {
+    const options = {
+      method: "GET",
+      url: "https://coinranking1.p.rapidapi.com/coins",
+    };
+
+    axios
+      .request(options)
+      .then((response) => {
+        console.log(response.data);
+        setApiData(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+  console.log(apiData);
+  const first7ApiData = apiData?.slice(9.7);
+  console.log("ready")
+
+ 
+
   return (
     <>
       <div className="crypto-news">
         <div className="rightcolumn">
           <div className="news">
             <h2>TITLE </h2>
-
+            {first7ApiData?.map((data, _index) => (
+              <div key={_index}>
+                <a href={data.coins}>
+                  <p>{data.stat}</p>
+                </a>
+              </div>
+            ))}
             <div className="fakeimg-1">Image</div>
             <p>Some text..</p>
           </div>
@@ -18,58 +50,5 @@ const CryptoNews = () => {
     </>
   );
 };
-=======
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-
-function CryptoNews() {
-  // const axios = require("axios");
-  const [apiData, setApiData] = useState();
-
-  //   const options = {
-  //     method: "GET",
-  //     url: "https://alpha-vantage.p.rapidapi.com/query",
-  //     params: {
-  //       interval: "5min",
-  //       function: "TIME_SERIES_INTRADAY",
-  //       symbol: "MSFT",
-  //       datatype: "json",
-  //       output_size: "compact",
-  //     },
-  //     headers: {
-  //       "X-RapidAPI-Key": "fbb16cf004msh1af9515587b6182p19a6c2jsn2ae4a5a1e3b6",
-  //       "X-RapidAPI-Host": "alpha-vantage.p.rapidapi.com",
-  //     },
-  //   };
-
-  const headers = {
-    "X-RapidAPI-Key": "fbb16cf004msh1af9515587b6182p19a6c2jsn2ae4a5a1e3b6",
-    "X-RapidAPI-Host": "alpha-vantage.p.rapidapi.com",
-  };
-
-  useEffect(() => {
-    axios
-      .get(
-        "https://alpha-vantage.p.rapidapi.com/query?interval=5mins&function=TIME_SERIES_INTRADAY&symbol=MSFT",
-        { headers: { headers } }
-      )
-      .then(function (response) {
-        console.log(response.data);
-        setApiData(response.data);
-        console.log(apiData);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-  }, []);
-  return (
-    <div className="App">
-      {/* <div className="right">
-        <h2>{apiData.options}</h2>
-      </div> */}
-    </div>
-  );
-}
->>>>>>> Stashed changes
 
 export default CryptoNews;
