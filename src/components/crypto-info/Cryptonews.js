@@ -1,7 +1,7 @@
 import React from "react";
 import "./Cryptoinfo-style/News.scss";
 
-const CryptoNews = () => {
+const Cryptonews = () => {
   return (
     <>
       <div className="crypto-news">
@@ -18,4 +18,4 @@ const CryptoNews = () => {
   );
 };
 
-export default CryptoNews;
+export default Cryptonews;

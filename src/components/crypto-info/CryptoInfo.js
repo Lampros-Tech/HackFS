@@ -5,7 +5,7 @@ import Coin from "./Coin";
 import "./Cryptoinfo-style/Coin.scss";
 import CryptoArticle from "./CryptoArticle";
 import "./Cryptoinfo-style/Article.scss";
-import CryptoNews from "./Cryptonews";
+import Cryptonews from "./Cryptonews";
 import "./Cryptoinfo-style/News.scss";
 
 const CryptoInfo = ({id}) => {
@@ -32,7 +32,7 @@ const CryptoInfo = ({id}) => {
             </div>
             <div className="crypto-main-container">
             <CryptoArticle/>
-            <CryptoNews/>
+            <Cryptonews/>
             </div>
            
         </>
