@@ -8,23 +8,22 @@ import EditProfile from "./EditProfile";
 import "./userstyle/profile.scss";
 import "./general-block/userprofile.scss";
 import "./userstyle/popup.css";
-import {useEffect } from "react";
+import { useEffect } from "react";
 
-
-const Profile = ({mainContract, account}) => {
+const Profile = ({ mainContract, account }) => {
   const [showProfile, setProfile] = useState(true);
   const [showActivity, setActivity] = useState(false);
   const [buttonPopup, setButtonPopup] = useState(false);
 
   //
   const [isLoading, setLoading] = React.useState(true);
-  const [name,setName] = React.useState("");
-  const [email,setEmail] = React.useState("");
-  const [designation,setDesignation] = React.useState("");
-  const [about,setAbout] = React.useState("");
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [designation, setDesignation] = React.useState("");
+  const [about, setAbout] = React.useState("");
 
   const getProfileData = async (e) => {
-    console.log(mainContract)
+    console.log(mainContract);
     const userName = await mainContract.getUserName(account);
     setName(userName);
     console.log(name);
@@ -35,28 +34,34 @@ const Profile = ({mainContract, account}) => {
     setDesignation(userDesignation);
     const userAbout = await mainContract.getUserDescription(account);
     setAbout(userAbout);
-    console.log(userAbout)
+    console.log(userAbout);
 
-    setLoading(false);  
-  }
+    setLoading(false);
+  };
 
   useEffect(() => {
     getProfileData();
-    // setLoading(false);  
-
-  },[mainContract]);
+    // setLoading(false);
+  }, [mainContract]);
   if (isLoading) {
     return "loading";
   }
 
   return (
     <>
-      {buttonPopup && <EditProfile closeModal={setButtonPopup} mainContract={mainContract} account={account}/>}
+      {buttonPopup && (
+        <EditProfile
+          closeModal={setButtonPopup}
+          mainContract={mainContract}
+          account={account}
+        />
+      )}
       <section className="main-container">
         <div className="first-block">
           <img src={useravtar} alt="user avatar" height="128px" width="128px" />
           <div className="user-info">
             <h1 className="user-name">{name}</h1>
+            <h3> {designation}</h3>
             <span> {email}</span>
           </div>
           <div className="btns">
@@ -89,8 +94,12 @@ const Profile = ({mainContract, account}) => {
           >
             Activity
           </button>
-          {showProfile ? <UserProfile mainContract={mainContract} account={account}/> : null}
-          {showActivity ? <UserActivity mainContract={mainContract} account={account}/> : null}
+          {showProfile ? (
+            <UserProfile mainContract={mainContract} account={account} />
+          ) : null}
+          {showActivity ? (
+            <UserActivity mainContract={mainContract} account={account} />
+          ) : null}
         </div>
       </section>
     </>
