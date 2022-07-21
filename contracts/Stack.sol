@@ -173,20 +173,19 @@ contract Stack {
         string[] memory listOfTags
     ) public {
         users.push(msg.sender);
-        UserInfo storage user = addressToUser[msg.sender];
-        user.user = msg.sender;
-        user.name = name;
-        user.email = email;
-        user.designation = designation;
-        user.aboutUSer = aboutUser;
-        user.noOfQuestions = 0;
-        user.noOfAnswers = 0;
-        user.totalScore = 0;
-        user.reputationScore = 0;
-        user.totalReward = 0;
-        user.totalRedeem = 0;
-        user.totalTip = 0;
-        user.taglist = listOfTags;
+        addressToUser[msg.sender].user = msg.sender;
+        addressToUser[msg.sender].name = name;
+        addressToUser[msg.sender].email = email;
+        addressToUser[msg.sender].designation = designation;
+        addressToUser[msg.sender].aboutUSer = aboutUser;
+        addressToUser[msg.sender].noOfQuestions = 0;
+        addressToUser[msg.sender].noOfAnswers = 0;
+        addressToUser[msg.sender].totalScore = 0;
+        addressToUser[msg.sender].reputationScore = 0;
+        addressToUser[msg.sender].totalReward = 0;
+        addressToUser[msg.sender].totalRedeem = 0;
+        addressToUser[msg.sender].totalTip = 0;
+        addressToUser[msg.sender].taglist = listOfTags;
         // user = UserInfo(msg.sender,name,email,designation,0,0,0,0,0,0,listOfTags);
     }
 
@@ -263,5 +262,49 @@ contract Stack {
 
     function setTotalRedeem(address user, uint256 redeem) public {
         addressToUser[user].totalRedeem += redeem;
+    }
+
+    function getUserName(address user) public view returns (string memory) {
+        return addressToUser[user].name;
+    }
+
+    function getUserEmail(address user) public view returns (string memory) {
+        return addressToUser[user].email;
+    }
+
+    function getUserDesignation(address user)
+        public
+        view
+        returns (string memory)
+    {
+        return addressToUser[user].designation;
+    }
+
+    function getUserDescription(address user)
+        public
+        view
+        returns (string memory)
+    {
+        return addressToUser[user].aboutUSer;
+    }
+
+    function getUserNoOfQuestions(address user) public view returns (uint256) {
+        return addressToUser[user].noOfQuestions;
+    }
+
+    function getUserNoOfAnswers(address user) public view returns (uint256) {
+        return addressToUser[user].noOfAnswers;
+    }
+
+    function getUserReward(address user) public view returns (uint256) {
+        return addressToUser[user].totalReward;
+    }
+
+    function getUserReputation(address user) public view returns (uint256) {
+        return addressToUser[user].reputationScore;
+    }
+
+    function getUserTags(address user) public view returns (string[] memory) {
+        return addressToUser[user].taglist;
     }
 }

@@ -9,7 +9,7 @@ const KeyCodes = {
   };
   const delimiters = [KeyCodes.comma, KeyCodes.enter];
   
-const AddQuestions = () => {
+const AddQuestions = ({ mainContract, account}) => {
     const [Question,setQuestion] = useState("");
     const editorRef = useRef(null);
     const [title,setTitle] = useState("");
@@ -38,8 +38,15 @@ const AddQuestions = () => {
         const StringTitle = JSON.stringify(title);
         const Stringtags = JSON.stringify(tags);
         const { cid } = await client.add([StringTitle,editorRef.current.getContent(),Stringtags])
-        console.log(cid);
-        console.log(cid._baseCache.get("z"));
+        const questionCID = cid._baseCache.get('z');
+        let questionTags = [];
+        for(let i=0;i<tags.length;i++){
+            questionTags[i] = tags[i]['text'];            
+        }
+        const tx = await mainContract.addQuestion(questionCID,questionTags);
+        await tx.wait();
+
+
     }
 
     
