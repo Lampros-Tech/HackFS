@@ -1,16 +1,12 @@
-<<<<<<< HEAD
 // import React from "react";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-=======
-import React from "react";
->>>>>>> 2d05f47b4248207749c2b2a37755726899668e9a
 import "./Cryptoinfo-style/News.scss";
 
-const CryptoNews = () => {
+const Cryptonews = () => {
   const [apiData, setApiData] = useState();
- 
+
   useEffect(() => {
     const options = {
       method: "GET",
@@ -29,9 +25,7 @@ const CryptoNews = () => {
   }, []);
   console.log(apiData);
   const first7ApiData = apiData?.slice(9.7);
-  console.log("ready")
-
- 
+  console.log("ready");
 
   return (
     <>
@@ -55,4 +49,4 @@ const CryptoNews = () => {
   );
 };
 
-export default CryptoNews;
+export default Cryptonews;
