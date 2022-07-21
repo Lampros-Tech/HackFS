@@ -10,7 +10,7 @@ import Score from "../activity-blocks/Score";
 
 import "../general-block/useractivity.scss";
 
-export default function UserActivity() {
+export default function SingleUserActivity() {
   const [showSummary, setSummary] = useState(true);
   const [showAnswers, setAnswers] = useState(false);
   const [showQuestions, setQuestions] = useState(false);
@@ -82,6 +82,7 @@ export default function UserActivity() {
     setArticles(false);
     setTags(true);
   };
+
   return (
     <>
       <section className="activity-block">

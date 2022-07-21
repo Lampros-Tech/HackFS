@@ -33,15 +33,12 @@ import Login from "./components/login/Login";
 /********************* CSS CLASS ********************/
 import "./index.css";
 import "./App.scss";
-<<<<<<< Updated upstream
 
-import Stack from "./artifacts/contracts/Stack.sol/Stack.json"
+import Stack from "./artifacts/contracts/Stack.sol/Stack.json";
 import customToken from "./artifacts/contracts/customToken.sol/customToken.json";
 
-const StackAddress = "0xAc513D71FAfDB832DE52B8Be97052f08668bF4fa";
-const customTokenAddress = "0x844fC307f49d5574Cd37375d6bB95E786785234F";
-=======
->>>>>>> Stashed changes
+const StackAddress = "0xe76734cFCcfDDD819A2245bc2f68E3da8129f7D6";
+const customTokenAddress = "0xA6252028766C0C010Df8DF49c20EC4EEe2291504";
 
 const App = () => {
   const { activate, deactivate } = useWeb3React();
@@ -52,7 +49,6 @@ const App = () => {
   const [accountBalance, setAccountBalance] = useState("");
   const [isConnected, setIsConnected] = useState(false);
 
-<<<<<<< Updated upstream
   //
   const [loading, setLoading] = useState(true);
   const [account, setAccount] = useState(null);
@@ -101,21 +97,15 @@ const App = () => {
     // console.log(tokenContract)
     // console.log("contract")
     // console.log(maincontract)
-
   };
 
-=======
->>>>>>> Stashed changes
   const { ethereum } = window;
   const provider = new ethers.providers.Web3Provider(window.ethereum);
 
   const cookie = new Cookies();
 
-<<<<<<< Updated upstream
   const connected = cookie.get("account");
 
-=======
->>>>>>> Stashed changes
   const CoinbaseWallet = new WalletLinkConnector({
     url: `https://mainnet.infura.io/v3/${process.env.INFURA_KEY}`,
     appName: "Web3-react Demo",
@@ -152,7 +142,6 @@ const App = () => {
       sethaveMetamask(true);
     };
     checkMetamaskAvailability();
-<<<<<<< Updated upstream
     if (setIsConnected(true)) {
       console.log("yes");
     }
@@ -164,10 +153,6 @@ const App = () => {
     }
   }, [connected]);
 
-=======
-  }, [ethereum]);
-
->>>>>>> Stashed changes
   const connectWallet = async () => {
     try {
       if (!ethereum) {
@@ -216,7 +201,6 @@ const App = () => {
           <div className="main-content">
             <Routes>
               <Route exact path="/" element={<Home />} />
-<<<<<<< Updated upstream
               <Route
                 exact
                 path="/info"
@@ -281,10 +265,19 @@ const App = () => {
                   <Profile
                     mainContract={mainContract}
                     web3Handler={web3Handler}
+                    account={account}
                   />
                 }
-              />        
-              <Route path="/find-profile" element={<FindUsers />} />
+              />
+              <Route
+                path="/find-profile"
+                element={
+                  <FindUsers
+                    mainContract={mainContract}
+                    web3Handler={web3Handler}
+                  />
+                }
+              />
               <Route
                 path="/user/:id"
                 element={
@@ -297,20 +290,6 @@ const App = () => {
                   />
                 }
               />
-=======
-              <Route exact path="/info" element={<CryptoInfo />} />
-              <Route path="/ask-question" element={<AddQuestions />} />
-              <Route path="/find-question" element={<DisplayQuestions />} />
-              <Route
-                path="/single-question/:id"
-                element={<SingleQuestion id={1} />}
-              />
-              <Route path="/add-article" element={<AddArticle />} />
-              <Route path="/message/:id" element={<Chat id={1} />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/find-profile" element={<FindUsers />} />
-              <Route path="/user/:id" element={<SingleUser id={1} />} />
->>>>>>> Stashed changes
               <Route path="/login" element={<Login />} />
             </Routes>
           </div>

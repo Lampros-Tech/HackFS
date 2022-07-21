@@ -1,10 +1,7 @@
-<<<<<<< Updated upstream
 .tox-notifications-container {
   display: none;
 }
 
-=======
->>>>>>> Stashed changes
 .modalBackground {
   width: 100vw;
   height: 100vh;
@@ -16,15 +13,12 @@
   align-items: center;
 }
 
-<<<<<<< Updated upstream
 /* .img {
   display: inline-flex;
   float: right;
 } */
-=======
->>>>>>> Stashed changes
 .modalContainer {
-  width: 40rem;
+  width: 30%;
   height: auto;
   border-radius: 12px;
   background-color: white;
@@ -42,8 +36,15 @@
   padding: 0 2%;
 }
 
+.input-edit-profile-about-me {
+  width: 100%;
+  border: 2px solid #eee;
+  border-radius: 10px;
+  height: auto;
+  padding: 2% 2%;
+}
+
 .modalContainer .title {
-<<<<<<< Updated upstream
   display: inline-flex;
   text-align: center;
   font-size: 0.7rem;
@@ -51,25 +52,19 @@
   align-items: center;
   color: #808080;
 }
-svg {
+svg.svg-close {
   height: 16px;
   width: 16px;
   cursor: pointer;
 }
-svg:hover {
+svg.svg-close:hover {
   fill: red;
   transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transition: 0.5s;
-=======
-  display: inline-block;
-  text-align: center;
-  font-size: 0.7rem;
-
->>>>>>> Stashed changes
 }
 
-.titleCloseBtn {
+/* .titleCloseBtn {
   display: flex;
   justify-content: flex-end;
 }
@@ -79,7 +74,7 @@ svg:hover {
   border: none;
   font-size: 25px;
   cursor: pointer;
-}
+} */
 
 .modalContainer .footer {
   flex: 20%;
@@ -89,31 +84,17 @@ svg:hover {
 }
 
 .modalContainer .footer button {
-<<<<<<< Updated upstream
   width: 100px;
-=======
-  width: 150px;
->>>>>>> Stashed changes
   height: 45px;
   margin: 10px;
   border: none;
   background-color: #64d488;
   color: white;
   border-radius: 8px;
-<<<<<<< Updated upstream
   font-size: 1.2rem;
   cursor: pointer;
-=======
-  font-size: 20px;
-  cursor: pointer;
-
->>>>>>> Stashed changes
 }
 
 #cancelBtn {
   background-color: crimson;
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes

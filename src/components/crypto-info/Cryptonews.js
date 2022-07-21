@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 // import React from "react";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+=======
+import React from "react";
+>>>>>>> 2d05f47b4248207749c2b2a37755726899668e9a
 import "./Cryptoinfo-style/News.scss";
 
 const CryptoNews = () => {

@@ -1,10 +1,14 @@
-<<<<<<< Updated upstream
-import React, { useRef, useState } from "react";
-import { Editor } from "@tinymce/tinymce-react";
+import React, { useState } from "react";
+// import { Editor } from "@tinymce/tinymce-react";
 import { WithContext as ReactTags } from "react-tag-input";
 
-export default function EditProfile({ mainContract, closeModal }) {
+<<<<<<< HEAD
+export default function EditProfile({ mainContract, account, closeModal }) {
   const editorRef = useRef(null);
+=======
+export default function EditProfile({ mainContract, closeModal }) {
+  // const editorRef = useRef(null);
+>>>>>>> 947ca4d85a384351f9370f5f98aecda70d230091
   const [tags, setTags] = useState([]);
 
   const KeyCodes = {
@@ -14,11 +18,19 @@ export default function EditProfile({ mainContract, closeModal }) {
   const delimiters = [KeyCodes.comma, KeyCodes.enter];
 
   //
+<<<<<<< HEAD
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [designation, setDesignation] = useState("");
+  const [description, setDescription] = useState("");
+  const [tag, setTag] = useState([]);
+=======
   const [name, setName] = useState(null);
   const [email, setEmail] = useState(null);
   const [designation, setDesignation] = useState(null);
   const [description, setDescription] = useState(null);
-  const [tag, setTag] = useState([]);
+  // const [tag, setTag] = useState([]);
+>>>>>>> 947ca4d85a384351f9370f5f98aecda70d230091
 
   const handleAddition = (tag) => {
     setTags([...tags, tag]);
@@ -31,50 +43,55 @@ export default function EditProfile({ mainContract, closeModal }) {
     setTags(tags.filter((tag, index) => index !== i));
   };
 
-  const getUserDetails = async (e) => {
-    setDescription(editorRef.current.getContent());
+<<<<<<< HEAD
+  const getUserDetails = async (e) => {      
     // console.log(name);
     // console.log(email);
     // console.log(designation);
     // console.log(description);
-    // console.log(typeof editorRef.current.getContent());
     // console.log(tags);
     
     const tagList = [];
     for(let i=0;i<tags.length;i++){
+      tagList[i] = tags[i].text;
+    }
+    // console.log(tagList);
+    console.log(mainContract);
+    const tx= await mainContract.createProfile(name,email,designation,description,tagList);
+=======
+  const getUserDetails = async (e) => {
+    console.log(name);
+    console.log(email);
+    console.log(designation);
+    console.log(description);
+    console.log(tags);
+
+    const tagList = [];
+    for (let i = 0; i < tags.length; i++) {
       console.log(tags[i].text);
       tagList[i] = tags[i].text;
     }
     console.log(tagList);
-    console.log(mainContract);
-    const tx= await mainContract.createProfile(name,"abcdef",email,designation,tagList);
+    // console.log(mainContract);
+    const tx = await mainContract.createProfile(
+      name,
+      email,
+      designation,
+      description,
+      tagList
+    );
+>>>>>>> 947ca4d85a384351f9370f5f98aecda70d230091
     await tx.wait();
-  }
-=======
-import React, { useRef } from "react";
-import { Editor } from "@tinymce/tinymce-react";
-
-export default function EditProfile({ closeModal }) {
-  const editorRef = useRef(null);
->>>>>>> Stashed changes
+  };
 
   return (
     <>
       <div className="modalBackground">
         <div className="modalContainer">
-<<<<<<< Updated upstream
-          {/* <div className="titleCloseBtn">
-            <img
-              onClick={() => closeModal(false)}
-              src={cancleButton}
-              alt="user avatar"
-              height="16px"
-              width="16px"
-            />
-          </div> */}
           <div className="title">
             <h1>Edit Your Profile</h1>
             <svg
+              className="svg-close"
               onClick={() => closeModal(false)}
               version="1.1"
               id="Capa_1"
@@ -113,67 +130,18 @@ export default function EditProfile({ closeModal }) {
               placeholder="e.g. 'Full Stack Developer'"
               onChange={(event) => setDesignation(event.target.value)}
             />
-=======
-          <div className="titleCloseBtn">
-            <button onClick={() => closeModal(false)}> X </button>
-          </div>
-          <div className="title">
-            <h1>Edit Your Profile</h1>
-          </div>
-          <div className="body">
-            <h3>Display Name</h3>
-            <input className="input-edit-profile" type="text" placeholder="Your Good Name" />
-            <h3>Change Email</h3>
-            <input className="input-edit-profile" type="text" placeholder="email" />
->>>>>>> Stashed changes
             <h3>About me</h3>
-            <Editor
-              onInit={(evt, editor) => (editorRef.current = editor)}
-              initialValue="<p>Tell the world about yourself.</p>"
-              init={{
-                height: 200,
-                menubar: false,
-                plugins: [
-                  "advlist autolink lists link image charmap print preview anchor",
-                  "searchreplace visualblocks code fullscreen",
-                  "insertdatetime media table paste code help wordcount",
-                ],
-                toolbar:
-                  "undo redo | formatselect | " +
-                  "bold italic backcolor | alignleft aligncenter " +
-                  "alignright alignjustify | bullist numlist outdent indent | " +
-                  "removeformat | help",
-<<<<<<< Updated upstream
-
-                  image_title: true,
-                  automatic_uploads: true,
-                  file_picker_types: "image",
-                  file_picker_callback: function (callback, value, meta) {
-                    if (meta.filetype == "image") {
-                      var input = document.getElementById("my-file");
-                      input.click();
-                      input.onchange = function () {
-                        var file = input.files[0];
-                        var reader = new FileReader();
-                        reader.onload = function (e) {
-                          console.log("name", e.target.result);
-                          callback(e.target.result, {
-                            alt: file.name,
-                          });
-                        };
-                        reader.readAsDataURL(file);
-                      };
-                    }
-                  },
-                  paste_data_images: true,
-
+<<<<<<< HEAD
+            <textarea  className="input-edit-profile-about-me" id="w3review" name="w3review" rows="4"  placeholder="Somthing About Yourself" onChange={(event) => setDescription(event.target.value)}></textarea>
+                       
 =======
->>>>>>> Stashed changes
-                content_style:
-                  "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
-              }}
+            <input
+              className="input-edit-profile"
+              type="text"
+              placeholder="somthing about yourself"
+              onChange={(event) => setDescription(event.target.value)}
             />
-<<<<<<< Updated upstream
+>>>>>>> 947ca4d85a384351f9370f5f98aecda70d230091
             <h3>Tags</h3>
             <div>
               <ReactTags
@@ -190,11 +158,6 @@ export default function EditProfile({ closeModal }) {
           <div className="footer">
             <button
               className="save"
-=======
-          </div>
-          <div className="footer">
-            <button className="save"
->>>>>>> Stashed changes
               onClick={() => {
                 closeModal(false);
               }}
@@ -202,11 +165,9 @@ export default function EditProfile({ closeModal }) {
             >
               Cancel
             </button>
-<<<<<<< Updated upstream
-            <button className="save" onClick={(e) => getUserDetails()}>Continue</button>
-=======
-            <button className="save" >Continue</button>
->>>>>>> Stashed changes
+            <button className="save" onClick={(e) => getUserDetails()}>
+              Continue
+            </button>
           </div>
         </div>
       </div>
