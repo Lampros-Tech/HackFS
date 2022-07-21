@@ -5,6 +5,8 @@ import { WithContext as ReactTags } from 'react-tag-input';
 import UploadHeroImage from "./upload-to-cloud"
 import { create, CID } from "ipfs-http-client";
 import { prototype } from "stream";
+// import { url } from 'inspector';
+// import { url } from 'inspector';
 
 const KeyCodes = {
   comma: 188,
@@ -39,7 +41,6 @@ const AddArticle = () => {
         console.log(title)
       }
       console.log(editorRef.current.getContent())
-      console.log(typeof(editorRef.current.getContent()))
      
         //nft storage
         const client = create("https://ipfs.infura.io:5001/api/v0")
@@ -47,7 +48,7 @@ const AddArticle = () => {
         const Stringtags = JSON.stringify(tags);
         const { cid } = await client.add([StringTitle,editorRef.current.getContent(),Stringtags,uploadImage])
         console.log(cid);
-        console.log(cid._baseCache);
+        console.log(cid._baseCache.get("z"));
   }
 
 
