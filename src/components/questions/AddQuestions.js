@@ -39,6 +39,7 @@ const AddQuestions = () => {
         const Stringtags = JSON.stringify(tags);
         const { cid } = await client.add([StringTitle,editorRef.current.getContent(),Stringtags])
         console.log(cid);
+        console.log(cid._baseCache.get("z"));
     }
 
     
