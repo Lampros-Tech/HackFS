@@ -21,7 +21,7 @@ const Profile = ({ mainContract, account }) => {
   const [email, setEmail] = React.useState("");
   const [designation, setDesignation] = React.useState("");
   const [about, setAbout] = React.useState("");
-
+  const [tags, setTags] = React.useState("");
   const getProfileData = async (e) => {
     console.log(mainContract);
     const userName = await mainContract.getUserName(account);
@@ -35,7 +35,9 @@ const Profile = ({ mainContract, account }) => {
     const userAbout = await mainContract.getUserDescription(account);
     setAbout(userAbout);
     console.log(userAbout);
-
+    const userTags = await mainContract.getUserTags(account);
+    setTags(userTags);
+    console.log(userTags);
     setLoading(false);
   };
 
@@ -54,6 +56,11 @@ const Profile = ({ mainContract, account }) => {
           closeModal={setButtonPopup}
           mainContract={mainContract}
           account={account}
+          name={name}
+          email={email}
+          designation={designation}
+          UserTag={tags}
+          about={about}
         />
       )}
       <section className="main-container">
