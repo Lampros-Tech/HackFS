@@ -11,6 +11,7 @@ const CryptoArticle = () => {
             <h2>Bitcoin</h2>
             <div className="fakeimg">
               <img className="crypto-img" src={pic} />
+              <img className="crypto-img" src={pic} />
               <div className="crypto-btn">
                 <p>
                   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -52,7 +53,7 @@ const CryptoArticle = () => {
                 nulla pariatur. Excepteur sint occaecat cupidatat non proident,
                 sunt in culpa qui officia deserunt mollit anim id est laborum."
               </p>
-              <button a href="#" id="readmore">
+              <button a href="#" className="readmore">
                 Read More <a />
               </button>
             </div>

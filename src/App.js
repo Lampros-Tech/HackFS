@@ -29,6 +29,7 @@ import Profile from "./components/users/Profile";
 import FindUsers from "./components/users/FindUsers";
 import SingleUser from "./components/users/SingleUser";
 import Login from "./components/login/Login";
+import ByToken from "./components/users/token/ByToken";
 
 /********************* CSS CLASS ********************/
 import "./index.css";
@@ -283,6 +284,17 @@ const App = () => {
                 path="/user/"
                 element={
                   <SingleUser
+                    tokenContract={tokenContract}
+                    mainContract={mainContract}
+                    web3Handler={web3Handler}
+                    account={account}
+                  />
+                }
+              />
+              <Route
+                path="/buytoken"
+                element={
+                  <ByToken
                     tokenContract={tokenContract}
                     mainContract={mainContract}
                     web3Handler={web3Handler}
