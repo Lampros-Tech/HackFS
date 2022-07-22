@@ -60,6 +60,7 @@ export default function EditProfile({
       emailOfUser,
       designationOfUser,
       aboutOfUser,
+      "2",
       tagList
     );
     await tx.wait();

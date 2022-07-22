@@ -37,8 +37,8 @@ import "./App.scss";
 import Stack from "./artifacts/contracts/Stack.sol/Stack.json";
 import customToken from "./artifacts/contracts/customToken.sol/customToken.json";
 
-const StackAddress = "0x669095174b371b4341f6AeAff481172B12e309E8";
-const customTokenAddress = "0x3364431b00Cb462fF81665F4b8224F76321ACAC3";
+const StackAddress = "0xBd889af6B771E194e953a56871caB67840294db8";
+const customTokenAddress = "0x5ab30Be36Ffe5C943430d6Cee20b7B06A2f70BCe";
 
 const App = () => {
   const { activate, deactivate } = useWeb3React();

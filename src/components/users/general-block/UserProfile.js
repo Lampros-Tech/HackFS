@@ -96,7 +96,7 @@ export default function UserProfile({ mainContract, account }) {
             </div>
             <div className="stats-inner-block">
               <div>{tips}</div>
-              <div className="stats-title">Earn Tokens</div>
+              <div className="stats-title">Earned Tokens</div>
             </div>
           </div>
         </div>
