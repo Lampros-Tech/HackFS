@@ -18,15 +18,16 @@ const Cryptonews = () => {
     axios
       .request(options)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setApiData(response.data);
       })
       .catch((error) => {
         console.error(error);
       });
   }, []);
-  
+
   console.log(apiData);
+
   const first7Apidata = apiData?.slice(0, 9);
 
   return (
@@ -39,7 +40,8 @@ const Cryptonews = () => {
               <div key={_index}>
                 <a href={data.url}>
                   <div className="apidata">
-                  <p>{data.title}</p></div>
+                    <p>{data.title}</p>
+                  </div>
                   {/* <p>{data.source}</p> */}
                 </a>
               </div>

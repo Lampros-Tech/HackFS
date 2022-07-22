@@ -55,7 +55,11 @@ const AddArticle = ({ mainContract }) => {
       articleTags[i] = tags[i]["text"];
     }
     console.log(articleTags);
-    const tx = await mainContract.addArticle(articleCID, articleTags);
+    const tx = await mainContract.addArticle(
+      articleCID,
+      uploadImage,
+      articleTags
+    );
     await tx.wait();
   }
 
@@ -76,6 +80,7 @@ const AddArticle = ({ mainContract }) => {
       const url = `https://ipfs.infura.io/ipfs/${added.path}`;
       setUploadedImage(url);
       console.log(url);
+      console.log(uploadImage);
     } catch (error) {
       console.log("Error uploading file: ", error);
     }

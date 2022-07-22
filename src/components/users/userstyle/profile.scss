@@ -26,7 +26,7 @@
   height: 330px;
   width: 100%;
   position: absolute;
-  background: rgb(39, 41, 48, 0.6);
+  background: rgb(39, 41, 48, 0.7);
   z-index: -1;
 }
 .inside-cover-image {
@@ -37,19 +37,26 @@
 .main-container {
   max-width: 100%;
   width: 70%;
-  margin: 10px auto;
+  margin: 0px auto;
   align-items: center;
-  padding: 10px;
+  // padding: 10px;
 }
 
 .first-block {
   display: flex;
   align-items: center;
   margin: 0.25%;
+  bottom: 0%;
+  position: absolute;
+  width: 70%;
+  padding: 1%;
   img {
+    border: 1px solid #005edd;
+    border-radius: 1000%;
+    padding: 1px;
     // display: inline-flex;
-    width: 128px;
-    height: 128px;
+    width: 84px;
+    height: 84px;
   }
   .user-info {
     flex-direction: column;
@@ -61,21 +68,23 @@
     margin-left: auto;
 
     button {
-      padding: 5px 10px;
-      border: 1px solid #838c95;
-      border-radius: 4px;
-      background: none;
-      font-size: 15px;
+      padding: 0.5rem 0.5rem;
+      border: none;
+      border-radius: 1px;
+      background: #005edd;
+      font-size: 1rem;
+      font-weight: 600;
       cursor: pointer;
       outline: none;
+      color: #ffffff;
     }
 
     button:nth-of-type(1) {
-      margin: 0 5px;
+      margin: 0 1rem;
     }
 
     button:hover {
-      background: #e3e6e8;
+      background: #f6ae2d;
     }
   }
 }
@@ -92,17 +101,17 @@
     margin-top: -10px;
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     align-content: center;
     justify-content: center;
     align-items: center;
   }
   .active {
-    background: black;
+    background: #005edd;
     color: white;
   }
   .active:hover {
-    background: black;
+    background: #f6ae2d;
     color: white;
   }
   button {
@@ -116,18 +125,19 @@
     outline: none;
   }
   button:hover {
-    background: #f1f2f3;
+    background: #f6ae2d;
+    color: #ffffff;
     border-radius: 5px;
   }
 }
 
 .active-li {
-  border-left: 2px solid black;
+  border-left: 2px solid #f6ae2d;
   border-radius: 0%;
 }
 
 .active-li:hover {
-  border-left: 2px solid black;
+  border-left: 2px solid #f6ae2d;
   border-radius: 0%;
 }
 

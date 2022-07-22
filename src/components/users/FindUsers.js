@@ -4,10 +4,6 @@ import "./userstyle/finduser.scss";
 import useravtar from "./userstyle/user-avatar.png";
 
 const FindUsers = ({ account, mainContract }) => {
-  const getProfileData = async (e) => {
-    console.log(mainContract);
-  };
-
   const [src, setsrc] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const getUseres = async () => {
@@ -36,8 +32,6 @@ const FindUsers = ({ account, mainContract }) => {
   if (isLoading) {
     return "loading";
   }
-
-  const user_id = 1;
   if (src.length > 0) {
     return (
       <>

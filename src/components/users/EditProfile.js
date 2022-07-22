@@ -2,7 +2,8 @@ import React, { useState, useRef } from "react";
 // import { Editor } from "@tinymce/tinymce-react";
 import { WithContext as ReactTags } from "react-tag-input";
 import { useEffect } from "react";
-
+import Upload from "../users/man.png"
+import { create, CID } from "ipfs-http-client";
 export default function EditProfile({
   mainContract,
   account,
@@ -31,7 +32,18 @@ export default function EditProfile({
   const handleDelete = (i) => {
     setTags(tags.filter((tag, index) => index !== i));
   };
+  //useref for profile picture.
+  const profile_picture = useRef(null);
+  const [profile_image,setProfile_image] = useState(); 
+  const [profile_image_url,setProfile_image_url] = useState();
+//reseting url of image
+  function reset(e)
+  {
+    setProfile_image(null);
+    console.log(profile_image)
+  }
 
+  const client = create("https://ipfs.infura.io:5001/api/v0");
   const [nameOfUser, setNameOfUser] = useState(name);
   const [emailOfUser, setEmailOfUser] = useState(email);
   const [designationOfUser, setDesignationOfUser] = useState(designation);
@@ -48,10 +60,32 @@ export default function EditProfile({
       emailOfUser,
       designationOfUser,
       aboutOfUser,
+      "2",
       tagList
     );
     await tx.wait();
   };
+
+
+  //upload image function
+  async function UploadImage(e)
+  {
+    const file = e.target.files[0];
+    console.log(file);
+    setProfile_image(file);
+    try
+    {
+      const added = await client.add(file);
+      const url = `https://ipfs.infura.io/ipfs/${added.path}`;
+      setProfile_image_url(url);
+      console.log(url);
+    }
+    catch (error)
+    {
+      console.log("Error uploading file: ", error);
+    }
+  }
+
   return (
     <>
       <div className="modalBackground">
@@ -77,7 +111,39 @@ export default function EditProfile({
             </svg>
           </div>
           <div className="body">
-            <h3>Display Name</h3>
+          <h3>Profile Image</h3>
+          {
+            (profile_image)
+            ?
+            (
+                <>
+                <img src={profile_image_url} className="uploaded_image" />
+                <button className="reset-btn" onClick={(e)=>{reset(e)}}>
+                reset
+                </button>
+              </>
+              
+            )
+            :
+             <div className="upload-profile-picture" onClick=
+              {
+                  (e) => 
+                  {
+                    profile_picture.current.click();
+                  }
+              }>
+                    <img src={Upload} className="upload-image"/>
+              </div>
+            }
+            <input
+              className="input-edit-profile"
+              type="file"
+              hidden
+              defaultValue={nameOfUser}
+              ref= {profile_picture}
+              onChange={(e) => {UploadImage(e);}}
+            />
+            <h3>Profile Name</h3>
             <input
               className="input-edit-profile"
               type="text"
