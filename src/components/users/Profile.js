@@ -67,12 +67,7 @@ const Profile = ({ mainContract, account }) => {
         <div className="background-opacity"></div>
         <div className="inside-cover-image">
           <div className="first-block">
-            <img
-              src={useravtar}
-              alt="user avatar"
-              height="128px"
-              width="128px"
-            />
+            <img src={useravtar} alt="user avatar" height="84px" width="84px" />
             <div className="user-info">
               <h1 className="user-name">{name}</h1>
               <h3> {designation}</h3>
