@@ -12,7 +12,7 @@ const FindUsers = ({ account, mainContract }) => {
   const [isLoading, setLoading] = useState(true);
   const getUseres = async () => {
     const id_array = await mainContract.getAllUsers();
-    console.log(id_array.length);
+    // console.log(id_array.length);
     for (let i = 0; i < id_array.length; i++) {
       const name = await mainContract.getUserName(id_array[i]);
       let score = await mainContract.getUserReputation(id_array[i]);
@@ -21,11 +21,11 @@ const FindUsers = ({ account, mainContract }) => {
       noQuestions = parseInt(noQuestions._hex, 16);
       let noAnswers = await mainContract.getUserNoOfAnswers(id_array[i]);
       noAnswers = parseInt(noAnswers._hex, 16);
-      src.push([name, score, noQuestions, noAnswers]);
+      src.push([name, score, noQuestions, noAnswers, id_array[i]]);
     }
     setsrc(src);
     for (let i = 0; i < src.length; i++) {
-      console.log(src[i]);
+      // console.log(src[i]);
     }
     setLoading(false);
   };
@@ -80,10 +80,12 @@ const FindUsers = ({ account, mainContract }) => {
                       <div className="all-user-profile-image">
                         <img src={useravtar} alt="avatar" />
                       </div>
+                      {console.log(inde[4])}
                       <div className="all-user-profile-right">
                         <Link
                           className="all-user-link"
-                          to={"/user/" + { user_id }}
+                          to={"/user/"}
+                          state={{ account: inde[4] }}
                         >
                           <h3>{inde[0]}</h3>
                         </Link>

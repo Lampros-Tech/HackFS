@@ -3,17 +3,47 @@ import React, { useState } from "react";
 import useravtar from "./man.png";
 import SingleUserProfile from "./general-block/SingleUserProfile";
 import SingleUserActivity from "./general-block/SingleUserActivity";
-// import EditProfile from "./EditProfile";
 
 import "./userstyle/profile.scss";
 import "./general-block/userprofile.scss";
 import "./userstyle/popup.css";
-// import { useEffect } from "react";
+import { useLocation } from "react-router";
+import { useEffect } from "react";
 
-const SingleUser = ({ id }) => {
+const SingleUser = ({ mainContract }) => {
+  const location = useLocation();
+  const { account } = location.state;
+  // console.log(account);
+  const [isLoading, setLoading] = React.useState(true);
   const [showSingleUserProfile, setSingleUserProfile] = useState(true);
   const [showSingleUserActivity, setSingleUserActivity] = useState(false);
   //   const [buttonPopup, setButtonPopup] = useState(false);
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [designation, setDesignation] = React.useState("");
+  const [about, setAbout] = React.useState("");
+  const getProfileData = async (e) => {
+    // console.log(mainContract);
+    const userName = await mainContract.getUserName(account);
+    setName(userName);
+    // console.log(name);
+    const userEmail = await mainContract.getUserEmail(account);
+    setEmail(userEmail);
+    // console.log(email);
+    const userDesignation = await mainContract.getUserDesignation(account);
+    setDesignation(userDesignation);
+    const userAbout = await mainContract.getUserDescription(account);
+    setAbout(userAbout);
+    // console.log(userAbout);
+    setLoading(false);
+  };
+  useEffect(() => {
+    getProfileData();
+    // setLoading(false);
+  }, [mainContract]);
+  if (isLoading) {
+    return "loading";
+  }
 
   return (
     <>
@@ -21,8 +51,8 @@ const SingleUser = ({ id }) => {
         <div className="first-block">
           <img src={useravtar} alt="user avatar" height="128px" width="128px" />
           <div className="user-info">
-            <h1 className="user-name">User Name</h1>
-            <span> User Email</span>
+            <h1 className="user-name">{name}</h1>
+            <span>{email}</span>
           </div>
           <div className="btns">
             {/* <button
@@ -54,8 +84,12 @@ const SingleUser = ({ id }) => {
           >
             Activity
           </button>
-          {showSingleUserProfile ? <SingleUserProfile /> : null}
-          {showSingleUserActivity ? <SingleUserActivity /> : null}
+          {showSingleUserProfile ? (
+            <SingleUserProfile account={account} mainContract={mainContract} />
+          ) : null}
+          {showSingleUserActivity ? (
+            <SingleUserActivity account={account} mainContract={mainContract} />
+          ) : null}
         </div>
       </section>
     </>
