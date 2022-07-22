@@ -1,13 +1,36 @@
 import React from 'react'
+import { useState } from 'react';
 import "./AllQuestions.scss"
 
+
 function AllQuestions() {
+  const [count, setCount] = useState(0);
+
+  const handleClick = () => {
+      if (count === 0){
+          setCount(0) 
+      } else if (count === 1){
+          <span>{decrement}</span>
+      } else {
+          <span>{increment}</span>
+      }
+
+  }
+
+  const increment = () => {
+      setCount(count + 1)
+  }
+     
+   const decrement = () => {
+      setCount(count - 1)
+  }
+
   return (
     <>
      <div className="DisplayQuestions">
         <div className="DisplayQuestions-left">
           <div className="DisplayQuestions-votes">
-            <p> 0</p>
+            <p>{count}</p>
             <p> votes</p>
           </div>
           <div className="DisplayQuestions-answer">
@@ -23,8 +46,22 @@ function AllQuestions() {
         
           <div className="DisplayQuestions-askby">
             <small> 2 days ago</small>
-            <p> Ask by </p>
+           
+            <p> Ask by <img src="https://i.pravatar.cc/30"alt=''/> </p>
+            
+           
+          
           </div>
+          {/* <div  className='avatar'>
+          <img src='https://i.pravatar.cc/30'alt=''/>
+          </div> */}
+
+          <div className="counter">
+      
+      <button className='plus' onClick={increment}>+</button>
+      <h2>{count}</h2>
+      <button className='minus' onClick={decrement}>-</button>
+    </div>
           
         </div>
       </div></>

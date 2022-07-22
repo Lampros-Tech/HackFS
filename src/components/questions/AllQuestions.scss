@@ -12,6 +12,7 @@
         
     
     }
+    
     .DisplayQuestions-left{
      display: flex;
      flex-direction: column;
@@ -56,6 +57,15 @@
         align-items: center;
     
     }
+    .avatar{
+        display: flex;
+        align-items: center;
+    }
+    
+    .DisplayQuestions-askby>p > img{
+        border-radius: 50%;
+
+    }
     .DisplayQuestions-askby>p{
         display: flex;
         align-items: center;
@@ -64,3 +74,36 @@
     .DisplayQuestions-askby>small{
         color: gray;
     }
+    .counter {
+        display: flex;
+  
+        align-items: center;
+     
+      }
+      .counter> h1{
+        text-align: center;
+      }
+    .counter > button {
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        color: white;
+        letter-spacing: 0.05em;
+        font-size: 20px;
+        margin-right: 15px;
+        font-family: sans-serif;
+        text-align: center;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, .2);
+        cursor: pointer;
+      }
+      .plus{
+        background-color:#005edd;
+      }
+      
+      .minus {
+        background-color: #ee4266;
+      }
+      
+      button:hover{
+        filter: brightness(1.1);
+      }
