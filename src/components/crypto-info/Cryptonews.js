@@ -25,7 +25,7 @@ const Cryptonews = () => {
         console.error(error);
       });
   }, []);
-  
+
   console.log(apiData);
   const first7Apidata = apiData?.slice(0, 11);
 
@@ -34,11 +34,7 @@ const Cryptonews = () => {
       <div className="crypto-news">
         <div className="rightcolumn">
           <div className="news">
-<<<<<<< HEAD
-            <h2>NEWS</h2>
-=======
             <h2>News</h2>
->>>>>>> 1e08ae4ce006990605e7705825f53736efd0e08b
             {first7Apidata?.map((data, _index) => (
               <div key={_index}>
                 <a href={data.url}>
