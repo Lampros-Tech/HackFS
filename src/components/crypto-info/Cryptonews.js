@@ -26,7 +26,11 @@ const Cryptonews = () => {
       });
   }, []);
 
+<<<<<<< HEAD
   // console.log(apiData);
+=======
+  console.log(apiData);
+>>>>>>> 1d5afd0f04f268ec308060c3ec7a1d7852f3fdae
   const first7Apidata = apiData?.slice(0, 11);
 
   return (
