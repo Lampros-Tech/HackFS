@@ -1,4 +1,5 @@
 import React from "react";
+import '../userstyle/inside-card.scss';
 
 export default function Questions() {
   return (
@@ -16,14 +17,50 @@ export default function Questions() {
           </div>
         </div>
         <div className="card">
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos ipsum
-            dicta fugit totam eum voluptate beatae fuga, quaerat consectetur
-            ipsam magnam rerum velit provident et accusantium sapiente saepe
-            temporibus sed numquam! Iusto dolorem ea perferendis nulla quaerat
-            eius sit dolor, incidunt odit, natus impedit. Suscipit iure nostrum
-            nesciunt. Culpa, odit?
-          </p>
+          <div className="inside-of-card">
+            <div className="score-of-card">
+              11640
+            </div>
+            <div className="title-of-card">
+              Why is subtracting these two times (in 1927) giving a strange result?
+            </div>
+            <div className="date-of-card">
+              21 July 2022
+            </div>
+          </div>
+          <div className="inside-of-card">
+            <div className="score-of-card">
+              11640
+            </div>
+            <div className="title-of-card">
+              Why is subtracting these two times (in 1927) giving a strange result?
+            </div>
+            <div className="date-of-card">
+              21 July 2022
+            </div>
+          </div>
+          <div className="inside-of-card">
+            <div className="score-of-card">
+              11640
+            </div>
+            <div className="title-of-card">
+              Why is subtracting these two times (in 1927) giving a strange result?
+            </div>
+            <div className="date-of-card">
+              21 July 2022
+            </div>
+          </div>
+          <div className="inside-of-card">
+            <div className="score-of-card">
+              11640
+            </div>
+            <div className="title-of-card">
+              Why is subtracting these two times (in 1927) giving a strange result?
+            </div>
+            <div className="date-of-card">
+              21 July 2022
+            </div>
+          </div>
         </div>
       </div>
     </>

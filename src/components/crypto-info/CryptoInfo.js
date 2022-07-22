@@ -8,18 +8,15 @@ import "./Cryptoinfo-style/Article.scss";
 import Cryptonews from "./Cryptonews";
 import "./Cryptoinfo-style/News.scss";
 
-const CryptoInfo = ({id}) => {
-    const style = {
-        height: 600,
-      };
-    const [listOfCoins, setListOfCoins]=useState([]);
-    useEffect(() =>{
-        Axios.get("https://api.coinstats.app/public/v1/coins?skip=0&limit=10").then(
-            (response)=>{
-                setListOfCoins(response.data.coins);            } 
-            );
-         },[]);
-    
+const CryptoInfo = () => {
+  const [listOfCoins, setListOfCoins] = useState([]);
+  useEffect(() => {
+    Axios.get("https://api.coinstats.app/public/v1/coins?skip=0&limit=10").then(
+      (response) => {
+        setListOfCoins(response.data.coins);
+      }
+    );
+  }, []);
 
   return (
     <>

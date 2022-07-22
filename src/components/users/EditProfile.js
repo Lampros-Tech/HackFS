@@ -1,23 +1,25 @@
 import React, { useState, useRef } from "react";
 // import { Editor } from "@tinymce/tinymce-react";
 import { WithContext as ReactTags } from "react-tag-input";
+import { useEffect } from "react";
 
-export default function EditProfile({ mainContract, account, closeModal }) {
-  const editorRef = useRef(null);
-  const [tags, setTags] = useState([]);
-
+export default function EditProfile({
+  mainContract,
+  account,
+  closeModal,
+  name,
+  email,
+  designation,
+  about,
+  UserTag,
+}) {
   const KeyCodes = {
     comma: 188,
     enter: 13,
   };
   const delimiters = [KeyCodes.comma, KeyCodes.enter];
-
-  //
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [designation, setDesignation] = useState("");
-  const [description, setDescription] = useState("");
-  const [tag, setTag] = useState([]);
+  const [tags, setTags] = useState([]);
+  console.log(UserTag);
 
   const handleAddition = (tag) => {
     setTags([...tags, tag]);
@@ -30,23 +32,26 @@ export default function EditProfile({ mainContract, account, closeModal }) {
     setTags(tags.filter((tag, index) => index !== i));
   };
 
-  const getUserDetails = async (e) => {      
-    // console.log(name);
-    // console.log(email);
-    // console.log(designation);
-    // console.log(description);
-    // console.log(tags);
-    
+  const [nameOfUser, setNameOfUser] = useState(name);
+  const [emailOfUser, setEmailOfUser] = useState(email);
+  const [designationOfUser, setDesignationOfUser] = useState(designation);
+  const [aboutOfUser, setAboutOfUser] = useState(about);
+  const getUserDetails = async (e) => {
     const tagList = [];
-    for(let i=0;i<tags.length;i++){
+    for (let i = 0; i < tags.length; i++) {
       tagList[i] = tags[i].text;
     }
-    // console.log(tagList);
     console.log(mainContract);
-    const tx= await mainContract.createProfile(name,email,designation,description,tagList);
+    const tx = await mainContract.createProfile(
+      nameOfUser,
+      "jffg",
+      emailOfUser,
+      designationOfUser,
+      aboutOfUser,
+      tagList
+    );
     await tx.wait();
   };
-
   return (
     <>
       <div className="modalBackground">
@@ -76,30 +81,44 @@ export default function EditProfile({ mainContract, account, closeModal }) {
             <input
               className="input-edit-profile"
               type="text"
-              placeholder="Your Good Name"
-              onChange={(event) => setName(event.target.value)}
+              placeholder="Enter your good name"
+              defaultValue={nameOfUser}
+              onChange={(event) => {
+                setNameOfUser(event.target.value);
+              }}
             />
             <h3>Change Email</h3>
             <input
               className="input-edit-profile"
               type="text"
               placeholder="Email"
-              onChange={(event) => setEmail(event.target.value)}
+              defaultValue={emailOfUser}
+              onChange={(event) => setEmailOfUser(event.target.value)}
             />
             <h3>Designation</h3>
             <input
               className="input-edit-profile"
               type="text"
               placeholder="e.g. 'Full Stack Developer'"
-              onChange={(event) => setDesignation(event.target.value)}
+              defaultValue={designationOfUser}
+              onChange={(event) => setDesignationOfUser(event.target.value)}
             />
             <h3>About me</h3>
-            <textarea  className="input-edit-profile-about-me" id="w3review" name="w3review" rows="4"  placeholder="Somthing About Yourself" onChange={(event) => setDescription(event.target.value)}></textarea>
-                       
+            <textarea
+              className="input-edit-profile-about-me"
+              id="w3review"
+              name="w3review"
+              rows="4"
+              placeholder="Somthing About Yourself"
+              defaultValue={aboutOfUser}
+              onChange={(event) => setAboutOfUser(event.target.value)}
+            ></textarea>
+
             <h3>Tags</h3>
             <div>
               <ReactTags
                 tags={tags}
+                defaultValue={tags}
                 delimiters={delimiters}
                 handleDelete={handleDelete}
                 handleAddition={handleAddition}

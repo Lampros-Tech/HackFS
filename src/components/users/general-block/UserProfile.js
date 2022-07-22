@@ -1,22 +1,21 @@
 import React from "react";
 import "../general-block/userprofile.scss";
-import {useEffect } from "react";
+import { useEffect } from "react";
 
-export default function UserProfile({mainContract, account}) {
+export default function UserProfile({ mainContract, account }) {
   // const [show, setShow] = useState(true);
   // const [show2, setShow2] = useState(true);
 
   const [isLoading, setLoading] = React.useState(true);
-  const [designation,setDesignation] = React.useState("");
-  const [about,setAbout] = React.useState("");
-  const [tag,setTag] = React.useState([]);
-  const [score,setScore] = React.useState(null);
-  const [noOfQuestions,setNoOfQuestions] = React.useState(null);
-  const [noOfAnswers,setNoOfAnswers] = React.useState(null);
-  const [noOfArticles,setNoOfArticles] = React.useState(null);
-  const [rewards,setRewards] = React.useState(null);
-  const [tips,setTips] = React.useState(null);
-
+  const [designation, setDesignation] = React.useState("");
+  const [about, setAbout] = React.useState("");
+  const [tag, setTag] = React.useState([]);
+  const [score, setScore] = React.useState(null);
+  const [noOfQuestions, setNoOfQuestions] = React.useState(null);
+  const [noOfAnswers, setNoOfAnswers] = React.useState(null);
+  const [noOfArticles, setNoOfArticles] = React.useState(null);
+  const [rewards, setRewards] = React.useState(null);
+  const [tips, setTips] = React.useState(null);
 
   const getOtherData = async (e) => {
     console.log(mainContract);
@@ -28,33 +27,32 @@ export default function UserProfile({mainContract, account}) {
     setTag(userTags);
     console.log(tag);
     let userScore = await mainContract.getTotalScore(account);
-    userScore = parseInt(userScore._hex,16);
-    setScore(userScore);    
-    console.log(score)
+    userScore = parseInt(userScore._hex, 16);
+    setScore(userScore);
+    console.log(score);
     let userNoOfQuestions = await mainContract.getUserNoOfQuestions(account);
-    userNoOfQuestions = parseInt(userNoOfQuestions._hex,16);
-    setNoOfQuestions(userNoOfQuestions); 
+    userNoOfQuestions = parseInt(userNoOfQuestions._hex, 16);
+    setNoOfQuestions(userNoOfQuestions);
     let userNoOfAnswers = await mainContract.getUserNoOfAnswers(account);
-    userNoOfAnswers = parseInt(userNoOfAnswers._hex,16);
-    setNoOfAnswers(userNoOfAnswers); 
-    let userNoOfArticles = await mainContract.getUserNoOfAnswers(account);
-    userNoOfArticles = parseInt(userNoOfArticles._hex,16);
-    setNoOfArticles(userNoOfArticles); 
+    userNoOfAnswers = parseInt(userNoOfAnswers._hex, 16);
+    setNoOfAnswers(userNoOfAnswers);
+    let userNoOfArticles = await mainContract.getUserNoOfArticles(account);
+    userNoOfArticles = parseInt(userNoOfArticles._hex, 16);
+    setNoOfArticles(userNoOfArticles);
     let userRewards = await mainContract.getUserReward(account);
-    userRewards = parseInt(userRewards._hex,16);
-    setRewards(userRewards);  
+    userRewards = parseInt(userRewards._hex, 16);
+    setRewards(userRewards);
     let userTips = await mainContract.getUserTotalTip(account);
-    userTips = parseInt(userTips._hex,16);
-    setTips(userTips);     
+    userTips = parseInt(userTips._hex, 16);
+    setTips(userTips);
 
-    setLoading(false);  
-  }
+    setLoading(false);
+  };
 
   useEffect(() => {
     getOtherData();
-    // setLoading(false);  
-
-  },[mainContract]);
+    // setLoading(false);
+  }, [mainContract]);
 
   if (isLoading) {
     return "loading";
@@ -64,8 +62,14 @@ export default function UserProfile({mainContract, account}) {
     <>
       <section className="profile-block">
         <div className="left-block">
-          <h3>Stats</h3>
+          <div className="stats-title-h3">
+            <h3>Stats</h3>
+          </div>
           <div className="stats card">
+            <div className="stats-inner-block">
+              <div>{score}</div>
+              <div className="stats-title">prominences</div>
+            </div>
             <div className="stats-inner-block">
               <div>{score}</div>
               <div className="stats-title">score</div>
@@ -89,6 +93,10 @@ export default function UserProfile({mainContract, account}) {
             <div className="stats-inner-block">
               <div>{tips}</div>
               <div className="stats-title">tips</div>
+            </div>
+            <div className="stats-inner-block">
+              <div>{tips}</div>
+              <div className="stats-title">Earn Tokens</div>
             </div>
           </div>
         </div>

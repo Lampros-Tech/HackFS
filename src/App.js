@@ -37,8 +37,8 @@ import "./App.scss";
 import Stack from "./artifacts/contracts/Stack.sol/Stack.json";
 import customToken from "./artifacts/contracts/customToken.sol/customToken.json";
 
-const StackAddress = "0xe76734cFCcfDDD819A2245bc2f68E3da8129f7D6";
-const customTokenAddress = "0xA6252028766C0C010Df8DF49c20EC4EEe2291504";
+const StackAddress = "0x669095174b371b4341f6AeAff481172B12e309E8";
+const customTokenAddress = "0x3364431b00Cb462fF81665F4b8224F76321ACAC3";
 
 const App = () => {
   const { activate, deactivate } = useWeb3React();
@@ -275,14 +275,14 @@ const App = () => {
                   <FindUsers
                     mainContract={mainContract}
                     web3Handler={web3Handler}
+                    account={account}
                   />
                 }
               />
               <Route
-                path="/user/:id"
+                path="/user/"
                 element={
                   <SingleUser
-                    id={1}
                     tokenContract={tokenContract}
                     mainContract={mainContract}
                     web3Handler={web3Handler}

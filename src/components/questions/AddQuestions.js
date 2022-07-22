@@ -82,9 +82,7 @@ const AddQuestions = ({ mainContract, account}) => {
                         Be spacific and Imagine you are asking question to another person.
                     </div>
                     <div className="title_textfield">
-                        
-                    <input type="text" className="input_title" placeholder='Enter Title of Quetion here' onChange={(e)=>{setTitle(e.target.value)}}/>
-
+                        <input type="text" className="input_title" placeholder='Enter Title of Quetion here' onChange={(e)=>{setTitle(e.target.value)}}/>
                     </div>
                 </div>
                 <div className="body">

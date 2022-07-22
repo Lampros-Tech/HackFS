@@ -1,10 +1,50 @@
 .all-users-header {
   border-bottom: 2px solid #d9d9d9;
   padding-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1% 0;
+
+  .all-user-filter-btns {
+    display: inline-flex;
+    justify-content: flex-end;
+    border: 1px solid #838c95;
+    border-radius: 5px;
+
+    button {
+      color: #6a737c;
+      margin: 0%;
+      padding: 0.5rem 0.5rem;
+      border: 0;
+      border-radius: 0;
+      background: none;
+      font-size: 0.8rem;
+      cursor: pointer;
+      outline: none;
+    }
+    button:nth-of-type(1) {
+      border-right: 1px solid #838c95;
+    }
+    button:hover {
+      border-radius: 0;
+      background: #f1f2f3;
+    }
+    button:first-of-type:hover {
+      border-radius: 5px 0px 0px 5px;
+    }
+    button:last-of-type:hover {
+      border-radius: 0px 5px 5px 0px;
+    }
+  }
 }
 
+a.all-user-link:-webkit-any-link {
+  text-decoration: none;
+}
 .search {
-  max-width: calc(var(calc(97rem / 12)) * 3) !important;
+  max-width: calc(var(calc(50rem / 12)) * 3) !important;
   position: relative;
   display: flex;
 }
@@ -24,21 +64,93 @@
 }
 
 .searchButton {
-  width: 40px;
-
+  width: 2.5rem;
   border: 1px solid #00b4cc;
   background: #00b4cc;
   text-align: center;
   color: #fff;
   border-radius: 0 5px 5px 0;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 0.5rem;
 }
 svg.search-svg {
   fill: #fff;
-  height: 20px;
-  width: 20px;
+  height: 1.5rem;
+  width: 1.5rem;
 }
+.all-user-cards {
+  // max-width: 1200px;
+  padding-top: 1rem;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.all-user-card {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 0.5rem;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+svg.all-user-svg {
+  height: 0.8rem;
+  width: 0.8rem;
+  margin-right: 5%;
+}
+.all-user-profile-image {
+  // width: 30%;
+  img {
+    border-radius: 100px;
+    border: 1px solid blue;
+    padding: 3px;
+    height: 4rem;
+    width: 4rem;
+  }
+}
+.all-user-profile-right {
+  padding-left: 1rem;
+  width: 90%;
+  h3 {
+    font-weight: 700;
+    color: blue;
+    padding: 0%;
+    margin: 0%;
+  }
+  h4 {
+    font-weight: 600;
+    padding: 5% 0%;
+    margin: 0%;
+  }
+
+  span {
+    padding: 0%;
+    font-size: 0.8rem;
+  }
+}
+// @media only screen and (min-width: 1200px) {
+//   .all-user-cards {
+//     grid-template-columns: repeat(4, 1fr);
+//   }
+// }
+// // @media (min-width: 900px) {
+// //   .all-user-cards {
+// //     grid-template-columns: repeat(4, 1fr);
+// //   }
+// // }
+// @media only screen and (min-width: 992px) {
+//   .all-user-cards {
+//     grid-template-columns: repeat(3, 1fr);
+//   }
+// }
+// @media only screen and (max-width: 768px){
+//   .all-user-cards {
+//     grid-template-columns: repeat(1, 1fr);
+//   }
+// }
 /*Resize the wrap to see the search bar change!*/
 // .wrap {
 //   width: 30%;
