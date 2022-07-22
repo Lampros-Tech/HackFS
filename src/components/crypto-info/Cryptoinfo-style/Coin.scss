@@ -3,12 +3,13 @@
   align-items: center;
   align-content: center;
   border: 1px solid black;
-  // font-size: 10px;
+  font-size: 10px;
   z-index: 0;
-  height: 70px;
-  background-color: black;
-  width: 180%;
+  height: 60px;
+  // background-color: black;
+  width: 100%;
   margin-top: 70px;
+  // overflow-x: hidden;
 
   img {
     height: 30px;
@@ -18,7 +19,7 @@
 
   .name {
     font-size: 10px;
-    color: white;
+    color: black;
     padding-bottom: 3px;
     padding-left: 3px;
     // padding-right: 3px;

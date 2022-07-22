@@ -3,7 +3,7 @@ import React, { useState, useRef } from "react";
 import { WithContext as ReactTags } from "react-tag-input";
 
 export default function EditProfile({ mainContract, account, closeModal }) {
-  const editorRef = useRef(null);
+  // const editorRef = useRef(null);
   const [tags, setTags] = useState([]);
 
   const KeyCodes = {
@@ -45,7 +45,6 @@ export default function EditProfile({ mainContract, account, closeModal }) {
     console.log(mainContract);
     const tx = await mainContract.createProfile(
       name,
-      "hjsf",
       email,
       designation,
       description,

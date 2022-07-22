@@ -5,12 +5,13 @@
   float: left;
   width: 90%;
   border: 1px solid black;
-  margin-top: 20px;
-  margin-left: 120px;
+  // margin-top: 20px;
+  margin-left: 30%;
   padding-left: 20px;
   padding-right: 20px;
-  height: 1000px;
+  height: 100%;
   margin-top: 70px;
+  overflow-y: scroll; 
 }
 
 /* Fake image */
@@ -18,6 +19,7 @@
   background-color: #aaa;
   width: 100%;
   height: 300px;
+
 }
 
 .crypto-img {
@@ -27,15 +29,16 @@
 
 /* Add a card effect for articles */
 .article {
-  background-color: white;
   padding: 20px;
   margin-top: 20px;
-  
 }
 
-/* Clear floats after the columns */
-// .row:after {
-//   content: "";
-//   display: table;
-//   clear: both;
-// }
+.crypto-btn {
+  padding-left: 5px;
+  padding-top: 10px;
+}
+.read-more-btn {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
