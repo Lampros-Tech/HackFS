@@ -5,31 +5,6 @@ import axios from "axios";
 import "./Cryptoinfo-style/News.scss";
 
 const Cryptonews = () => {
-<<<<<<< HEAD
-=======
-  const [apiData, setApiData] = useState();
-
-  useEffect(() => {
-    const options = {
-      method: "GET",
-      url: "https://coinranking1.p.rapidapi.com/coins",
-    };
-
-    axios
-      .request(options)
-      .then((response) => {
-        console.log(response.data);
-        setApiData(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
-  console.log(apiData);
-  const first7ApiData = apiData?.slice(9.7);
-  console.log("ready");
-
->>>>>>> a3c1f13debdca930ce43a633d8b9762a182ef774
   return (
     <>
       <div className="crypto-news">

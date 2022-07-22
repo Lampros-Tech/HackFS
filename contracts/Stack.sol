@@ -5,6 +5,7 @@ pragma solidity ^0.8.0;
 contract Stack {
     address public owner;
     address[] public users;
+    mapping(address => bool) isAdded;
     uint256 public q_id;
     uint256 public a_id;
     uint256 public article_id;
@@ -197,7 +198,10 @@ contract Stack {
         string memory aboutUser,
         string[] memory listOfTags
     ) public {
-        users.push(msg.sender);
+        if (!isAdded[msg.sender]) {
+            users.push(msg.sender);
+            isAdded[msg.sender] = true;
+        }
         addressToUserProfileInfo[msg.sender].user = msg.sender;
         addressToUserProfileInfo[msg.sender].name = name;
         addressToUserProfileInfo[msg.sender].userImageCID = cid;
@@ -337,5 +341,9 @@ contract Stack {
 
     function getUserTags(address user) public view returns (string[] memory) {
         return addressToUserProfileInfo[user].taglist;
+    }
+
+    function getAllUsers() public view returns (address[] memory) {
+        return users;
     }
 }

@@ -129,17 +129,22 @@ svg.all-user-svg {
     font-size: 0.8rem;
   }
 }
-@media (min-width: 900px) {
+@media only screen and (min-width: 1200px) {
   .all-user-cards {
     grid-template-columns: repeat(4, 1fr);
   }
 }
-@media (max-width: 900px) {
+// @media (min-width: 900px) {
+//   .all-user-cards {
+//     grid-template-columns: repeat(4, 1fr);
+//   }
+// }
+@media only screen and (min-width: 992px) {
   .all-user-cards {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
-@media (max-width: 600px) {
+@media only screen and (max-width: 768px){
   .all-user-cards {
     grid-template-columns: repeat(1, 1fr);
   }
