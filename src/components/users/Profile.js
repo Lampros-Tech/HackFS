@@ -66,22 +66,29 @@ const Profile = ({ mainContract, account }) => {
       <section className="background-image">
         <div className="background-opacity"></div>
         <div className="inside-cover-image">
-          <div className="first-block">
-            <img src={useravtar} alt="user avatar" height="84px" width="84px" />
-            <div className="user-info">
-              <h1 className="user-name">{name}</h1>
-              <h3> {designation}</h3>
-              <span> {email}</span>
-            </div>
-            <div className="btns">
-              <button
-                onClick={() => {
-                  setButtonPopup(true);
-                }}
-              >
-                Edit Profile
-              </button>
-              <button>Claim Rewards</button>
+          <div className="show-at-bottom">
+            <div className="first-block">
+              <img
+                src={useravtar}
+                alt="user avatar"
+                height="84px"
+                width="84px"
+              />
+              <div className="user-info">
+                <h1 className="user-name">{name}</h1>
+                <h3> {designation}</h3>
+                <span> {email}</span>
+              </div>
+              <div className="btns">
+                <button
+                  onClick={() => {
+                    setButtonPopup(true);
+                  }}
+                >
+                  Edit Profile
+                </button>
+                <button>Claim Rewards</button>
+              </div>
             </div>
           </div>
         </div>

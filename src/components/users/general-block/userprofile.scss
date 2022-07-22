@@ -14,8 +14,9 @@
     h3 {
       padding: 0;
       margin: 2%;
-      font-size: 1.5rem;
-      font-weight: 400;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #005dee;
     }
   }
   .right-block {
@@ -130,13 +131,14 @@
   h3 {
     padding: 0;
     margin: 0;
-    font-size: 1.5rem;
-    font-weight: 400;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #005dee;
     // float: inline-start;
   }
 }
 .card {
-  border: 1px solid #d9d9d9;
+  border: 2px solid #f2f2f2;
   border-radius: 5px;
   padding: 0.5%;
 }

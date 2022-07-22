@@ -32,8 +32,11 @@
 .inside-cover-image {
   width: 70%;
   align-content: center;
+  position: relative;
 }
-
+// .show-at-bottom {
+//   display: grid;
+// }
 .main-container {
   max-width: 100%;
   width: 70%;
@@ -43,12 +46,13 @@
 }
 
 .first-block {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   display: flex;
   align-items: center;
   margin: 0.25%;
-  bottom: 0%;
-  position: absolute;
-  width: 70%;
+
   padding: 1%;
   img {
     border: 1px solid #005edd;
@@ -141,6 +145,14 @@
   border-radius: 0%;
 }
 
+@media only screen and (min-width: 1200px) {
+  .inside-cover-image {
+    width: 1170px;
+  }
+  .main-container {
+    width: 1170px;
+  }
+}
 @media only screen and (max-width: 768px) {
   .main-container {
     // max-width: 100%;

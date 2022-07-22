@@ -33,16 +33,12 @@ const CryptoInfo = () => {
             );
           })}
         </div>
-       </div>
-       <div className="crypto-main-container">
+      </div>
+      <div className="crypto-main-container">
         <CryptoArticle />
         <Cryptonews />
       </div>
     </>
   );
 };
-<<<<<<< HEAD
-
-=======
->>>>>>> 1e08ae4ce006990605e7705825f53736efd0e08b
 export default CryptoInfo;
