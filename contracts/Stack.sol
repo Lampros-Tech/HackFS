@@ -19,6 +19,9 @@ contract Stack {
     }
     mapping(uint256 => QuestionInfo) public idToQuestion;
     mapping(address => uint256[]) public userToQuestions;
+    mapping(uint256 => mapping(address => bool)) public isUpVotedQuestion;
+    mapping(uint256 => mapping(address => bool)) public isDownVotedQuestion;
+
     struct AnswerInfo {
         uint256 a_id;
         address user;
@@ -29,6 +32,9 @@ contract Stack {
     }
     mapping(uint256 => AnswerInfo) public idToAnswer;
     mapping(address => uint256[]) public userToAnswers;
+    mapping(uint256 => mapping(address => bool)) public isUpVotedAnswer;
+    mapping(uint256 => mapping(address => bool)) public isDownVotedAnswer;
+
     struct ArticleInfo {
         uint256 article_id;
         address user;
@@ -38,6 +44,8 @@ contract Stack {
     }
     mapping(uint256 => ArticleInfo) public idToArticle;
     mapping(address => uint256[]) public userToArticle;
+    mapping(uint256 => mapping(address => bool)) public isUserLikedIt;
+
     struct UserProfileInfo {
         address user;
         string name;
@@ -45,6 +53,7 @@ contract Stack {
         string email;
         string designation;
         string aboutUSer;
+        uint256 expertFees;
         string[] taglist;
         mapping(string => bool) isTagAdded;
     }
@@ -59,6 +68,7 @@ contract Stack {
         uint256 totalReward;
         uint256 totalRedeem;
         uint256 totalTip;
+        uint256 expertFeesEarned;
     }
     mapping(address => UserInfo) public addressToUserInfo;
     mapping(address => mapping(string => uint256)) public addressToTagToScore;
@@ -85,6 +95,8 @@ contract Stack {
         addressToUserInfo[msg.sender].noOfQuestions += 1;
         addressToUserInfo[msg.sender].totalScore += 5;
         addressToUserInfo[msg.sender].reputationScore += 5;
+        isUpVotedQuestion[q_id][msg.sender] = false;
+        isDownVotedQuestion[q_id][msg.sender] = false;
         for (uint256 i = 0; i < tag_name.length; i++) {
             addressToTagToScore[msg.sender][tag_name[i]] += 5;
             if (
@@ -107,17 +119,22 @@ contract Stack {
     }
 
     function q_upVote(uint256 qid) public {
-        idToQuestion[qid].q_upvote += 1;
-        address user = idToQuestion[qid].user;
-        addressToUserInfo[user].totalScore += 5;
-        addressToUserInfo[msg.sender].reputationScore += 5;
+        if (isUpVotedQuestion[qid][msg.sender] == false) {
+            idToQuestion[qid].q_upvote += 1;
+            address user = idToQuestion[qid].user;
+            addressToUserInfo[user].totalScore += 5;
+            addressToUserInfo[msg.sender].reputationScore += 5;
+            isUpVotedQuestion[qid][msg.sender] = true;
+        }
     }
 
     function q_downvote(uint256 qid) public {
-        idToQuestion[qid].q_downvote += 1;
+        if (isDownVotedQuestion[qid][msg.sender] == false)
+            idToQuestion[qid].q_downvote += 1;
         address user = idToQuestion[qid].user;
         addressToUserInfo[user].totalScore -= 5;
         addressToUserInfo[msg.sender].reputationScore -= 5;
+        isDownVotedQuestion[qid][msg.sender] = true;
     }
 
     //Answers---------------------------------------------------------------------
@@ -129,6 +146,8 @@ contract Stack {
         addressToUserInfo[msg.sender].noOfAnswers += 1;
         addressToUserInfo[msg.sender].totalScore += 5;
         addressToUserInfo[msg.sender].reputationScore += 5;
+        isUpVotedAnswer[q_id][msg.sender] = false;
+        isDownVotedAnswer[q_id][msg.sender] = false;
     }
 
     function getAnswer(uint256 aid) public view returns (AnswerInfo memory) {
@@ -136,17 +155,23 @@ contract Stack {
     }
 
     function a_upVote(uint256 aid) public {
-        idToAnswer[aid].a_upvote += 1;
-        address user = idToAnswer[aid].user;
-        addressToUserInfo[user].totalScore += 5;
-        addressToUserInfo[msg.sender].reputationScore += 5;
+        if (isUpVotedAnswer[aid][msg.sender] == false) {
+            idToAnswer[aid].a_upvote += 1;
+            address user = idToAnswer[aid].user;
+            addressToUserInfo[user].totalScore += 5;
+            addressToUserInfo[msg.sender].reputationScore += 5;
+            isUpVotedAnswer[aid][msg.sender] = true;
+        }
     }
 
     function a_downvote(uint256 aid) public {
-        idToAnswer[aid].a_downvote += 1;
-        address user = idToAnswer[aid].user;
-        addressToUserInfo[user].totalScore -= 5;
-        addressToUserInfo[msg.sender].reputationScore -= 5;
+        if (isDownVotedAnswer[aid][msg.sender] == false) {
+            idToAnswer[aid].a_downvote += 1;
+            address user = idToAnswer[aid].user;
+            addressToUserInfo[user].totalScore -= 5;
+            addressToUserInfo[msg.sender].reputationScore -= 5;
+            isDownVotedAnswer[aid][msg.sender] = true;
+        }
     }
 
     //Articles---------------------------------------------------------------------
@@ -165,6 +190,7 @@ contract Stack {
         addressToUserInfo[msg.sender].noOfArticles += 1;
         addressToUserInfo[msg.sender].totalScore += 5;
         addressToUserInfo[msg.sender].reputationScore += 5;
+        isUserLikedIt[article_id][msg.sender] = false;
         for (uint256 i = 0; i < tag_name.length; i++) {
             addressToTagToScore[msg.sender][tag_name[i]] += 5;
             if (
@@ -187,7 +213,10 @@ contract Stack {
     }
 
     function addLike(uint256 articleid) public {
-        idToArticle[articleid].noOfLikes += 1;
+        if (isUserLikedIt[article_id][msg.sender] == false) {
+            idToArticle[articleid].noOfLikes += 1;
+            isUserLikedIt[article_id][msg.sender] = true;
+        }
     }
 
     function createProfile(
@@ -196,6 +225,7 @@ contract Stack {
         string memory email,
         string memory designation,
         string memory aboutUser,
+        uint256 fees,
         string[] memory listOfTags
     ) public {
         if (!isAdded[msg.sender]) {
@@ -208,6 +238,7 @@ contract Stack {
         addressToUserProfileInfo[msg.sender].email = email;
         addressToUserProfileInfo[msg.sender].designation = designation;
         addressToUserProfileInfo[msg.sender].aboutUSer = aboutUser;
+        addressToUserProfileInfo[msg.sender].expertFees = fees;
         addressToUserProfileInfo[msg.sender].taglist = listOfTags;
         addressToUserInfo[msg.sender].user = msg.sender;
         addressToUserInfo[msg.sender].noOfQuestions = 0;
@@ -217,6 +248,7 @@ contract Stack {
         addressToUserInfo[msg.sender].totalReward = 0;
         addressToUserInfo[msg.sender].totalRedeem = 0;
         addressToUserInfo[msg.sender].totalTip = 0;
+        addressToUserInfo[msg.sender].expertFeesEarned = 0;
         // user = UserInfo(msg.sender,name,email,designation,0,0,0,0,0,0,listOfTags);
     }
 
@@ -292,7 +324,7 @@ contract Stack {
     }
 
     function setTotalRedeem(address user, uint256 redeem) public {
-        addressToUserInfo[user].totalRedeem += redeem;
+        addressToUserInfo[user].totalRedeem = redeem;
     }
 
     function getUserName(address user) public view returns (string memory) {
@@ -343,7 +375,59 @@ contract Stack {
         return addressToUserProfileInfo[user].taglist;
     }
 
+    function getExpertFees(address user) public view returns (uint256) {
+        return addressToUserProfileInfo[user].expertFees;
+    }
+
+    function getExpertFeesEarned(address user) public view returns (uint256) {
+        return addressToUserInfo[user].expertFeesEarned;
+    }
+
+    function setExpertFeesEarned(address user, uint256 fee) public {
+        addressToUserInfo[user].expertFeesEarned = fee;
+    }
+
     function getAllUsers() public view returns (address[] memory) {
         return users;
+    }
+
+    function isUserUpvotedQuestion(uint256 qid, address user)
+        public
+        view
+        returns (bool)
+    {
+        return isUpVotedQuestion[qid][user];
+    }
+
+    function isDownUpvotedQuestion(uint256 qid, address user)
+        public
+        view
+        returns (bool)
+    {
+        return isDownVotedQuestion[qid][user];
+    }
+
+    function isUserUpvotedAnswer(uint256 qid, address user)
+        public
+        view
+        returns (bool)
+    {
+        return isUpVotedAnswer[qid][user];
+    }
+
+    function isDownUpvotedAnswer(uint256 qid, address user)
+        public
+        view
+        returns (bool)
+    {
+        return isUpVotedAnswer[qid][user];
+    }
+
+    function isUserLikedArticle(uint256 qid, address user)
+        public
+        view
+        returns (bool)
+    {
+        return isUserLikedIt[qid][user];
     }
 }

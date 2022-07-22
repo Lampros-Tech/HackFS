@@ -1,7 +1,7 @@
 //SPDX-License-Identifier:MIT
 
 pragma solidity ^0.8.0;
-//import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol";
+// import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "./Stack.sol";
 
@@ -95,6 +95,15 @@ contract customToken is ERC20 {
                 totalredeem += 100;
                 s.setTotalRedeem(user, totalredeem);
             }
+        }
+    }
+
+    function expertFees(address expert, address user) public payable {
+        uint256 fee = s.getExpertFees(user);
+        if (transferr(user, expert, fee)) {
+            uint256 feesEarned = s.getExpertFeesEarned(user);
+            feesEarned += fee;
+            s.setExpertFeesEarned(user, feesEarned);
         }
     }
 }
