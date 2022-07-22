@@ -136,7 +136,7 @@ export default function EditProfile({
               className="input-edit-profile"
               type="file"
               hidden
-              defaultValue={nameOfUser}
+              // defaultValue={nameOfUser}
               ref={profile_picture}
               onChange={(e) => {
                 UploadImage(e);

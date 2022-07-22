@@ -1,7 +1,9 @@
 .tox-notifications-container {
   display: none;
 }
-
+h2 {
+  margin: 0;
+}
 .modalBackground {
   width: 100vw;
   height: 100vh;
@@ -27,6 +29,7 @@ img.uploaded_image-editprofile {
   float: right;
 } */
 .modalContainer {
+  height: 60%;
   width: 30%;
   height: auto;
   border-radius: 12px;

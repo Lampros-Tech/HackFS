@@ -1,4 +1,5 @@
 import React from "react";
+
 import { useEffect } from "react";
 
 export default function SingleUserProfile({ account, mainContract }) {
@@ -57,8 +58,14 @@ export default function SingleUserProfile({ account, mainContract }) {
     <>
       <section className="profile-block">
         <div className="left-block">
-          <h3>Stats</h3>
+          <div className="stats-title-h3">
+            <h3>Stats</h3>
+          </div>
           <div className="stats card">
+            <div className="stats-inner-block">
+              <div>{score}</div>
+              <div className="stats-title">prominences</div>
+            </div>
             <div className="stats-inner-block">
               <div>{score}</div>
               <div className="stats-title">score</div>
@@ -82,6 +89,10 @@ export default function SingleUserProfile({ account, mainContract }) {
             <div className="stats-inner-block">
               <div>{tips}</div>
               <div className="stats-title">tips</div>
+            </div>
+            <div className="stats-inner-block">
+              <div>{tips}</div>
+              <div className="stats-title">tokens</div>
             </div>
           </div>
         </div>
