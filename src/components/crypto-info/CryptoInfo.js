@@ -8,7 +8,7 @@ import "./Cryptoinfo-style/Article.scss";
 import Cryptonews from "./Cryptonews";
 import "./Cryptoinfo-style/News.scss";
 
-const CryptoInfo = () => {
+const CryptoInfo = ({ account, mainContract }) => {
   const [listOfCoins, setListOfCoins] = useState([]);
   useEffect(() => {
     Axios.get("https://api.coinstats.app/public/v1/coins?skip=0&limit=10").then(
@@ -35,7 +35,7 @@ const CryptoInfo = () => {
         </div>
       </div>
       <div className="crypto-main-container">
-        <CryptoArticle />
+        <CryptoArticle mainContract={mainContract} account={account} />
         <Cryptonews />
       </div>
     </>

@@ -18,7 +18,7 @@ const Cryptonews = () => {
     axios
       .request(options)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setApiData(response.data);
       })
       .catch((error) => {
@@ -27,18 +27,22 @@ const Cryptonews = () => {
   }, []);
 
   console.log(apiData);
-  const first7Apidata = apiData?.slice(0, 11);
+
+  const first7Apidata = apiData?.slice(0, 9);
 
   return (
     <>
       <div className="crypto-news">
         <div className="rightcolumn">
           <div className="news">
-            <h2>News</h2>
+            <h2>Populer News</h2>
             {first7Apidata?.map((data, _index) => (
               <div key={_index}>
                 <a href={data.url}>
-                  <p>{data.title}</p>
+                  <div className="apidata">
+                    <p>{data.title}</p>
+                  </div>
+                  {/* <p>{data.source}</p> */}
                 </a>
               </div>
             ))}

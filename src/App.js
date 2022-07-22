@@ -29,6 +29,7 @@ import Profile from "./components/users/Profile";
 import FindUsers from "./components/users/FindUsers";
 import SingleUser from "./components/users/SingleUser";
 import Login from "./components/login/Login";
+import ByToken from "./components/users/token/ByToken";
 
 /********************* CSS CLASS ********************/
 import "./index.css";
@@ -37,8 +38,8 @@ import "./App.scss";
 import Stack from "./artifacts/contracts/Stack.sol/Stack.json";
 import customToken from "./artifacts/contracts/customToken.sol/customToken.json";
 
-const StackAddress = "0xBd889af6B771E194e953a56871caB67840294db8";
-const customTokenAddress = "0x5ab30Be36Ffe5C943430d6Cee20b7B06A2f70BCe";
+const StackAddress = "0xA1cF9B6147A4C98E661d34E3Ebd4c8B0cca4af5F";
+const customTokenAddress = "0x29FC94f0AA29cc7e8CB411E1fC1fd660F55a251F";
 
 const App = () => {
   const { activate, deactivate } = useWeb3React();
@@ -283,6 +284,17 @@ const App = () => {
                 path="/user/"
                 element={
                   <SingleUser
+                    tokenContract={tokenContract}
+                    mainContract={mainContract}
+                    web3Handler={web3Handler}
+                    account={account}
+                  />
+                }
+              />
+              <Route
+                path="/buytoken"
+                element={
+                  <ByToken
                     tokenContract={tokenContract}
                     mainContract={mainContract}
                     web3Handler={web3Handler}
