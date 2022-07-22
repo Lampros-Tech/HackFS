@@ -21,27 +21,24 @@ const CryptoInfo = () => {
   return (
     <>
       <div className="crypto-header">
-        {/* <marquee width="60%" direction="right" height="100px"> */}
-        {listOfCoins.map((coin) => {
-          return (
-            <Coin
-              name={coin.name}
-              icon={coin.icon}
-              price={coin.price}
-              symbol={coin.symbol}
-            />
-          );
-        })}
-        {/* </marquee> */}
-      </div>
-      <div className="crypto-main-container">
+        <div className="coin-header">
+          {listOfCoins.map((coin) => {
+            return (
+              <Coin
+                name={coin.name}
+                icon={coin.icon}
+                price={coin.price}
+                symbol={coin.symbol}
+              />
+            );
+          })}
+        </div>
+       </div>
+       <div className="crypto-main-container">
         <CryptoArticle />
         <Cryptonews />
       </div>
     </>
   );
-      
 };
-
-
 export default CryptoInfo;
