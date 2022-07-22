@@ -62,8 +62,14 @@ export default function UserProfile({ mainContract, account }) {
     <>
       <section className="profile-block">
         <div className="left-block">
-          <h3>Stats</h3>
+          <div className="stats-title-h3">
+            <h3>Stats</h3>
+          </div>
           <div className="stats card">
+            <div className="stats-inner-block">
+              <div>{score}</div>
+              <div className="stats-title">prominences</div>
+            </div>
             <div className="stats-inner-block">
               <div>{score}</div>
               <div className="stats-title">score</div>
@@ -87,6 +93,10 @@ export default function UserProfile({ mainContract, account }) {
             <div className="stats-inner-block">
               <div>{tips}</div>
               <div className="stats-title">tips</div>
+            </div>
+            <div className="stats-inner-block">
+              <div>{tips}</div>
+              <div className="stats-title">Earn Tokens</div>
             </div>
           </div>
         </div>

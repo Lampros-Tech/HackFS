@@ -1,9 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react'; 
 import { Editor } from '@tinymce/tinymce-react';
+import {create} from 'ipfs-http-client';
 
 import Arrow from "./up-arrow"
 const SingleQuestion = ({id}) => {
     const editorRef = useRef(0);
+
+     const submitAnswer = async() =>
+    {
+        const client = create("https://ipfs.infura.io:5001/api/v0")
+        const { cid } = await client.add([editorRef.current.getContent()])
+        console.log(cid._baseCache.get('z'))
+
+    }
     return(
         <>
             <div className="single_Question">
@@ -53,7 +62,14 @@ const SingleQuestion = ({id}) => {
                         </div>
                     </div> 
                     <div className="profile right-side">
-                    </div>   
+                                <div className='profile-picture'>
+                                    <img>
+                                    </img>
+                                </div>
+                                <div className='profile-name'>
+
+                                </div>
+                    </div>    
                 </div>
             </div>
             <div className="Answers">
@@ -82,7 +98,14 @@ const SingleQuestion = ({id}) => {
                             <div className="flex-grow">
                             </div>
 
-                            <div className="profile right-side">
+                            <div className="profile">
+                                <div className='profile-picture'>
+                                    <img>
+                                    </img>
+                                </div>
+                                <div className='profile-name'>
+
+                                </div>
                             </div> 
                     </div>
                     
@@ -142,6 +165,13 @@ const SingleQuestion = ({id}) => {
                             //     ]
                             //   });
                         />
+
+                </div>
+
+                <div className='submit-answer'>
+                    <button className='submit-answer-btn' onClick={()=>{submitAnswer()}}>
+                        Submit the answer.
+                    </button>
 
                 </div>
             </div>

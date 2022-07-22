@@ -43,7 +43,9 @@
   height: auto;
   padding: 2% 2%;
 }
-
+textarea.input-edit-profile-about-me {
+  resize: none;
+}
 .modalContainer .title {
   display: inline-flex;
   text-align: center;

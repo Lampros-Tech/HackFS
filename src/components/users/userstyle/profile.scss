@@ -1,6 +1,42 @@
+.background-image {
+  // width: 100%;
+  height: 330px;
+  position: relative;
+  background-image: url("https://2code.info/demo/themes/Discy/Main/wp-content/uploads/2019/01/cover.png");
+  background-repeat: no-repeat;
+  // background-attachment: fixed;
+  background-position: 50%;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  z-index: 0;
+}
+
+.background-opacity {
+  // height: 330px;
+  // width: 100%;
+  // background: #3d3b30;
+  // background-size: cover;
+  // display: flex;
+  // justify-content: space-evenly;
+  // align-items: flex-end;
+  // flex-direction: row;
+  // flex-wrap: nowrap;
+  //
+  height: 330px;
+  width: 100%;
+  position: absolute;
+  background: rgb(39, 41, 48, 0.6);
+  z-index: -1;
+}
+.inside-cover-image {
+  width: 70%;
+  align-content: center;
+}
+
 .main-container {
   max-width: 100%;
-  // width: 70%;
+  width: 70%;
   margin: 10px auto;
   align-items: center;
   padding: 10px;
@@ -18,6 +54,7 @@
   .user-info {
     flex-direction: column;
     margin-left: 2%;
+    color: #ffffff;
   }
   .btns {
     width: auto;
@@ -49,7 +86,17 @@
   // margin-top: 2%;
   margin: 0.25%;
   padding: 5px 0;
-
+  .nav-user-bar {
+    background: #ffffff;
+    padding: 20px 0px;
+    margin-top: -10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+  }
   .active {
     background: black;
     color: white;
@@ -82,4 +129,14 @@
 .active-li:hover {
   border-left: 2px solid black;
   border-radius: 0%;
+}
+
+@media only screen and (max-width: 768px) {
+  .main-container {
+    // max-width: 100%;
+    width: 100%;
+    margin: 5px auto;
+    align-items: center;
+    padding: 5px;
+  }
 }
