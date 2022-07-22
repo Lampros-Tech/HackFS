@@ -63,44 +63,56 @@ const Profile = ({ mainContract, account }) => {
           about={about}
         />
       )}
-      <section className="main-container">
-        <div className="first-block">
-          <img src={useravtar} alt="user avatar" height="128px" width="128px" />
-          <div className="user-info">
-            <h1 className="user-name">{name}</h1>
-            <h3> {designation}</h3>
-            <span> {email}</span>
-          </div>
-          <div className="btns">
-            <button
-              onClick={() => {
-                setButtonPopup(true);
-              }}
-            >
-              Edit Profile
-            </button>
-            <button>Claim Rewards</button>
+      <section className="background-image">
+        <div className="background-opacity"></div>
+        <div className="inside-cover-image">
+          <div className="first-block">
+            <img
+              src={useravtar}
+              alt="user avatar"
+              height="128px"
+              width="128px"
+            />
+            <div className="user-info">
+              <h1 className="user-name">{name}</h1>
+              <h3> {designation}</h3>
+              <span> {email}</span>
+            </div>
+            <div className="btns">
+              <button
+                onClick={() => {
+                  setButtonPopup(true);
+                }}
+              >
+                Edit Profile
+              </button>
+              <button>Claim Rewards</button>
+            </div>
           </div>
         </div>
+      </section>
+      <section className="main-container">
         <div className="nav-user">
-          <button
-            onClick={() => {
-              setProfile(true);
-              setActivity(false);
-            }}
-            className={showProfile ? `active` : ``}
-          >
-            Profile
-          </button>
-          <button
-            onClick={() => {
-              setActivity(true);
-              setProfile(false);
-            }}
-            className={showActivity ? `active` : ``}
-          >
-            Activity
-          </button>
+          <div className="nav-user-bar">
+            <button
+              onClick={() => {
+                setProfile(true);
+                setActivity(false);
+              }}
+              className={showProfile ? `active` : ``}
+            >
+              Profile
+            </button>
+            <button
+              onClick={() => {
+                setActivity(true);
+                setProfile(false);
+              }}
+              className={showActivity ? `active` : ``}
+            >
+              Activity
+            </button>
+          </div>
           {showProfile ? (
             <UserProfile mainContract={mainContract} account={account} />
           ) : null}
