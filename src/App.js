@@ -280,10 +280,9 @@ const App = () => {
                 }
               />
               <Route
-                path="/user/:id"
+                path="/user/"
                 element={
                   <SingleUser
-                    id={1}
                     tokenContract={tokenContract}
                     mainContract={mainContract}
                     web3Handler={web3Handler}
