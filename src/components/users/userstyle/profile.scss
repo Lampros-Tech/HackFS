@@ -66,6 +66,16 @@
     flex-direction: column;
     margin-left: 2%;
     color: #ffffff;
+    width: 50%;
+    h1 {
+      margin: 1.5% 0;
+      font-size: 20px;
+    }
+    h3 {
+      margin: 1% 0;
+      font-size: 15px;
+      font-weight: normal;
+    }
   }
   .btns {
     width: auto;
@@ -109,6 +119,10 @@
     align-content: center;
     justify-content: center;
     align-items: center;
+
+    button {
+      padding: 10px 10px;
+    }
   }
   .active {
     background: #005edd;
@@ -144,7 +158,9 @@
   border-left: 2px solid #f6ae2d;
   border-radius: 0%;
 }
-
+svg.svg-for-mail {
+  margin: 0px 5px 0px 0px;
+}
 @media only screen and (min-width: 1200px) {
   .inside-cover-image {
     width: 1170px;
