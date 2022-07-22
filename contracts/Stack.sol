@@ -39,6 +39,7 @@ contract Stack {
         uint256 article_id;
         address user;
         string article_cid;
+        string article_image_cid;
         uint256 noOfLikes;
         uint256 tip;
     }
@@ -175,14 +176,17 @@ contract Stack {
     }
 
     //Articles---------------------------------------------------------------------
-    function addArticle(string memory article_cid, string[] memory tag_name)
-        public
-    {
+    function addArticle(
+        string memory article_cid,
+        string memory image_cid,
+        string[] memory tag_name
+    ) public {
         article_id += 1;
         idToArticle[article_id] = ArticleInfo(
             article_id,
             msg.sender,
             article_cid,
+            image_cid,
             0,
             0
         );
