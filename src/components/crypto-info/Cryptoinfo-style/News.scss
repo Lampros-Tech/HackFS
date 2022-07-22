@@ -1,22 +1,27 @@
 .rightcolumn {
   //   float: left;
-  width: 40%;
+  width: 60%;
   border: 1px solid black;
-  margin-top: 70px;
+  margin-top: 50px;
+  margin-bottom: 20px;
   margin-left: 20%;
-  padding-left: 20px;
-  padding-right: 20px;
-  height: 100%;
+  padding-left: 30px;
+  padding-right: 30px;
+  height: 90%;
   border-left: none;
   position: sticky;
- 
+  padding-top: 4px;
+  justify-content: center;
+  padding-bottom: 8px;
+
   // margin-right:40px;
 }
 .crypto-news {
   min-width: 50%;
 }
 .news {
-  background-color: white;
-  padding: 20px;
-  margin-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  border: 1px solid;
+  // margin-top: 20px;
 }
