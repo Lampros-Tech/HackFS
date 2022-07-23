@@ -4,11 +4,18 @@ import pic from "./Cryptoinfo-style/coin.jpg";
 import { useEffect } from "react";
 import Axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 const CryptoArticle = ({ account, mainContract }) => {
   const [isLoading, setLoading] = React.useState(true);
   const [src, setsrc] = useState([]);
   const [content, setContent] = useState([]);
+  const navigate = useNavigate();
+
+  const navigateToDisplay = () => {
+    // 👇️ navigate to /
+    navigate("/displayarticle");
+  };
   const getArticles = async (e) => {
     let articleNumbers = await mainContract.article_id();
     articleNumbers = parseInt(articleNumbers._hex, 16);
@@ -48,8 +55,8 @@ const CryptoArticle = ({ account, mainContract }) => {
                     <div className="fakeimg">
                       <img className="crypto-img" src={inde} />
                       <p>title</p>
-                      <button a href="#" id="readmore">
-                        Read More <a />
+                      <button id="readmore" onClick={navigateToDisplay}>
+                        Read More
                       </button>
                     </div>
                   );

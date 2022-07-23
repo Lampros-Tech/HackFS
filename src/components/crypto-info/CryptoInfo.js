@@ -7,6 +7,7 @@ import CryptoArticle from "./CryptoArticle";
 import "./Cryptoinfo-style/Article.scss";
 import Cryptonews from "./Cryptonews";
 import "./Cryptoinfo-style/News.scss";
+import CryptoDisplayArticle from "./CryptoDisplayArticle";
 
 
 const CryptoInfo = ({ account, mainContract }) => {
@@ -38,6 +39,7 @@ const CryptoInfo = ({ account, mainContract }) => {
       <div className="crypto-main-container">
         <CryptoArticle mainContract={mainContract} account={account} />
         <Cryptonews />
+        <CryptoDisplayArticle />
       </div>
     </>
   );
