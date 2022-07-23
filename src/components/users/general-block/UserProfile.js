@@ -1,6 +1,7 @@
 import React from "react";
 import "../general-block/userprofile.scss";
 import { useEffect } from "react";
+import LoadingAnimation from "./LoadingAnimation";
 
 export default function UserProfile({ mainContract, account }) {
   // const [show, setShow] = useState(true);
@@ -56,7 +57,7 @@ export default function UserProfile({ mainContract, account }) {
   }, [mainContract]);
 
   if (isLoading) {
-    return "loading";
+    return <LoadingAnimation />;
   }
 
   return (
@@ -69,35 +70,35 @@ export default function UserProfile({ mainContract, account }) {
           <div className="stats card">
             <div className="stats-inner-block">
               <div>{score}</div>
-              <div className="stats-title">prominences</div>
+              <div className="stats-title">Prominences</div>
             </div>
             <div className="stats-inner-block">
               <div>{score}</div>
-              <div className="stats-title">score</div>
+              <div className="stats-title">Score</div>
             </div>
             <div className="stats-inner-block">
               <div>{noOfQuestions}</div>
-              <div className="stats-title">questions</div>
+              <div className="stats-title">Questions</div>
             </div>
             <div className="stats-inner-block">
               <div>{noOfAnswers}</div>
-              <div className="stats-title">answers</div>
+              <div className="stats-title">Answers</div>
             </div>
             <div className="stats-inner-block">
               <div>{noOfArticles}</div>
-              <div className="stats-title">articles</div>
+              <div className="stats-title">Articles</div>
             </div>
             <div className="stats-inner-block">
               <div>{rewards}</div>
-              <div className="stats-title">rewards</div>
+              <div className="stats-title">Rewards</div>
             </div>
             <div className="stats-inner-block">
               <div>{tips}</div>
-              <div className="stats-title">tips</div>
+              <div className="stats-title">Tips</div>
             </div>
             <div className="stats-inner-block">
               <div>{tips}</div>
-              <div className="stats-title">tokens</div>
+              <div className="stats-title">Tokens</div>
             </div>
           </div>
         </div>
@@ -107,7 +108,11 @@ export default function UserProfile({ mainContract, account }) {
               <h3>About</h3>
             </div>
             <div className="card">
-              <p>{about}</p>
+              <div className="card-inner-div">
+                <div className="card-inner-content">
+                  <p>{about}</p>
+                </div>
+              </div>
             </div>
           </div>
           <div className="badges-block">
@@ -118,14 +123,19 @@ export default function UserProfile({ mainContract, account }) {
               {/* <span className="view-all-rpl-btn">view all badges</span> */}
             </div>
             <div className="card">
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos
-                ipsum dicta fugit totam eum voluptate beatae fuga, quaerat
-                consectetur ipsam magnam rerum velit provident et accusantium
-                sapiente saepe temporibus sed numquam! Iusto dolorem ea
-                perferendis nulla quaerat eius sit dolor, incidunt odit, natus
-                impedit. Suscipit iure nostrum nesciunt. Culpa, odit?
-              </p>
+              <div className="card-inner-div">
+                <div className="card-inner-content">
+                  <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Quos ipsum dicta fugit totam eum voluptate beatae fuga,
+                    quaerat consectetur ipsam magnam rerum velit provident et
+                    accusantium sapiente saepe temporibus sed numquam! Iusto
+                    dolorem ea perferendis nulla quaerat eius sit dolor,
+                    incidunt odit, natus impedit. Suscipit iure nostrum
+                    nesciunt. Culpa, odit?
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
           <div className="tags-block">
@@ -140,7 +150,88 @@ export default function UserProfile({ mainContract, account }) {
               </div>
             </div>
             <div className="card">
-              <p>{tag}</p>
+              <div className="logged-in-scroll-card">
+                {/* run this code to create tags list  */}
+                {/* . */}
+                {/* . */}
+                {/* . */}
+
+                <div className="div-creator">
+                  <div className="inside-div-creator">
+                    <div className="tag-name">{tag}</div>
+                    <div className="tag-score">
+                      <div className="tag-score-digit"> Tag</div> Score
+                    </div>
+                  </div>
+                </div>
+
+                <div className="div-creator">
+                  <div className="inside-div-creator">
+                    <div className="tag-name">Web development in React</div>
+                    <div className="tag-score">
+                      <div className="tag-score-digit"> Tag</div> Score
+                    </div>
+                  </div>
+                </div>
+
+                <div className="div-creator">
+                  <div className="inside-div-creator">
+                    <div className="tag-name">{tag}</div>
+                    <div className="tag-score">
+                      <div className="tag-score-digit"> Tag</div> Score
+                    </div>
+                  </div>
+                </div>
+
+                <div className="div-creator">
+                  <div className="inside-div-creator">
+                    <div className="tag-name">Web development in React</div>
+                    <div className="tag-score">
+                      <div className="tag-score-digit"> Tag</div> Score
+                    </div>
+                  </div>
+                </div>
+
+                <div className="div-creator">
+                  <div className="inside-div-creator">
+                    <div className="tag-name">{tag}</div>
+                    <div className="tag-score">
+                      <div className="tag-score-digit"> Tag</div> Score
+                    </div>
+                  </div>
+                </div>
+
+                <div className="div-creator">
+                  <div className="inside-div-creator">
+                    <div className="tag-name">Web development in React</div>
+                    <div className="tag-score">
+                      <div className="tag-score-digit"> Tag</div> Score
+                    </div>
+                  </div>
+                </div>
+
+                <div className="div-creator">
+                  <div className="inside-div-creator">
+                    <div className="tag-name">{tag}</div>
+                    <div className="tag-score">
+                      <div className="tag-score-digit"> Tag</div> Score
+                    </div>
+                  </div>
+                </div>
+
+                <div className="div-creator">
+                  <div className="inside-div-creator">
+                    <div className="tag-name">Web development in React</div>
+                    <div className="tag-score">
+                      <div className="tag-score-digit"> Tag</div> Score
+                    </div>
+                  </div>
+                </div>
+                {/* . */}
+                {/* . */}
+                {/* . */}
+                {/* run this code to create tags list - till here */}
+              </div>
             </div>
           </div>
           <div className="post-block">
@@ -163,14 +254,25 @@ export default function UserProfile({ mainContract, account }) {
               </div>
             </div>
             <div className="card">
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos
-                ipsum dicta fugit totam eum voluptate beatae fuga, quaerat
-                consectetur ipsam magnam rerum velit provident et accusantium
-                sapiente saepe temporibus sed numquam! Iusto dolorem ea
-                perferendis nulla quaerat eius sit dolor, incidunt odit, natus
-                impedit. Suscipit iure nostrum nesciunt. Culpa, odit?
-              </p>
+              <div className="card-inner-div">
+                <div className="card-inner-content">
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Delectus animi modi officia. Debitis quas, velit odio
+                    voluptates libero sapiente eos fugit nesciunt tempora
+                    inventore ad? Numquam cum nisi accusamus nihil sit beatae
+                    quo tenetur eos maiores, quis ullam excepturi? Distinctio
+                    iusto, ea ipsum adipisci at harum totam minus facere
+                    pariatur similique nisi ex molestias dignissimos consectetur
+                    cupiditate natus, culpa debitis a dolor quibusdam? Error
+                    modi aut ullam beatae voluptatibus officiis laboriosam
+                    molestias qui eligendi non. Officia natus amet dignissimos
+                    sunt consequuntur voluptatibus, vitae labore, a dolore ex
+                    deserunt cumque non sequi optio quas libero laboriosam.
+                    Adipisci harum numquam recusandae possimus.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -158,12 +158,14 @@
 }
 
 .active-li {
-  border-left: 2px solid #f6ae2d;
+  // border-left: 2px solid #005edd;
   border-radius: 0%;
+  background: #005edd;
+  color: #ffffff;
 }
 
 .active-li:hover {
-  border-left: 2px solid #f6ae2d;
+  // border-left: 2px solid #005edd;
   border-radius: 0%;
 }
 svg.svg-for-mail {
@@ -178,6 +180,10 @@ svg.svg-for-mail {
   }
 }
 @media only screen and (max-width: 768px) {
+  .inside-cover-image {
+    width: 100%;
+  }
+
   .main-container {
     // max-width: 100%;
     width: 100%;

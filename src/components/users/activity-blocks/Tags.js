@@ -16,14 +16,22 @@ export default function Tags() {
           </div>
         </div>
         <div className="card">
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos ipsum
-            dicta fugit totam eum voluptate beatae fuga, quaerat consectetur
-            ipsam magnam rerum velit provident et accusantium sapiente saepe
-            temporibus sed numquam! Iusto dolorem ea perferendis nulla quaerat
-            eius sit dolor, incidunt odit, natus impedit. Suscipit iure nostrum
-            nesciunt. Culpa, odit?
-          </p>
+          <div className="logged-in-scroll-card">
+            {/* run this code to create tags list  */}
+            {/* . */}
+            {/* . */}
+            {/* . */}
+
+            <div className="div-creator">
+              <div className="inside-div-creator">
+                <div className="tag-name">tag</div>
+                <div className="tag-score">
+                  <div className="tag-score-digit"> Tag</div> Score
+                </div>
+              </div>
+            </div>
+            {/* till here */}
+          </div>
         </div>
       </div>
     </>
