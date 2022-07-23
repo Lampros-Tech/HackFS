@@ -76,7 +76,7 @@ const Profile = ({ mainContract, account }) => {
               <div className="image-outside">
                 <img
                   className="user-profile-image"
-                  src={useravtar}
+                  src={imageUrl}
                   alt="user avatar"
                   height="84px"
                   width="84px"
