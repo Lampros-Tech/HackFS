@@ -54,19 +54,21 @@
   margin: 0.25%;
   padding: 1%;
 
-  .image-outside {
-    border: 2px solid #005edd;
-    border-radius: 1000%;
-    padding: 0%;
-    margin: 0%;
-  }
-  img {
+  // .image-outside {
+  //   border: 2px solid #005edd;
+  //   border-radius: 100%;
+  //   padding: 0px;
+  //   margin: 0%;
+  // }
+
+  img.user-profile-image {
     border: 2px solid #ffffff;
-    border-radius: 1000%;
+    border-radius: 100%;
     // padding: 1px;
     // display: inline-flex;
     width: 84px;
     height: 84px;
+    padding: 2px;
   }
   .user-info {
     flex-direction: column;

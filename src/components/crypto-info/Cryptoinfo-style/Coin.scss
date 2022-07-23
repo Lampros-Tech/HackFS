@@ -18,9 +18,9 @@
   width: 150%;
   margin-top: 50px;
 }
-img {
-  height: 30px;
-  width: 30px;
+img.imgs {
+  height: 40px;
+  width: 40px;
   padding-top: 2px;
 }
 
@@ -61,12 +61,12 @@ img {
   inline-size: min-content;
   // transform: scale(1);
   // transition: all 1s ease;
-   padding-left: 10px;
-   padding-right: 10px;
-   animation-duration: 4.5s;
-   -webkit-animation: loop 9s infinite linear;
-   animation: loop 9s infinite linear;
-   animation-iteration-count: infinite;
+  padding-left: 10px;
+  padding-right: 10px;
+  animation-duration: 4.5s;
+  -webkit-animation: loop 9s infinite linear;
+  animation: loop 9s infinite linear;
+  animation-iteration-count: infinite;
 }
 @keyframes loop {
   0% {

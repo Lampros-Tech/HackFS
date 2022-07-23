@@ -12,13 +12,15 @@ const FindUsers = ({ account, mainContract }) => {
     // console.log(id_array.length);
     for (let i = 0; i < id_array.length; i++) {
       const name = await mainContract.getUserName(id_array[i]);
-      let score = await mainContract.getUserReputation(id_array[i]);
+      const userInfoStruct = await mainContract.getUserInfo(id_array[i]);
+      let score = userInfoStruct.reputationScore;
       score = parseInt(score._hex, 16);
-      let noQuestions = await mainContract.getUserNoOfQuestions(id_array[i]);
+      let noQuestions = userInfoStruct.noOfQuestions;
       noQuestions = parseInt(noQuestions._hex, 16);
-      let noAnswers = await mainContract.getUserNoOfAnswers(id_array[i]);
+      let noAnswers = userInfoStruct.noOfAnswers;
       noAnswers = parseInt(noAnswers._hex, 16);
-      src.push([name, score, noQuestions, noAnswers, id_array[i]]);
+      const userImage = await mainContract.getUserCID(account);
+      src.push([name, score, noQuestions, noAnswers, id_array[i], userImage]);
     }
     setsrc(src);
     for (let i = 0; i < src.length; i++) {
@@ -92,7 +94,7 @@ const FindUsers = ({ account, mainContract }) => {
                   <>
                     <div className="all-user-card">
                       <div className="all-user-profile-image">
-                        <img src={useravtar} alt="avatar" />
+                        <img src={inde[5]} alt="avatar" />
                       </div>
                       {console.log(inde[4])}
                       <div className="all-user-profile-right">

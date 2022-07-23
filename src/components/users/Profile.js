@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-// import useravtar from "./man.png";
-import useravtar from "./userstyle/user-avatar.png";
+import useravtar from "./man.png";
+// import useravtar from "./userstyle/user-avatar.png";
 import UserProfile from "./general-block/UserProfile";
 import UserActivity from "./general-block/UserActivity";
 import EditProfile from "./EditProfile";
@@ -10,6 +10,7 @@ import "./userstyle/profile.scss";
 import "./general-block/userprofile.scss";
 import "./userstyle/popup.css";
 import { useEffect } from "react";
+import reactSelect from "react-select";
 
 const Profile = ({ mainContract, account }) => {
   const [showProfile, setProfile] = useState(true);
@@ -23,23 +24,26 @@ const Profile = ({ mainContract, account }) => {
   const [designation, setDesignation] = React.useState("");
   const [about, setAbout] = React.useState("");
   const [tags, setTags] = React.useState("");
+  const [imageUrl, setImageUrl] = React.useState("");
   const getProfileData = async (e) => {
-    console.log(mainContract);
+    // console.log(mainContract);
     const userName = await mainContract.getUserName(account);
     setName(userName);
-    console.log(name);
+    // console.log(name);
     const userEmail = await mainContract.getUserEmail(account);
     setEmail(userEmail);
-    console.log(email);
+    // console.log(email);
     const userDesignation = await mainContract.getUserDesignation(account);
     setDesignation(userDesignation);
     const userAbout = await mainContract.getUserDescription(account);
     setAbout(userAbout);
-    console.log(userAbout);
+    // console.log(userAbout);
     const userTags = await mainContract.getUserTags(account);
     setTags(userTags);
-    console.log(userTags);
+    // console.log(userTags);
     setLoading(false);
+    const userImage = await mainContract.getUserCID(account);
+    setImageUrl(userImage);
   };
 
   useEffect(() => {
@@ -71,6 +75,7 @@ const Profile = ({ mainContract, account }) => {
             <div className="first-block">
               <div className="image-outside">
                 <img
+                  className="user-profile-image"
                   src={useravtar}
                   alt="user avatar"
                   height="84px"

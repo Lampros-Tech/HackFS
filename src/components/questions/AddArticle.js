@@ -49,13 +49,14 @@ const AddArticle = ({ mainContract }) => {
     ]);
     const articleCID = cid._baseCache.get("z");
     console.log(articleCID);
-
+    console.log(title);
     let articleTags = [];
     for (let i = 0; i < tags.length; i++) {
       articleTags[i] = tags[i]["text"];
     }
     console.log(articleTags);
     const tx = await mainContract.addArticle(
+      title,
       articleCID,
       uploadImage,
       articleTags

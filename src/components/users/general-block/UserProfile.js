@@ -18,31 +18,32 @@ export default function UserProfile({ mainContract, account }) {
   const [tips, setTips] = React.useState(null);
 
   const getOtherData = async (e) => {
-    console.log(mainContract);
+    // console.log(mainContract);
     const userDesignation = await mainContract.getUserDesignation(account);
     setDesignation(userDesignation);
     const userAbout = await mainContract.getUserDescription(account);
     setAbout(userAbout);
     const userTags = await mainContract.getUserTags(account);
     setTag(userTags);
-    console.log(tag);
+    // console.log(tag);
     let userScore = await mainContract.getTotalScore(account);
     userScore = parseInt(userScore._hex, 16);
     setScore(userScore);
-    console.log(score);
-    let userNoOfQuestions = await mainContract.getUserNoOfQuestions(account);
+    // console.log(score);
+    const userInfoStruct = await mainContract.getUserInfo(account);
+    let userNoOfQuestions = userInfoStruct.noOfQuestions;
     userNoOfQuestions = parseInt(userNoOfQuestions._hex, 16);
     setNoOfQuestions(userNoOfQuestions);
-    let userNoOfAnswers = await mainContract.getUserNoOfAnswers(account);
+    let userNoOfAnswers = userInfoStruct.noOfAnswers;
     userNoOfAnswers = parseInt(userNoOfAnswers._hex, 16);
     setNoOfAnswers(userNoOfAnswers);
-    let userNoOfArticles = await mainContract.getUserNoOfArticles(account);
+    let userNoOfArticles = userInfoStruct.noOfArticles;
     userNoOfArticles = parseInt(userNoOfArticles._hex, 16);
     setNoOfArticles(userNoOfArticles);
-    let userRewards = await mainContract.getUserReward(account);
+    let userRewards = userInfoStruct.totalReward;
     userRewards = parseInt(userRewards._hex, 16);
     setRewards(userRewards);
-    let userTips = await mainContract.getUserTotalTip(account);
+    let userTips = userInfoStruct.totalTip;
     userTips = parseInt(userTips._hex, 16);
     setTips(userTips);
 

@@ -20,14 +20,14 @@ export default function EditProfile({
   };
   const delimiters = [KeyCodes.comma, KeyCodes.enter];
   const [tags, setTags] = useState([]);
-  console.log(UserTag);
+  // console.log(UserTag);
 
   const handleAddition = (tag) => {
     setTags([...tags, tag]);
-    console.log(tag);
+    // console.log(tag);
   };
   const handleTagClick = (index) => {
-    console.log("The tag at index " + index + " was clicked");
+    // console.log("The tag at index " + index + " was clicked");
   };
   const handleDelete = (i) => {
     setTags(tags.filter((tag, index) => index !== i));
@@ -39,7 +39,7 @@ export default function EditProfile({
   //reseting url of image
   function reset(e) {
     setProfile_image(null);
-    console.log(profile_image);
+    // console.log(profile_image);
   }
 
   const client = create("https://ipfs.infura.io:5001/api/v0");
@@ -52,10 +52,10 @@ export default function EditProfile({
     for (let i = 0; i < tags.length; i++) {
       tagList[i] = tags[i].text;
     }
-    console.log(mainContract);
+    // console.log(mainContract);
     const tx = await mainContract.createProfile(
       nameOfUser,
-      "jffg",
+      profile_image_url,
       emailOfUser,
       designationOfUser,
       aboutOfUser,
@@ -68,7 +68,7 @@ export default function EditProfile({
   //upload image function
   async function UploadImage(e) {
     const file = e.target.files[0];
-    console.log(file);
+    // console.log(file);
     setProfile_image(file);
     try {
       const added = await client.add(file);
