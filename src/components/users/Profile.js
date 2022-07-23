@@ -5,6 +5,7 @@ import useravtar from "./man.png";
 import UserProfile from "./general-block/UserProfile";
 import UserActivity from "./general-block/UserActivity";
 import EditProfile from "./EditProfile";
+import LoadingAnimation from "./general-block/LoadingAnimation";
 
 import "./userstyle/profile.scss";
 import "./general-block/userprofile.scss";
@@ -51,7 +52,7 @@ const Profile = ({ mainContract, account }) => {
     // setLoading(false);
   }, [mainContract]);
   if (isLoading) {
-    return "loading";
+    return <LoadingAnimation />;
   }
 
   return (
@@ -76,7 +77,7 @@ const Profile = ({ mainContract, account }) => {
               <div className="image-outside">
                 <img
                   className="user-profile-image"
-                  src={useravtar}
+                  src={imageUrl}
                   alt="user avatar"
                   height="84px"
                   width="84px"

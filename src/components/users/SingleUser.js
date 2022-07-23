@@ -22,6 +22,8 @@ const SingleUser = ({ mainContract }) => {
   const [email, setEmail] = React.useState("");
   const [designation, setDesignation] = React.useState("");
   const [about, setAbout] = React.useState("");
+  const [imageUrl, setImageUrl] = React.useState("");
+
   const getProfileData = async (e) => {
     // console.log(mainContract);
     const userName = await mainContract.getUserName(account);
@@ -35,6 +37,8 @@ const SingleUser = ({ mainContract }) => {
     const userAbout = await mainContract.getUserDescription(account);
     setAbout(userAbout);
     // console.log(userAbout);
+    const userImage = await mainContract.getUserCID(account);
+    setImageUrl(userImage);
     setLoading(false);
   };
   useEffect(() => {
@@ -53,7 +57,7 @@ const SingleUser = ({ mainContract }) => {
           <div className="show-at-bottom">
             <div className="first-block">
               <img
-                src={useravtar}
+                src={imageUrl}
                 alt="user avatar"
                 height="84px"
                 width="84px"

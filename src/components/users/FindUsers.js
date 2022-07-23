@@ -1,6 +1,6 @@
 import React, { useEffect, useId, useState } from "react";
 import { Link } from "react-router-dom";
-import LoadingAnimation from "./general-block/LoadingAnimation";
+import LoadingAnimTrans from "./general-block/LoadingAnimTrans";
 import "./userstyle/finduser.scss";
 import useravtar from "./userstyle/user-avatar.png";
 
@@ -37,7 +37,7 @@ const FindUsers = ({ account, mainContract }) => {
   const [showNewest, setNewest] = useState(false);
 
   if (isLoading) {
-    return <LoadingAnimation />;
+    return <LoadingAnimTrans />;
   }
   if (src.length > 0) {
     return (
@@ -95,6 +95,7 @@ const FindUsers = ({ account, mainContract }) => {
                   <>
                     <div className="all-user-card">
                       <div className="all-user-profile-image">
+                        {console.log(inde[5])}
                         <img src={inde[5]} alt="avatar" />
                       </div>
                       {console.log(inde[4])}
