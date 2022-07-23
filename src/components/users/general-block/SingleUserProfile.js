@@ -1,7 +1,10 @@
 import React from "react";
 import { useEffect } from "react";
+import { useLocation } from "react-router";
 
-export default function SingleUserProfile({ account, mainContract }) {
+export default function SingleUserProfile({ mainContract }) {
+  const location = useLocation();
+  const account = location.state.account;
   const [isLoading, setLoading] = React.useState(true);
   const [designation, setDesignation] = React.useState("");
   const [about, setAbout] = React.useState("");
@@ -14,34 +17,34 @@ export default function SingleUserProfile({ account, mainContract }) {
   const [tips, setTips] = React.useState(null);
 
   const getOtherData = async (e) => {
-    console.log(mainContract);
+    // console.log(mainContract);
     const userDesignation = await mainContract.getUserDesignation(account);
     setDesignation(userDesignation);
     const userAbout = await mainContract.getUserDescription(account);
     setAbout(userAbout);
     const userTags = await mainContract.getUserTags(account);
     setTag(userTags);
-    console.log(tag);
+    // console.log(tag);
     let userScore = await mainContract.getTotalScore(account);
     userScore = parseInt(userScore._hex, 16);
     setScore(userScore);
-    console.log(score);
-    let userNoOfQuestions = await mainContract.getUserNoOfQuestions(account);
+    // console.log(score);
+    const userInfoStruct = await mainContract.getUserInfo(account);
+    let userNoOfQuestions = userInfoStruct.noOfQuestions;
     userNoOfQuestions = parseInt(userNoOfQuestions._hex, 16);
     setNoOfQuestions(userNoOfQuestions);
-    let userNoOfAnswers = await mainContract.getUserNoOfAnswers(account);
+    let userNoOfAnswers = userInfoStruct.noOfAnswers;
     userNoOfAnswers = parseInt(userNoOfAnswers._hex, 16);
     setNoOfAnswers(userNoOfAnswers);
-    let userNoOfArticles = await mainContract.getUserNoOfArticles(account);
+    let userNoOfArticles = userInfoStruct.noOfArticles;
     userNoOfArticles = parseInt(userNoOfArticles._hex, 16);
     setNoOfArticles(userNoOfArticles);
-    let userRewards = await mainContract.getUserReward(account);
+    let userRewards = userInfoStruct.totalReward;
     userRewards = parseInt(userRewards._hex, 16);
     setRewards(userRewards);
-    let userTips = await mainContract.getUserTotalTip(account);
+    let userTips = userInfoStruct.totalTip;
     userTips = parseInt(userTips._hex, 16);
     setTips(userTips);
-
     setLoading(false);
   };
 

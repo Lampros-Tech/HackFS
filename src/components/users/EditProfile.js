@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 // import { Editor } from "@tinymce/tinymce-react";
 import { WithContext as ReactTags } from "react-tag-input";
 import { useEffect } from "react";
-import Upload from "../users/man.png"
+import Upload from "../users/man.png";
 import { create, CID } from "ipfs-http-client";
 export default function EditProfile({
   mainContract,
@@ -20,27 +20,26 @@ export default function EditProfile({
   };
   const delimiters = [KeyCodes.comma, KeyCodes.enter];
   const [tags, setTags] = useState([]);
-  console.log(UserTag);
+  // console.log(UserTag);
 
   const handleAddition = (tag) => {
     setTags([...tags, tag]);
-    console.log(tag);
+    // console.log(tag);
   };
   const handleTagClick = (index) => {
-    console.log("The tag at index " + index + " was clicked");
+    // console.log("The tag at index " + index + " was clicked");
   };
   const handleDelete = (i) => {
     setTags(tags.filter((tag, index) => index !== i));
   };
   //useref for profile picture.
   const profile_picture = useRef(null);
-  const [profile_image,setProfile_image] = useState(); 
-  const [profile_image_url,setProfile_image_url] = useState();
-//reseting url of image
-  function reset(e)
-  {
+  const [profile_image, setProfile_image] = useState();
+  const [profile_image_url, setProfile_image_url] = useState();
+  //reseting url of image
+  function reset(e) {
     setProfile_image(null);
-    console.log(profile_image)
+    // console.log(profile_image);
   }
 
   const client = create("https://ipfs.infura.io:5001/api/v0");
@@ -53,10 +52,10 @@ export default function EditProfile({
     for (let i = 0; i < tags.length; i++) {
       tagList[i] = tags[i].text;
     }
-    console.log(mainContract);
+    // console.log(mainContract);
     const tx = await mainContract.createProfile(
       nameOfUser,
-      "jffg",
+      profile_image_url,
       emailOfUser,
       designationOfUser,
       aboutOfUser,
@@ -66,23 +65,20 @@ export default function EditProfile({
     await tx.wait();
   };
 
-
   //upload image function
-  async function UploadImage(e)
-  {
+  async function UploadImage(e) {
     const file = e.target.files[0];
-    console.log(file);
+    // console.log(file);
     setProfile_image(file);
-    try
-    {
+    try {
       const added = await client.add(file);
       const url = `https://ipfs.infura.io/ipfs/${added.path}`;
       setProfile_image_url(url);
-      console.log(url);
-    }
-    catch (error)
-    {
-      console.log("Error uploading file: ", error);
+      // console.log(url);
+      // console.log("hi");
+      // console.log(profile_image_url);
+    } catch (error) {
+      // console.log("Error uploading file: ", error);
     }
   }
 
@@ -111,37 +107,38 @@ export default function EditProfile({
             </svg>
           </div>
           <div className="body">
-          <h3>Profile Image</h3>
-          {
-            (profile_image)
-            ?
-            (
-                <>
+            <h3>Profile Image</h3>
+            {profile_image ? (
+              <>
                 <img src={profile_image_url} className="uploaded_image" />
-                <button className="reset-btn" onClick={(e)=>{reset(e)}}>
-                reset
+                <button
+                  className="reset-btn"
+                  onClick={(e) => {
+                    reset(e);
+                  }}
+                >
+                  reset
                 </button>
               </>
-              
-            )
-            :
-             <div className="upload-profile-picture" onClick=
-              {
-                  (e) => 
-                  {
-                    profile_picture.current.click();
-                  }
-              }>
-                    <img src={Upload} className="upload-image"/>
+            ) : (
+              <div
+                className="upload-profile-picture"
+                onClick={(e) => {
+                  profile_picture.current.click();
+                }}
+              >
+                <img src={Upload} className="upload-image" />
               </div>
-            }
+            )}
             <input
               className="input-edit-profile"
               type="file"
               hidden
               defaultValue={nameOfUser}
-              ref= {profile_picture}
-              onChange={(e) => {UploadImage(e);}}
+              ref={profile_picture}
+              onChange={(e) => {
+                UploadImage(e);
+              }}
             />
             <h3>Profile Name</h3>
             <input

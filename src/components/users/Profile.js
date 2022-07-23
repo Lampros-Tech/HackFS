@@ -9,6 +9,7 @@ import "./userstyle/profile.scss";
 import "./general-block/userprofile.scss";
 import "./userstyle/popup.css";
 import { useEffect } from "react";
+import reactSelect from "react-select";
 
 const Profile = ({ mainContract, account }) => {
   const [showProfile, setProfile] = useState(true);
@@ -22,23 +23,26 @@ const Profile = ({ mainContract, account }) => {
   const [designation, setDesignation] = React.useState("");
   const [about, setAbout] = React.useState("");
   const [tags, setTags] = React.useState("");
+  const [imageUrl, setImageUrl] = React.useState("");
   const getProfileData = async (e) => {
-    console.log(mainContract);
+    // console.log(mainContract);
     const userName = await mainContract.getUserName(account);
     setName(userName);
-    console.log(name);
+    // console.log(name);
     const userEmail = await mainContract.getUserEmail(account);
     setEmail(userEmail);
-    console.log(email);
+    // console.log(email);
     const userDesignation = await mainContract.getUserDesignation(account);
     setDesignation(userDesignation);
     const userAbout = await mainContract.getUserDescription(account);
     setAbout(userAbout);
-    console.log(userAbout);
+    // console.log(userAbout);
     const userTags = await mainContract.getUserTags(account);
     setTags(userTags);
-    console.log(userTags);
+    // console.log(userTags);
     setLoading(false);
+    const userImage = await mainContract.getUserCID(account);
+    setImageUrl(userImage);
   };
 
   useEffect(() => {
@@ -67,7 +71,7 @@ const Profile = ({ mainContract, account }) => {
         <div className="background-opacity"></div>
         <div className="inside-cover-image">
           <div className="first-block">
-            <img src={useravtar} alt="user avatar" height="84px" width="84px" />
+            <img src={imageUrl} alt="user avatar" height="84px" width="84px" />
             <div className="user-info">
               <h1 className="user-name">{name}</h1>
               <h3> {designation}</h3>

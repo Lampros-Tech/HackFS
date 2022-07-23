@@ -2,7 +2,7 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "C:\\Lampros_Projects\\HackFS\\HackFS\\contracts\\customToken.sol": {
-      "lastModificationDate": 1658488209082,
+      "lastModificationDate": 1658514598887,
       "contentHash": "5d5236a8c227668c61783b9de96e5394",
       "sourceName": "contracts/customToken.sol",
       "solcConfig": {
@@ -79,8 +79,8 @@
       ]
     },
     "C:\\Lampros_Projects\\HackFS\\HackFS\\contracts\\Stack.sol": {
-      "lastModificationDate": 1658495896860,
-      "contentHash": "fa6d6a46e5834b4a6cfa7a2145711128",
+      "lastModificationDate": 1658549753819,
+      "contentHash": "a35af915159db532261f8f7b26f8e154",
       "sourceName": "contracts/Stack.sol",
       "solcConfig": {
         "version": "0.8.4",
