@@ -1,6 +1,6 @@
 import React, { useEffect, useId, useState } from "react";
 import { Link } from "react-router-dom";
-import LoadingAnimTrans from "./general-block/LoadingAnimTrans";
+import LoadingAnimation from "./general-block/LoadingAnimation";
 import "./userstyle/finduser.scss";
 import useravtar from "./userstyle/user-avatar.png";
 
@@ -37,7 +37,7 @@ const FindUsers = ({ account, mainContract }) => {
   const [showNewest, setNewest] = useState(false);
 
   if (isLoading) {
-    return <LoadingAnimTrans />;
+    return <LoadingAnimation />;
   }
   if (src.length > 0) {
     return (

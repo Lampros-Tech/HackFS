@@ -2,6 +2,7 @@ import React from "react";
 
 import { useEffect } from "react";
 import { useLocation } from "react-router";
+import LoadingAnimation from "./LoadingAnimation";
 
 export default function SingleUserProfile({ mainContract }) {
   const location = useLocation();
@@ -55,7 +56,7 @@ export default function SingleUserProfile({ mainContract }) {
   }, [mainContract]);
 
   if (isLoading) {
-    return "loading";
+    return <LoadingAnimation />;
   }
   return (
     <>
@@ -105,7 +106,11 @@ export default function SingleUserProfile({ mainContract }) {
               <h3>About</h3>
             </div>
             <div className="card">
-              <p>{about}</p>
+              <div className="card-inner-div">
+                <div className="card-inner-content">
+                  <p>{about}</p>
+                </div>
+              </div>
             </div>
           </div>
           <div className="badges-block">
@@ -116,14 +121,19 @@ export default function SingleUserProfile({ mainContract }) {
               {/* <span className="view-all-rpl-btn">view all badges</span> */}
             </div>
             <div className="card">
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos
-                ipsum dicta fugit totam eum voluptate beatae fuga, quaerat
-                consectetur ipsam magnam rerum velit provident et accusantium
-                sapiente saepe temporibus sed numquam! Iusto dolorem ea
-                perferendis nulla quaerat eius sit dolor, incidunt odit, natus
-                impedit. Suscipit iure nostrum nesciunt. Culpa, odit?
-              </p>
+              <div className="card-inner-div">
+                <div className="card-inner-content">
+                  <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Quos ipsum dicta fugit totam eum voluptate beatae fuga,
+                    quaerat consectetur ipsam magnam rerum velit provident et
+                    accusantium sapiente saepe temporibus sed numquam! Iusto
+                    dolorem ea perferendis nulla quaerat eius sit dolor,
+                    incidunt odit, natus impedit. Suscipit iure nostrum
+                    nesciunt. Culpa, odit?
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
           <div className="tags-block">
@@ -138,7 +148,23 @@ export default function SingleUserProfile({ mainContract }) {
               </div>
             </div>
             <div className="card">
-              <p>{tag}</p>
+              <div className="logged-in-scroll-card">
+                {/* run this code to create tags list  */}
+                {/* . */}
+                {/* . */}
+                {/* . */}
+
+                <div className="div-creator">
+                  <div className="inside-div-creator">
+                    <div className="tag-name">{tag}</div>
+                    <div className="tag-score">
+                      <div className="tag-score-digit"> Tag</div> Score
+                    </div>
+                  </div>
+                </div>
+
+                {/* till here only */}
+              </div>
             </div>
           </div>
           <div className="post-block">
@@ -161,14 +187,25 @@ export default function SingleUserProfile({ mainContract }) {
               </div>
             </div>
             <div className="card">
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos
-                ipsum dicta fugit totam eum voluptate beatae fuga, quaerat
-                consectetur ipsam magnam rerum velit provident et accusantium
-                sapiente saepe temporibus sed numquam! Iusto dolorem ea
-                perferendis nulla quaerat eius sit dolor, incidunt odit, natus
-                impedit. Suscipit iure nostrum nesciunt. Culpa, odit?
-              </p>
+              <div className="card-inner-div">
+                <div className="card-inner-content">
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Delectus animi modi officia. Debitis quas, velit odio
+                    voluptates libero sapiente eos fugit nesciunt tempora
+                    inventore ad? Numquam cum nisi accusamus nihil sit beatae
+                    quo tenetur eos maiores, quis ullam excepturi? Distinctio
+                    iusto, ea ipsum adipisci at harum totam minus facere
+                    pariatur similique nisi ex molestias dignissimos consectetur
+                    cupiditate natus, culpa debitis a dolor quibusdam? Error
+                    modi aut ullam beatae voluptatibus officiis laboriosam
+                    molestias qui eligendi non. Officia natus amet dignissimos
+                    sunt consequuntur voluptatibus, vitae labore, a dolore ex
+                    deserunt cumque non sequi optio quas libero laboriosam.
+                    Adipisci harum numquam recusandae possimus.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
