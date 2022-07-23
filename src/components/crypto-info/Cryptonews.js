@@ -14,11 +14,10 @@ const Cryptonews = () => {
         "X-RapidAPI-Host": "crypto-news-live3.p.rapidapi.com",
       },
     };
-
     axios
       .request(options)
       .then((response) => {
-        // console.log(response.data);
+        console.log(response.data);
         setApiData(response.data);
       })
       .catch((error) => {
