@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
-import useravtar from "./man.png";
+// import useravtar from "./man.png";
+import useravtar from "./userstyle/user-avatar.png";
 import UserProfile from "./general-block/UserProfile";
 import UserActivity from "./general-block/UserActivity";
 import EditProfile from "./EditProfile";
@@ -68,12 +69,14 @@ const Profile = ({ mainContract, account }) => {
         <div className="inside-cover-image">
           <div className="show-at-bottom">
             <div className="first-block">
-              <img
-                src={useravtar}
-                alt="user avatar"
-                height="84px"
-                width="84px"
-              />
+              <div className="image-outside">
+                <img
+                  src={useravtar}
+                  alt="user avatar"
+                  height="84px"
+                  width="84px"
+                />
+              </div>
               <div className="user-info">
                 <h1 className="user-name">{name}</h1>
                 <h3>{designation}</h3>
