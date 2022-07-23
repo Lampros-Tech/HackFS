@@ -41,12 +41,12 @@ const AddArticle = ({ mainContract }) => {
     const client = create("https://ipfs.infura.io:5001/api/v0");
     const StringTitle = JSON.stringify(title);
     const Stringtags = JSON.stringify(tags);
-    const { cid } = await client.add([
-      StringTitle,
-      editorRef.current.getContent(),
-      Stringtags,
-      uploadImage,
-    ]);
+    const question = {
+      tile: StringTitle,
+      body: editorRef.current.getContent(),
+      tags: Stringtags,
+    };
+    const { cid } = await client.add(JSON.stringify(question));
     const articleCID = cid._baseCache.get("z");
     console.log(articleCID);
     console.log(title);

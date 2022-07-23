@@ -34,12 +34,15 @@ const AddQuestions = ({ mainContract, account }) => {
     const client = create("https://ipfs.infura.io:5001/api/v0");
     const StringTitle = JSON.stringify(title);
     const Stringtags = JSON.stringify(tags);
-    const { cid } = await client.add([
-      StringTitle,
-      editorRef.current.getContent(),
-      Stringtags,
-    ]);
+    const question = {
+      tile: StringTitle,
+      body: editorRef.current.getContent(),
+      tags: Stringtags,
+    };
+
+    const { cid } = await client.add(JSON.stringify(question));
     const questionCID = cid._baseCache.get("z");
+    console.log("cid " + questionCID);
     let questionTags = [];
     for (let i = 0; i < tags.length; i++) {
       questionTags[i] = tags[i]["text"];
