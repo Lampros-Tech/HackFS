@@ -40,6 +40,9 @@ const DisplayQuestions = () => {
               <AllQuestions />
               <AllQuestions />
               <AllQuestions />
+              <AllQuestions />
+              <AllQuestions />
+              <AllQuestions />
             </div>
           </div>
           <div class="pagination">
@@ -55,9 +58,11 @@ const DisplayQuestions = () => {
             <a href="#">Next</a>
           </div>
         </div>
+        
 
         <div className="right-section">
           <div className="sidebar-heading">
+            
             <h2>
               <img src={staticon} alt />
               Stats
@@ -89,40 +94,87 @@ const DisplayQuestions = () => {
                 Top Members
               </h2>
             </div>
-            <div className="members">
+            {/* <div className="members">
               <img className="profile-img" src="https://i.pravatar.cc/200" alt=""/>
               <div className="text-container">
                 <p className="title-text">Austin May</p>
+                <h2>USer Name</h2>
                 <p className="info-text">Lorem, ipsum dolor.</p>
                 <p className="desc-text">
                   Lorem, ipsum.
                 </p>
               </div>
               
-            </div>
-            <div className="members">
-              <img className="profile-img" src="https://i.pravatar.cc/200" alt=""/>
-              <div className="text-container">
-                <p className="title-text">Austin May</p>
-                <p className="info-text">Lorem, ipsum dolor.</p>
-                <p className="desc-text">
-                  Lorem, ipsum.
-                </p>
-              </div>
+            
               
             </div>
-            <div className="members">
-              <img className="profile-img" src="https://i.pravatar.cc/200" alt=""/>
-              <div className="text-container">
-                <p className="title-text">Austin May</p>
-                <p className="info-text">Lorem, ipsum dolor.</p>
-                <p className="desc-text">
-                  Lorem, ipsum.
-                </p>
+           */}
+            <div class="cards">
+              <div class="card card-1">
+                <h3 class="card__title">
+                  <img
+                    className="profile-img-1"
+                    src="https://i.pravatar.cc/70"
+                    alt=""
+                  />
+                  Lorem, ipsum dolor.
+                  <p>Lorem ipsum dolor sit.</p>
+                </h3>
               </div>
-              
             </div>
-          
+            <div class="cards">
+              <div class="card card-1">
+                <h3 class="card__title">
+                  <img
+                    className="profile-img-1"
+                    src="https://i.pravatar.cc/70"
+                    alt=""
+                  />
+                  Lorem, ipsum dolor.
+                  <p>Lorem ipsum dolor sit.</p>
+                </h3>
+              </div>
+            </div>
+            <div class="cards">
+              <div class="card card-1">
+                <h3 class="card__title">
+                  <img
+                    className="profile-img-1"
+                    src="https://i.pravatar.cc/70"
+                    alt=""
+                  />
+                  Lorem, ipsum dolor.
+                  <p>Lorem ipsum dolor sit.</p>
+                </h3>
+              </div>
+            </div>
+            <div class="cards">
+              <div class="card card-1">
+                <h3 class="card__title">
+                  <img
+                    className="profile-img-1"
+                    src="https://i.pravatar.cc/70"
+                    alt=""
+                  />
+                  Lorem, ipsum dolor.
+                  <p>Lorem ipsum dolor sit.</p>
+                </h3>
+              </div>
+            </div>
+            <div class="cards">
+              <div class="card card-1">
+                <h3 class="card__title">
+                  <img
+                    className="profile-img-1"
+                    src="https://i.pravatar.cc/70"
+                    alt=""
+                  />
+                  Lorem, ipsum dolor.
+                  <p>Lorem ipsum dolor sit.</p>
+                </h3>
+              </div>
+            </div>
+            
             
           </div>
         </div>

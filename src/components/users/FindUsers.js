@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useId, useState } from "react";
 import { Link } from "react-router-dom";
 import LoadingAnimTrans from "./general-block/LoadingAnimTrans";
 import "./userstyle/finduser.scss";
@@ -19,8 +19,8 @@ const FindUsers = ({ account, mainContract }) => {
       noQuestions = parseInt(noQuestions._hex, 16);
       let noAnswers = userInfoStruct.noOfAnswers;
       noAnswers = parseInt(noAnswers._hex, 16);
-      const userImage = await mainContract.getUserCID(account);
-      console.log("image " + userImage);
+      const userImage = await mainContract.getUserCID(id_array[i]);
+      console.log("userimage" + userImage);
       src.push([name, score, noQuestions, noAnswers, id_array[i], userImage]);
     }
     setsrc(src);
