@@ -12,16 +12,17 @@ contract Stack {
     struct QuestionInfo {
         uint256 q_id;
         address user;
+        string q_title;
         string q_cid;
         uint256 q_upvote;
         uint256 q_downvote;
         uint256[] ans_id;
+        string[] q_taglist;
     }
     mapping(uint256 => QuestionInfo) public idToQuestion;
     mapping(address => uint256[]) public userToQuestions;
     mapping(uint256 => mapping(address => bool)) public isUpVotedQuestion;
     mapping(uint256 => mapping(address => bool)) public isDownVotedQuestion;
-
     struct AnswerInfo {
         uint256 a_id;
         address user;
@@ -34,11 +35,12 @@ contract Stack {
     mapping(address => uint256[]) public userToAnswers;
     mapping(uint256 => mapping(address => bool)) public isUpVotedAnswer;
     mapping(uint256 => mapping(address => bool)) public isDownVotedAnswer;
-
     struct ArticleInfo {
         uint256 article_id;
         address user;
+        string article_title;
         string article_cid;
+        string article_image_cid;
         uint256 noOfLikes;
         uint256 tip;
     }
@@ -81,33 +83,27 @@ contract Stack {
     }
 
     //Questions---------------------------------------------------------------------
-    function addQuestion(string memory q_cid, string[] memory tag_name) public {
+    function addQuestion(
+        string memory title,
+        string memory q_cid,
+        string[] memory tag_name
+    ) public {
         q_id += 1;
         idToQuestion[q_id] = QuestionInfo(
             q_id,
             msg.sender,
+            title,
             q_cid,
             0,
             0,
-            new uint256[](0)
+            new uint256[](0),
+            tag_name
         );
         userToQuestions[msg.sender].push(q_id);
         addressToUserInfo[msg.sender].noOfQuestions += 1;
-        addressToUserInfo[msg.sender].totalScore += 5;
-        addressToUserInfo[msg.sender].reputationScore += 5;
         isUpVotedQuestion[q_id][msg.sender] = false;
         isDownVotedQuestion[q_id][msg.sender] = false;
-        for (uint256 i = 0; i < tag_name.length; i++) {
-            addressToTagToScore[msg.sender][tag_name[i]] += 5;
-            if (
-                addressToUserProfileInfo[msg.sender].isTagAdded[tag_name[i]] ==
-                false
-            ) {
-                addressToUserProfileInfo[msg.sender].taglist.push(tag_name[i]);
-                addressToUserProfileInfo[msg.sender].isTagAdded[tag_name[i]] ==
-                    true;
-            }
-        }
+        add_score_qa(tag_name);
     }
 
     function getQuestion(uint256 qid)
@@ -122,8 +118,7 @@ contract Stack {
         if (isUpVotedQuestion[qid][msg.sender] == false) {
             idToQuestion[qid].q_upvote += 1;
             address user = idToQuestion[qid].user;
-            addressToUserInfo[user].totalScore += 5;
-            addressToUserInfo[msg.sender].reputationScore += 5;
+            add_score_vote(user);
             isUpVotedQuestion[qid][msg.sender] = true;
         }
     }
@@ -132,8 +127,7 @@ contract Stack {
         if (isDownVotedQuestion[qid][msg.sender] == false)
             idToQuestion[qid].q_downvote += 1;
         address user = idToQuestion[qid].user;
-        addressToUserInfo[user].totalScore -= 5;
-        addressToUserInfo[msg.sender].reputationScore -= 5;
+        minus_score_vote(user);
         isDownVotedQuestion[qid][msg.sender] = true;
     }
 
@@ -158,8 +152,7 @@ contract Stack {
         if (isUpVotedAnswer[aid][msg.sender] == false) {
             idToAnswer[aid].a_upvote += 1;
             address user = idToAnswer[aid].user;
-            addressToUserInfo[user].totalScore += 5;
-            addressToUserInfo[msg.sender].reputationScore += 5;
+            add_score_vote(user);
             isUpVotedAnswer[aid][msg.sender] = true;
         }
     }
@@ -168,40 +161,32 @@ contract Stack {
         if (isDownVotedAnswer[aid][msg.sender] == false) {
             idToAnswer[aid].a_downvote += 1;
             address user = idToAnswer[aid].user;
-            addressToUserInfo[user].totalScore -= 5;
-            addressToUserInfo[msg.sender].reputationScore -= 5;
+            minus_score_vote(user);
             isDownVotedAnswer[aid][msg.sender] = true;
         }
     }
 
     //Articles---------------------------------------------------------------------
-    function addArticle(string memory article_cid, string[] memory tag_name)
-        public
-    {
+    function addArticle(
+        string memory title,
+        string memory article_cid,
+        string memory image_cid,
+        string[] memory tag_name
+    ) public {
         article_id += 1;
         idToArticle[article_id] = ArticleInfo(
             article_id,
             msg.sender,
+            title,
             article_cid,
+            image_cid,
             0,
             0
         );
         userToArticle[msg.sender].push(article_id);
         addressToUserInfo[msg.sender].noOfArticles += 1;
-        addressToUserInfo[msg.sender].totalScore += 5;
-        addressToUserInfo[msg.sender].reputationScore += 5;
         isUserLikedIt[article_id][msg.sender] = false;
-        for (uint256 i = 0; i < tag_name.length; i++) {
-            addressToTagToScore[msg.sender][tag_name[i]] += 5;
-            if (
-                addressToUserProfileInfo[msg.sender].isTagAdded[tag_name[i]] ==
-                false
-            ) {
-                addressToUserProfileInfo[msg.sender].taglist.push(tag_name[i]);
-                addressToUserProfileInfo[msg.sender].isTagAdded[tag_name[i]] ==
-                    true;
-            }
-        }
+        add_score_qa(tag_name);
     }
 
     function getArticle(uint256 articleid)
@@ -217,6 +202,32 @@ contract Stack {
             idToArticle[articleid].noOfLikes += 1;
             isUserLikedIt[article_id][msg.sender] = true;
         }
+    }
+
+    function add_score_qa(string[] memory tag_name) private {
+        addressToUserInfo[msg.sender].totalScore += 5;
+        addressToUserInfo[msg.sender].reputationScore += 5;
+        for (uint256 i = 0; i < tag_name.length; i++) {
+            addressToTagToScore[msg.sender][tag_name[i]] += 5;
+            if (
+                addressToUserProfileInfo[msg.sender].isTagAdded[tag_name[i]] ==
+                false
+            ) {
+                addressToUserProfileInfo[msg.sender].taglist.push(tag_name[i]);
+                addressToUserProfileInfo[msg.sender].isTagAdded[tag_name[i]] ==
+                    true;
+            }
+        }
+    }
+
+    function add_score_vote(address user) private {
+        addressToUserInfo[user].totalScore += 5;
+        addressToUserInfo[msg.sender].reputationScore += 5;
+    }
+
+    function minus_score_vote(address user) private {
+        addressToUserInfo[user].totalScore -= 5;
+        addressToUserInfo[msg.sender].reputationScore -= 5;
     }
 
     function createProfile(
@@ -240,15 +251,27 @@ contract Stack {
         addressToUserProfileInfo[msg.sender].aboutUSer = aboutUser;
         addressToUserProfileInfo[msg.sender].expertFees = fees;
         addressToUserProfileInfo[msg.sender].taglist = listOfTags;
-        addressToUserInfo[msg.sender].user = msg.sender;
-        addressToUserInfo[msg.sender].noOfQuestions = 0;
-        addressToUserInfo[msg.sender].noOfAnswers = 0;
-        addressToUserInfo[msg.sender].totalScore = 0;
-        addressToUserInfo[msg.sender].reputationScore = 0;
-        addressToUserInfo[msg.sender].totalReward = 0;
-        addressToUserInfo[msg.sender].totalRedeem = 0;
-        addressToUserInfo[msg.sender].totalTip = 0;
-        addressToUserInfo[msg.sender].expertFeesEarned = 0;
+        // addressToUserInfo[msg.sender].user = msg.sender;
+        // addressToUserInfo[msg.sender].noOfQuestions = 0;
+        // addressToUserInfo[msg.sender].noOfAnswers = 0;
+        // addressToUserInfo[msg.sender].totalScore = 0;
+        // addressToUserInfo[msg.sender].reputationScore = 0;
+        // addressToUserInfo[msg.sender].totalReward = 0;
+        // addressToUserInfo[msg.sender].totalRedeem = 0;
+        // addressToUserInfo[msg.sender].totalTip = 0;
+        // addressToUserInfo[msg.sender].expertFeesEarned = 0;
+        addressToUserInfo[msg.sender] = UserInfo(
+            msg.sender,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        );
         // user = UserInfo(msg.sender,name,email,designation,0,0,0,0,0,0,listOfTags);
     }
 
@@ -319,6 +342,14 @@ contract Stack {
         return addressToUserInfo[user].totalRedeem;
     }
 
+    function getExpertFeesEarned(address user) public view returns (uint256) {
+        return addressToUserInfo[user].expertFeesEarned;
+    }
+
+    function setExpertFeesEarned(address user, uint256 fee) public {
+        addressToUserInfo[user].expertFeesEarned = fee;
+    }
+
     function setTotalScore(address user, uint256 score) public {
         addressToUserInfo[user].totalScore = score;
     }
@@ -351,40 +382,12 @@ contract Stack {
         return addressToUserProfileInfo[user].aboutUSer;
     }
 
-    function getUserNoOfQuestions(address user) public view returns (uint256) {
-        return addressToUserInfo[user].noOfQuestions;
-    }
-
-    function getUserNoOfAnswers(address user) public view returns (uint256) {
-        return addressToUserInfo[user].noOfAnswers;
-    }
-
-    function getUserNoOfArticles(address user) public view returns (uint256) {
-        return addressToUserInfo[user].noOfArticles;
-    }
-
-    function getUserReward(address user) public view returns (uint256) {
-        return addressToUserInfo[user].totalReward;
-    }
-
-    function getUserReputation(address user) public view returns (uint256) {
-        return addressToUserInfo[user].reputationScore;
-    }
-
     function getUserTags(address user) public view returns (string[] memory) {
         return addressToUserProfileInfo[user].taglist;
     }
 
     function getExpertFees(address user) public view returns (uint256) {
         return addressToUserProfileInfo[user].expertFees;
-    }
-
-    function getExpertFeesEarned(address user) public view returns (uint256) {
-        return addressToUserInfo[user].expertFeesEarned;
-    }
-
-    function setExpertFeesEarned(address user, uint256 fee) public {
-        addressToUserInfo[user].expertFeesEarned = fee;
     }
 
     function getAllUsers() public view returns (address[] memory) {
@@ -429,5 +432,13 @@ contract Stack {
         returns (bool)
     {
         return isUserLikedIt[qid][user];
+    }
+
+    function getUserInfo(address user) public view returns (UserInfo memory) {
+        return addressToUserInfo[user];
+    }
+
+    function getUserCID(address user) public view returns (string memory){
+        return addressToUserProfileInfo[user].userImageCID;
     }
 }

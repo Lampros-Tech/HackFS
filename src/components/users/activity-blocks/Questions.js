@@ -1,5 +1,5 @@
 import React from "react";
-import '../userstyle/inside-card.scss';
+import "../userstyle/inside-card.scss";
 
 export default function Questions() {
   return (
@@ -17,48 +17,21 @@ export default function Questions() {
           </div>
         </div>
         <div className="card">
-          <div className="inside-of-card">
-            <div className="score-of-card">
-              11640
-            </div>
-            <div className="title-of-card">
-              Why is subtracting these two times (in 1927) giving a strange result?
-            </div>
-            <div className="date-of-card">
-              21 July 2022
+          <div className="div-creator">
+            <div className="inside-div-creator">
+              <div className="tag-name">tags</div>
+              <div className="tag-score">
+                <div className="tag-score-digit"> Tag</div> Score
+              </div>
             </div>
           </div>
-          <div className="inside-of-card">
-            <div className="score-of-card">
-              11640
-            </div>
-            <div className="title-of-card">
-              Why is subtracting these two times (in 1927) giving a strange result?
-            </div>
-            <div className="date-of-card">
-              21 July 2022
-            </div>
-          </div>
-          <div className="inside-of-card">
-            <div className="score-of-card">
-              11640
-            </div>
-            <div className="title-of-card">
-              Why is subtracting these two times (in 1927) giving a strange result?
-            </div>
-            <div className="date-of-card">
-              21 July 2022
-            </div>
-          </div>
-          <div className="inside-of-card">
-            <div className="score-of-card">
-              11640
-            </div>
-            <div className="title-of-card">
-              Why is subtracting these two times (in 1927) giving a strange result?
-            </div>
-            <div className="date-of-card">
-              21 July 2022
+
+          <div className="div-creator">
+            <div className="inside-div-creator">
+              <div className="tag-name">tags</div>
+              <div className="tag-score">
+                <div className="tag-score-digit"> Tag</div> Score
+              </div>
             </div>
           </div>
         </div>

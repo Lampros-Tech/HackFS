@@ -5,6 +5,8 @@ import { WithContext as ReactTags } from "react-tag-input";
 import UploadHeroImage from "./upload-to-cloud";
 import { create, CID } from "ipfs-http-client";
 import { prototype } from "stream";
+import membericon from "./group.png";
+import staticon from "./stats.png";
 // import { url } from 'inspector';
 // import { url } from 'inspector';
 
@@ -41,21 +43,26 @@ const AddArticle = ({ mainContract }) => {
     const client = create("https://ipfs.infura.io:5001/api/v0");
     const StringTitle = JSON.stringify(title);
     const Stringtags = JSON.stringify(tags);
-    const { cid } = await client.add([
-      StringTitle,
-      editorRef.current.getContent(),
-      Stringtags,
-      uploadImage,
-    ]);
+    const question = {
+      tile: StringTitle,
+      body: editorRef.current.getContent(),
+      tags: Stringtags,
+    };
+    const { cid } = await client.add(JSON.stringify(question));
     const articleCID = cid._baseCache.get("z");
     console.log(articleCID);
-
+    console.log(title);
     let articleTags = [];
     for (let i = 0; i < tags.length; i++) {
       articleTags[i] = tags[i]["text"];
     }
     console.log(articleTags);
-    const tx = await mainContract.addArticle(articleCID, articleTags);
+    const tx = await mainContract.addArticle(
+      title,
+      articleCID,
+      uploadImage,
+      articleTags
+    );
     await tx.wait();
   }
 
@@ -76,12 +83,16 @@ const AddArticle = ({ mainContract }) => {
       const url = `https://ipfs.infura.io/ipfs/${added.path}`;
       setUploadedImage(url);
       console.log(url);
+      console.log(uploadImage);
     } catch (error) {
       console.log("Error uploading file: ", error);
     }
   }
   return (
     <>
+        <div className="main">
+    <div className="left-section">
+   
       <div className="question_heading">Add the artical</div>
       <div className="Question_fields">
         <div className="title">
@@ -236,6 +247,128 @@ const AddArticle = ({ mainContract }) => {
           </button>
         </div>
       </div>
+      
+              </div>
+              <div className="right-section">
+          <div className="sidebar-heading">
+            
+            <h2>
+              <img src={staticon} alt />
+              Stats
+            </h2>
+          </div>
+          <div className="grid-container">
+            <div class="grid-item-1">
+              <p>Question</p>
+              <h2>200</h2>
+            </div>
+            <div class="grid-item-2">
+              <p>Best Answers</p>
+
+              <h2>129</h2>
+            </div>
+            <div class="grid-item-3">
+              <p>Answers</p>
+              <h2>56</h2>
+            </div>
+            <div class="grid-item-4">
+              <p>Users</p>
+              <h2>40</h2>
+            </div>
+          </div>
+          <div className="top-members">
+            <div className="heading-members">
+              <h2>
+                <img src={membericon} alt />
+                Top Members
+              </h2>
+            </div>
+            {/* <div className="members">
+              <img className="profile-img" src="https://i.pravatar.cc/200" alt=""/>
+              <div className="text-container">
+                <p className="title-text">Austin May</p>
+                <h2>USer Name</h2>
+                <p className="info-text">Lorem, ipsum dolor.</p>
+                <p className="desc-text">
+                  Lorem, ipsum.
+                </p>
+              </div>
+              
+            
+              
+            </div>
+           */}
+            <div class="cards">
+              <div class="card card-1">
+                <h3 class="card__title">
+                  <img
+                    className="profile-img-1"
+                    src="https://i.pravatar.cc/70"
+                    alt=""
+                  />
+                  Lorem, ipsum dolor.
+                  <p>Lorem ipsum dolor sit.</p>
+                </h3>
+              </div>
+            </div>
+            <div class="cards">
+              <div class="card card-1">
+                <h3 class="card__title">
+                  <img
+                    className="profile-img-1"
+                    src="https://i.pravatar.cc/70"
+                    alt=""
+                  />
+                  Lorem, ipsum dolor.
+                  <p>Lorem ipsum dolor sit.</p>
+                </h3>
+              </div>
+            </div>
+            <div class="cards">
+              <div class="card card-1">
+                <h3 class="card__title">
+                  <img
+                    className="profile-img-1"
+                    src="https://i.pravatar.cc/70"
+                    alt=""
+                  />
+                  Lorem, ipsum dolor.
+                  <p>Lorem ipsum dolor sit.</p>
+                </h3>
+              </div>
+            </div>
+            <div class="cards">
+              <div class="card card-1">
+                <h3 class="card__title">
+                  <img
+                    className="profile-img-1"
+                    src="https://i.pravatar.cc/70"
+                    alt=""
+                  />
+                  Lorem, ipsum dolor.
+                  <p>Lorem ipsum dolor sit.</p>
+                </h3>
+              </div>
+            </div>
+            <div class="cards">
+              <div class="card card-1">
+                <h3 class="card__title">
+                  <img
+                    className="profile-img-1"
+                    src="https://i.pravatar.cc/70"
+                    alt=""
+                  />
+                  Lorem, ipsum dolor.
+                  <p>Lorem ipsum dolor sit.</p>
+                </h3>
+              </div>
+            </div>
+            </div>
+            
+            
+          </div>
+              </div>
+      
     </>
   );
 };

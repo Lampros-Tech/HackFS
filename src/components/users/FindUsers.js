@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useId, useState } from "react";
 import { Link } from "react-router-dom";
+import LoadingAnimTrans from "./general-block/LoadingAnimTrans";
 import "./userstyle/finduser.scss";
 import useravtar from "./userstyle/user-avatar.png";
 
 const FindUsers = ({ account, mainContract }) => {
-  const getProfileData = async (e) => {
-    console.log(mainContract);
-  };
-
   const [src, setsrc] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const getUseres = async () => {
@@ -15,13 +12,16 @@ const FindUsers = ({ account, mainContract }) => {
     // console.log(id_array.length);
     for (let i = 0; i < id_array.length; i++) {
       const name = await mainContract.getUserName(id_array[i]);
-      let score = await mainContract.getUserReputation(id_array[i]);
+      const userInfoStruct = await mainContract.getUserInfo(id_array[i]);
+      let score = userInfoStruct.reputationScore;
       score = parseInt(score._hex, 16);
-      let noQuestions = await mainContract.getUserNoOfQuestions(id_array[i]);
+      let noQuestions = userInfoStruct.noOfQuestions;
       noQuestions = parseInt(noQuestions._hex, 16);
-      let noAnswers = await mainContract.getUserNoOfAnswers(id_array[i]);
+      let noAnswers = userInfoStruct.noOfAnswers;
       noAnswers = parseInt(noAnswers._hex, 16);
-      src.push([name, score, noQuestions, noAnswers, id_array[i]]);
+      const userImage = await mainContract.getUserCID(id_array[i]);
+      console.log("userimage" + userImage);
+      src.push([name, score, noQuestions, noAnswers, id_array[i], userImage]);
     }
     setsrc(src);
     for (let i = 0; i < src.length; i++) {
@@ -33,16 +33,17 @@ const FindUsers = ({ account, mainContract }) => {
     getUseres();
   }, [mainContract]);
 
-  if (isLoading) {
-    return "loading";
-  }
+  const [showProminences, setProminences] = useState(true);
+  const [showNewest, setNewest] = useState(false);
 
-  const user_id = 1;
+  if (isLoading) {
+    return <LoadingAnimTrans />;
+  }
   if (src.length > 0) {
     return (
       <>
         <div className="main-container">
-          <h1>All Users</h1>
+          <h1 className="all-users-title">All Users</h1>
           <div className="all-users-header">
             <div className="search">
               <input
@@ -66,8 +67,24 @@ const FindUsers = ({ account, mainContract }) => {
               </button>
             </div>
             <div className="all-user-filter-btns">
-              <button className="tag-button">Prominences</button>
-              <button className="tag-button">Newest</button>
+              <button
+                onClick={() => {
+                  setProminences(true);
+                  setNewest(false);
+                }}
+                className={showProminences ? `tag-button active` : `tag-button`}
+              >
+                Prominences
+              </button>
+              <button
+                className={showNewest ? `tag-button active` : `tag-button`}
+                onClick={() => {
+                  setProminences(false);
+                  setNewest(true);
+                }}
+              >
+                Newest
+              </button>
             </div>
           </div>
 
@@ -78,7 +95,8 @@ const FindUsers = ({ account, mainContract }) => {
                   <>
                     <div className="all-user-card">
                       <div className="all-user-profile-image">
-                        <img src={useravtar} alt="avatar" />
+                        {console.log(inde[5])}
+                        <img src={inde[5]} alt="avatar" />
                       </div>
                       {console.log(inde[4])}
                       <div className="all-user-profile-right">
