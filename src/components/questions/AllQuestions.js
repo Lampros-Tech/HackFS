@@ -59,12 +59,15 @@ function AllQuestions() {
           <div className="counter">
       
       <button className='plus' onClick={increment}>+</button>
+      <div>
       <h2>{count}</h2>
+      </div>
       <button className='minus' onClick={decrement}>-</button>
     </div>
           
         </div>
-      </div></>
+      </div>
+      </>
 
 
 
