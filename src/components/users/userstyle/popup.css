@@ -1,7 +1,9 @@
 .tox-notifications-container {
   display: none;
 }
-
+h2 {
+  margin: 0;
+}
 .modalBackground {
   width: 100vw;
   height: 100vh;
@@ -14,11 +16,20 @@
   z-index: 111;
 }
 
+img.uploaded_image-editprofile {
+  width: 84px;
+  height: 84px;
+}
+.upload-profile-picture {
+  display: inline-flex;
+  justify-content: center;
+}
 /* .img {
   display: inline-flex;
   float: right;
 } */
 .modalContainer {
+  height: 60%;
   width: 30%;
   height: auto;
   border-radius: 12px;
@@ -27,7 +38,6 @@
   display: flex;
   flex-direction: column;
   padding: 25px;
-
 }
 
 .input-edit-profile {
@@ -102,20 +112,18 @@ svg.svg-close:hover {
 #cancelBtn {
   background-color: crimson;
 }
-.upload-profile-picture
-{
-  width: 30%;
+.upload-profile-picture {
+  width: 100%;
   border: #000 1px solid;
-  height:100px;
+  height: auto;
   text-align: center;
-  overflow:hidden ;
+  overflow: hidden;
 }
-.svg-profile-picture
-{
-  height: 30px;
+.svg-profile-picture {
+  height: 84px;
+  width: 84px;
 }
-.upload-image
-{
-  width:67px;
-  height:95px;
+.upload-image {
+  width: 84px;
+  height: 84px;
 }

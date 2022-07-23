@@ -1,5 +1,6 @@
 import React, { useEffect, useId, useState } from "react";
 import { Link } from "react-router-dom";
+import LoadingAnimation from "./general-block/LoadingAnimation";
 import "./userstyle/finduser.scss";
 import useravtar from "./userstyle/user-avatar.png";
 
@@ -32,14 +33,17 @@ const FindUsers = ({ account, mainContract }) => {
     getUseres();
   }, [mainContract]);
 
+  const [showProminences, setProminences] = useState(true);
+  const [showNewest, setNewest] = useState(false);
+
   if (isLoading) {
-    return "loading";
+    return <LoadingAnimation />;
   }
   if (src.length > 0) {
     return (
       <>
         <div className="main-container">
-          <h1>All Users</h1>
+          <h1 className="all-users-title">All Users</h1>
           <div className="all-users-header">
             <div className="search">
               <input
@@ -63,8 +67,24 @@ const FindUsers = ({ account, mainContract }) => {
               </button>
             </div>
             <div className="all-user-filter-btns">
-              <button className="tag-button">Prominences</button>
-              <button className="tag-button">Newest</button>
+              <button
+                onClick={() => {
+                  setProminences(true);
+                  setNewest(false);
+                }}
+                className={showProminences ? `tag-button active` : `tag-button`}
+              >
+                Prominences
+              </button>
+              <button
+                className={showNewest ? `tag-button active` : `tag-button`}
+                onClick={() => {
+                  setProminences(false);
+                  setNewest(true);
+                }}
+              >
+                Newest
+              </button>
             </div>
           </div>
 

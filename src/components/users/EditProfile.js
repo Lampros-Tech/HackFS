@@ -74,11 +74,9 @@ export default function EditProfile({
       const added = await client.add(file);
       const url = `https://ipfs.infura.io/ipfs/${added.path}`;
       setProfile_image_url(url);
-      // console.log(url);
-      // console.log("hi");
-      // console.log(profile_image_url);
+      console.log(url);
     } catch (error) {
-      // console.log("Error uploading file: ", error);
+      console.log("Error uploading file: ", error);
     }
   }
 
@@ -110,7 +108,11 @@ export default function EditProfile({
             <h3>Profile Image</h3>
             {profile_image ? (
               <>
-                <img src={profile_image_url} className="uploaded_image" />
+                <img
+                  src={profile_image_url}
+                  className="uploaded_image-editprofile"
+                  alt="user_avatar"
+                />
                 <button
                   className="reset-btn"
                   onClick={(e) => {
@@ -127,14 +129,14 @@ export default function EditProfile({
                   profile_picture.current.click();
                 }}
               >
-                <img src={Upload} className="upload-image" />
+                <img src={Upload} className="upload-image" alt="user_avatar" />
               </div>
             )}
             <input
               className="input-edit-profile"
               type="file"
               hidden
-              defaultValue={nameOfUser}
+              // defaultValue={nameOfUser}
               ref={profile_picture}
               onChange={(e) => {
                 UploadImage(e);
