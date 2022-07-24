@@ -2,9 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Questions.scss";
 import { Editor } from "@tinymce/tinymce-react";
 import { WithContext as ReactTags } from "react-tag-input";
-import { create } from "ipfs-http-client";
+// import { create } from "ipfs-http-client";
 import membericon from "./group.png";
 import staticon from "./stats.png";
+
+const ipfsClient = require('ipfs-http-client'); 
 
 const KeyCodes = {
   comma: 188,
@@ -34,7 +36,7 @@ const AddQuestions = ({ mainContract, account }) => {
       console.log(Question);
     }
     //nft storage
-    const client = create("https://ipfs.infura.io:5001/api/v0");
+    const client = ipfsClient.create("https://ipfs.infura.io:5001/api/v0");
     const StringTitle = JSON.stringify(title);
     const Stringtags = JSON.stringify(tags);
     const question = {

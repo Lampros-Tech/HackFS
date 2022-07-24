@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
-import { create } from "ipfs-http-client";
+// import { create } from "ipfs-http-client";
 import Arrow from "./up-arrow";
 import Axios from "axios";
 import membericon from "./group.png";
@@ -9,8 +9,11 @@ import "./singlequestion.scss"
 export default function SingleQuestion({ account, mainContract, id }) {
   const editorRef = useRef(0);
 
+  const ipfsClient = require('ipfs-http-client'); 
+
+
   const submitAnswer = async () => {
-    const client = create("https://ipfs.infura.io:5001/api/v0");
+    const client = ipfsClient.create("https://ipfs.infura.io:5001/api/v0");
     const { cid } = await client.add([editorRef.current.getContent()]);
     // console.log(cid._baseCache.get("z"));
     const answer_cid = cid._baseCache.get("z");

@@ -3,11 +3,13 @@ import "./Questions.scss";
 import { Editor } from "@tinymce/tinymce-react";
 import { WithContext as ReactTags } from "react-tag-input";
 import UploadHeroImage from "./upload-to-cloud";
-import { create, CID } from "ipfs-http-client";
+// import { create, CID } from "ipfs-http-client";
 import { prototype } from "stream";
 import membericon from "./group.png";
 import staticon from "./stats.png";
 import { connect } from "@tableland/sdk";
+
+const ipfsClient = require('ipfs-http-client'); 
 
 // import { url } from 'inspector';
 // import { url } from 'inspector';
@@ -42,7 +44,7 @@ const AddArticle = ({ mainContract }) => {
     console.log(editorRef.current.getContent());
 
     //nft storage
-    const client = create("https://ipfs.infura.io:5001/api/v0");
+    const client = ipfsClient.create("https://ipfs.infura.io:5001/api/v0");
     const StringTitle = JSON.stringify(title);
     const Stringtags = JSON.stringify(tags);
     const question = {
@@ -78,7 +80,7 @@ const AddArticle = ({ mainContract }) => {
   }
 
   // function for uploading hero image
-  const client = create("https://ipfs.infura.io:5001/api/v0");
+  const client = ipfsClient.create("https://ipfs.infura.io:5001/api/v0");
   const [uploadImage, setUploadedImage] = useState("No Image Found");
   const heroImage = useRef(null);
   function reset() {
