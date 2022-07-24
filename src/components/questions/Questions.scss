@@ -384,7 +384,7 @@
   background-color: #ffffff;
   padding-left: 5%;
 }
-.DisplayFlex{
+.DisplayFlex {
   display: flex;
 }
 .right-section {
@@ -394,23 +394,44 @@
   height: auto;
   position: sticky;
   right: 0%;
-<<<<<<< HEAD
-  overflow-x: auto;
- 
-  
-  
- 
-=======
 }
 
 .top-members {
   overflow: scroll !important;
   height: calc(100vh - 296.56px);
-  margin-bottom: 400px ;
->>>>>>> 5722ad64a2e3ba0169fdd7490a3727cd2cfd8b28
+  margin-bottom: 400px;
 }
-.top-members
-{
+.top-members {
   height: calc(100vh - 296px);
-  overflow:scroll ;
+  overflow: scroll;
+}
+
+// button css for upvote down vote
+.vote-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vote-option > button {
+  width: 2rem;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  height: fit-content;
+  color: white;
+  letter-spacing: 0.05em;
+  font-size: 20px;
+  
+  font-family: sans-serif;
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.plus {
+  background-color: #005edd;
+}
+
+.minus {
+  background-color: #ee4266;
 }
