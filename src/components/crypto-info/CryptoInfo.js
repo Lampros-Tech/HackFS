@@ -9,6 +9,7 @@ import Cryptonews from "./Cryptonews";
 import "./Cryptoinfo-style/News.scss";
 import CryptoDisplayArticle from "./CryptoDisplayArticle";
 
+<<<<<<< Updated upstream
 
 const CryptoInfo = ({ account, mainContract }) => {
   const [listOfCoins, setListOfCoins] = useState([]);
@@ -46,6 +47,38 @@ const CryptoInfo = ({ account, mainContract }) => {
 };
 <<<<<<< HEAD
 =======
+=======
+const CryptoInfo = ({id}) => {
+    const style = {
+        height: 600,
+      };
+    const [listOfCoins, setListOfCoins]=useState([]);
+    useEffect(() =>{
+        Axios.get("https://api.coinstats.app/public/v1/coins?skip=0&limit=10").then(
+            (response)=>{
+                setListOfCoins(response.data.coins);            } 
+            );
+         },[]);
+    
+    return(
+        <>
+            
+            <div className="crypto-header">
+            {
+               listOfCoins.map((coin)=>{
+                return <Coin name={coin.name} icon={coin.icon} price={coin.price} symbol={coin.symbol}/>;
+                })
+                }
+            </div>
+            <div className="crypto-main-container">
+            <CryptoArticle/>
+            <Cryptonews/>
+            </div>
+           
+        </>
+    )
+}
+>>>>>>> Stashed changes
 
 
 

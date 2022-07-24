@@ -3,6 +3,7 @@ import axios from "axios";
 import "./Cryptoinfo-style/News.scss";
 
 const Cryptonews = () => {
+<<<<<<< Updated upstream
   const [apiData, setApiData] = useState();
 
   useEffect(() => {
@@ -28,14 +29,21 @@ const Cryptonews = () => {
   console.log(apiData);
   const first7Apidata = apiData?.slice(0, 8);
 
+=======
+>>>>>>> Stashed changes
   return (
     <>
       <div className="crypto-news">
         <div className="rightcolumn">
           <div className="news">
+<<<<<<< Updated upstream
 <<<<<<< HEAD
             <h2>News</h2>
             {first7Apidata?.map((data, _index) => (
+=======
+            <h2>TITLE </h2>
+            {/* {first7ApiData?.map((data, _index) => (
+>>>>>>> Stashed changes
               <div key={_index}>
 =======
             <h2>Popular News</h2>
@@ -46,8 +54,14 @@ const Cryptonews = () => {
                   <p>{data.title}</p>
                 </a>
               </div>
+<<<<<<< Updated upstream
             ))}
             {/* <div className="fakeimg-1">Image</div> */}
+=======
+            ))} */}
+            <div className="fakeimg-1">Image</div>
+            <p>Some text..</p>
+>>>>>>> Stashed changes
           </div>
         </div>
       </div>
