@@ -67,14 +67,14 @@ const AddArticle = ({ mainContract }) => {
     );
     await tx.wait();
 
-    // try {
-    //   const tableland = await connect({ network: "testnet", chain: "polygon-mumbai" });
-    //   const writeRes = await tableland.write(`INSERT INTO ArticleTitle_80001_621 (cid, title) VALUES (${questionCID}, ${StringTitle});`);
-    //   console.log("Data inserted successfully...");
-    // }
-    // catch (e) {
-    //   console.log("Error inserting data into TABLELAND:",String(e));
-    // }
+    try {
+      const tableland = await connect({ network: "testnet", chain: "polygon-mumbai" });
+      const writeRes = await tableland.write(`INSERT INTO ArticleTitle_80001_621 (cid, title) VALUES (${questionCID}, ${StringTitle});`);
+      console.log("Data inserted successfully...");
+    }
+    catch (e) {
+      console.log("Error inserting data into TABLELAND:",String(e));
+    }
   }
 
   // function for uploading hero image
