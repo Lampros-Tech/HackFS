@@ -73,3 +73,40 @@
   justify-content: flex-end;
   cursor: pointer;
 }
+
+.total-likes {
+  // border: 1px solid black;
+  background: #f2f2f2;
+  color: #ee4266;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 3px;
+  min-width: 4rem;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.qa-list {
+  max-width: 70%;
+  margin: 0 1rem;
+  // white-space: nowrap;
+  // overflow: hidden;
+  // border: 1px solid;
+}
+.qa-date {
+  margin-left: auto;
+  display: flex;
+  flex-wrap: nowrap;
+  color: #383b30;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+.summary-qa-list {
+  max-width: 50%;
+  margin: 0 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

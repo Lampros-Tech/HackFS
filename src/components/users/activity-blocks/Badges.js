@@ -12,14 +12,7 @@ export default function Badges() {
           </div>
         </div>
         <div className="card">
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos ipsum
-            dicta fugit totam eum voluptate beatae fuga, quaerat consectetur
-            ipsam magnam rerum velit provident et accusantium sapiente saepe
-            temporibus sed numquam! Iusto dolorem ea perferendis nulla quaerat
-            eius sit dolor, incidunt odit, natus impedit. Suscipit iure nostrum
-            nesciunt. Culpa, odit?
-          </p>
+          <p>Earned Badges</p>
         </div>
       </div>
     </>
