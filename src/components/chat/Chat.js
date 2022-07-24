@@ -1,41 +1,80 @@
 import "./Chat/Chat.scss";
 import pic from "../chat/man.png"
+import { useAccount, useSigner,useConnect, useDisconnect } from 'wagmi'
+import { InjectedConnector } from 'wagmi/connectors/injected'
+import { Client } from '@xmtp/xmtp-js'
+import {useState, useEffect} from 'react'
 const Chat = ({ id }) => {
-  const style = {
-    height: 600,
-  };
-  return (
-    <div style={style} className="chat-App">
-      <div className="header">
-        <div className="left">
-            <div className="actions">
-          <button> New Message</button>
-        </div>
-        </div>
+  const { connect } = useConnect({
+    connector: new InjectedConnector(),
+  })
+  const { data: wallet } = useSigner()
+  const [client,setClient] =useState(null);
 
-        <div className="content">
-          <h2>Title</h2>
-        </div>
+  const getXmtp = async (wallet) => {
+    console.log(wallet);
+    const xmtp = await Client.create(wallet)
+    setClient(xmtp);
+    // const allConversations = await xmtp.conversations.list()
+    // console.log(allConversations);
 
-        <div className="right">
-          <div className="user-bar">
-            <div className="profile-name"> User name</div>
-            <div className="profile-image">
-              <img
-                src={pic}
-                alt=""
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="main">
-        <div className="sidebar-left">Sidebar-Left</div>
-        <div className="content">content</div>
-        <div className="sidebar-right">Sidebar-right</div>
-      </div>
-    </div>
-  );
+  }
+
+  const getConversation = async (xmtp) => {
+
+    const conversations = xmtp.conversations
+    const allConversations = await xmtp.conversations.list()
+    console.log(allConversations);
+    for (const conversation of allConversations) {
+      console.log(`Saying GM to ${conversation.peerAddress}`)
+      await conversation.send('gm')
+    }  
+
+  }
+
+  if(client === null)
+  {
+      return (
+      
+          
+            <>
+              <div className="popup-background">
+                <div className="popup">
+                    <div className="description">
+                      description
+                    </div>
+                    <div>
+                      <button onClick={()=>{getXmtp(wallet)}} className="set-client-btn">
+                            Set client 
+                      </button>
+                    </div>
+                </div>
+              </div>
+            </>
+      
+      )
+    }
+      else
+      {
+        return(
+            <>
+              <div className="chat-app">
+                  <div className="chat-app-left">
+                        <div className="chats-title">
+                          Chats
+                        </div>
+                      <div className="chat1">
+                          <div className="address">
+                            sfbjsgfhsgfhgsgfkslkjlskdjfklshgfkhskjhgfkjshgjhkjshfkjshdfjhsfkjshfkhkhfjkshfksghskjhgfkshgfkjhkjghfskhgksjhghshgkhkhsfgkjghfkjh
+                          </div>
+                      </div>
+                  </div>
+                  <div className="chat-app-right">
+            
+                  </div>
+              </div>
+          </>
+          )
+      }
 };
-
 export default Chat;

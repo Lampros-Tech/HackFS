@@ -77,7 +77,7 @@ const App = () => {
     });
 
     if (chainId !== 4) {
-      alert("Please connect to mumbai network");
+      // alert("Please connect to mumbai network");
     }
     window.ethereum.on("accountsChanged", async function (accounts) {
       setAccount(connected);
