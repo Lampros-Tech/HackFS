@@ -1,6 +1,7 @@
 .crypto-article {
   min-width: 50%;
   height: 70vh;
+
   // min-height: none;
 }
 .leftcolumn {
@@ -19,6 +20,11 @@
   // overflow-y:visible;
   padding-top: 4px;
   display: inline-block;
+  background-color: white;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
 }
 .leftcolumn::-webkit-scrollbar {
   width: 3px;

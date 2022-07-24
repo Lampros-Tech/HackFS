@@ -1,6 +1,7 @@
 .crypto-header {
   overflow: hidden;
   white-space: nowrap;
+  // background-color: black;
 }
 .coin-header {
   display: flex;
@@ -16,7 +17,7 @@
   padding-bottom: 10px;
   background-color: black;
   width: 150%;
-  margin-top: 50px;
+  margin-top: 80px;
 }
 img.imgs {
   height: 40px;
@@ -74,13 +75,14 @@ img.imgs {
     transform: translateX(100%);
   }
   100% {
-    -webkit-transform: translatex(-350%);
-    transform: translateX(-350%);
+    -webkit-transform: translatex(-200%);
+    transform: translateX(-200%);
   }
 }
 .crypto-main-container {
   display: inline-flex;
   flex-direction: row;
-  height: 100vh;
+  height: 95vh;
   width: 100%;
+  // background-color: black;
 }

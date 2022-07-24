@@ -6,15 +6,7 @@ const CryptoDisplayArticle = ({}) => {
     <>
       <div className="article-container">
         <img classname="article-img" src={pic} />
-        <div className="btns-display-article">
-          <div className="article-button1">
-            <button>Like</button>
-          </div>
 
-          <div className="article-button2">
-            <button>Tip</button>
-          </div>
-        </div>
         <div className="article-title">
           <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
         </div>
@@ -29,6 +21,16 @@ const CryptoDisplayArticle = ({}) => {
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum."
           </p>
+        </div>
+
+        <div className="btns-display-article">
+          <div className="article-button1">
+            <button>Like</button>
+          </div>
+
+          <div className="article-button2">
+            <button>Tip</button>
+          </div>
         </div>
       </div>
     </>
