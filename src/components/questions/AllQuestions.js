@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./AllQuestions.scss";
 import { useEffect } from "react";
 import Axios from "axios";
+import { Link } from "react-router-dom";
 
 function AllQuestions({ account, mainContract }) {
   const [count, setCount] = useState(0);
@@ -66,9 +67,15 @@ function AllQuestions({ account, mainContract }) {
               </div>
             </div>
             <div className="DisplayQuestions-right">
-              <h2>{inde[0]}</h2>
+              {console.log(inde[5])}
+              <Link
+                className="all-user-link"
+                to={"/single-question/"}
+                state={{ que_id: inde[5] }}
+              >
+                <h3>{inde[0]}</h3>
+              </Link>{" "}
               <p>{inde[1]}</p>
-
               <div className="DisplayQuestions-askby">
                 <small> </small>
 
@@ -85,7 +92,6 @@ function AllQuestions({ account, mainContract }) {
               {/* <div  className='avatar'>
           <img src='https://i.pravatar.cc/30'alt=''/>
           </div> */}
-
               <div className="counter">
                 <button className="plus" onClick={() => add(inde[5])}>
                   +

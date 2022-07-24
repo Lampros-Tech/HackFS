@@ -238,7 +238,7 @@ const App = () => {
                 }
               />
               <Route
-                path="/single-question/:id"
+                path="/single-question/"
                 element={
                   <SingleQuestion
                     id={1}

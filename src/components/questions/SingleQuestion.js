@@ -6,15 +6,19 @@ import Axios from "axios";
 import membericon from "./group.png";
 import staticon from "./stats.png";
 import "./singlequestion.scss";
+import { useLocation } from "react-router";
+
 export default function SingleQuestion({ account, mainContract, id }) {
   const editorRef = useRef(0);
-
+  const location = useLocation();
+  const id_q = location.state.que_id;
+  console.log(id_q);
   const submitAnswer = async () => {
     const client = create("https://ipfs.infura.io:5001/api/v0");
     const { cid } = await client.add([editorRef.current.getContent()]);
     // console.log(cid._baseCache.get("z"));
     const answer_cid = cid._baseCache.get("z");
-    const question = await mainContract.getQuestion(1);
+    const question = await mainContract.getQuestion(id_q);
     const tx = await mainContract.addAnswer(question.q_id, answer_cid);
     await tx.wait();
   };
@@ -32,7 +36,7 @@ export default function SingleQuestion({ account, mainContract, id }) {
   const [ansLen, setAnsLen] = useState("");
 
   const getQuestionAndAnswer = async (e) => {
-    const question = await mainContract.getQuestion(1);
+    const question = await mainContract.getQuestion(id_q);
     setTitle(question.q_title);
     // console.log(question.q_cid);
     const url = "https://ipfs.io/ipfs/" + question.q_cid;
