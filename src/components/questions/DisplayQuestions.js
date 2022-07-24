@@ -5,7 +5,11 @@ import AllQuestions from "./AllQuestions";
 
 import membericon from "./group.png";
 import staticon from "./stats.png";
+<<<<<<< HEAD
 import { useEffect } from "react";
+=======
+import Sidebar from "./Sidebar";
+>>>>>>> 1a070a017e35be21d44a314d544985b765070f12
 
 const DisplayQuestions = ({ account, mainContract }) => {
   const [isLoading, setLoading] = React.useState(true);
@@ -72,6 +76,7 @@ const DisplayQuestions = ({ account, mainContract }) => {
           </div> */}
         </div>
 
+<<<<<<< HEAD
         <div className="right-section">
           <div className="sidebar-heading">
             <h2>
@@ -187,6 +192,9 @@ const DisplayQuestions = ({ account, mainContract }) => {
             </div>
           </div>
         </div>
+=======
+        <Sidebar />
+>>>>>>> 1a070a017e35be21d44a314d544985b765070f12
       </div>
     </>
   );

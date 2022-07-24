@@ -384,7 +384,7 @@
   background-color: #ffffff;
   padding-left: 5%;
 }
-.DisplayFlex{
+.DisplayFlex {
   display: flex;
 }
 .right-section {
@@ -399,10 +399,43 @@
 .top-members {
   overflow: scroll !important;
   height: calc(100vh - 296.56px);
+<<<<<<< HEAD
   margin-bottom: 400px ;
+=======
+  margin-bottom: 400px;
+>>>>>>> 1a070a017e35be21d44a314d544985b765070f12
 }
-.top-members
-{
+.top-members {
   height: calc(100vh - 296px);
-  overflow:scroll ;
+  overflow: scroll;
+}
+
+// button css for upvote down vote
+.vote-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vote-option > button {
+  width: 2rem;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  height: fit-content;
+  color: white;
+  letter-spacing: 0.05em;
+  font-size: 20px;
+  
+  font-family: sans-serif;
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.plus {
+  background-color: #005edd;
+}
+
+.minus {
+  background-color: #ee4266;
 }
