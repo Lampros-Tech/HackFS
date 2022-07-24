@@ -2,6 +2,7 @@ import React from "react";
 import "../general-block/userprofile.scss";
 import { useEffect } from "react";
 import LoadingAnimation from "./LoadingAnimation";
+import i1 from "../100_USER_BADGE.png";
 
 export default function UserProfile({ mainContract, account }) {
   // const [show, setShow] = useState(true);
@@ -134,7 +135,9 @@ export default function UserProfile({ mainContract, account }) {
             <div className="card">
               <div className="card-inner-div">
                 <div className="card-inner-content">
-                  <p></p>
+                  <p>
+                    <img src={i1} width={50} height={50} alt="Badge1"></img>
+                  </p>
                 </div>
               </div>
             </div>
@@ -176,7 +179,7 @@ export default function UserProfile({ mainContract, account }) {
               </div>
             </div>
           </div>
-          <div className="post-block">
+          {/* <div className="post-block">
             <div className="card-title">
               <div className="title">
                 <h3>Posts</h3>
@@ -215,7 +218,7 @@ export default function UserProfile({ mainContract, account }) {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
     </>

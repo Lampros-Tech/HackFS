@@ -5,8 +5,27 @@ import AllQuestions from "./AllQuestions";
 
 import membericon from "./group.png";
 import staticon from "./stats.png";
+import { useEffect } from "react";
 
-const DisplayQuestions = () => {
+const DisplayQuestions = ({ account, mainContract }) => {
+  const [isLoading, setLoading] = React.useState(true);
+  const [num, setNum] = React.useState("");
+
+  const displayQuestions = async (e) => {
+    let num = await mainContract.q_id();
+    num = parseInt(num._hex, 16);
+    console.log(num);
+    setNum(num);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    displayQuestions();
+  }, [mainContract]);
+
+  if (isLoading) {
+    return "loading";
+  }
   return (
     <>
       <div className="main">
@@ -16,7 +35,7 @@ const DisplayQuestions = () => {
             <button>Ask Question</button>
           </div>
           <div className="main-dec">
-            <p> 10 Questions </p>
+            <p> {num} Questions </p>
             <div className="main-filter">
               <div className="main-tabs">
                 <div className="main-tab">
@@ -36,16 +55,10 @@ const DisplayQuestions = () => {
           </div>
           <div className="questions">
             <div className="question">
-              <AllQuestions />
-              <AllQuestions />
-              <AllQuestions />
-              <AllQuestions />
-              <AllQuestions />
-              <AllQuestions />
-              <AllQuestions />
+              <AllQuestions account={account} mainContract={mainContract} />
             </div>
           </div>
-          <div class="pagination">
+          {/* <div class="pagination">
             <a href="#">previous</a>
             <a href="#" className="active">
               1
@@ -56,13 +69,11 @@ const DisplayQuestions = () => {
             <a href="#">5</a>
             <a href="#">6</a>
             <a href="#">Next</a>
-          </div>
+          </div> */}
         </div>
-        
 
         <div className="right-section">
           <div className="sidebar-heading">
-            
             <h2>
               <img src={staticon} alt />
               Stats
@@ -174,8 +185,6 @@ const DisplayQuestions = () => {
                 </h3>
               </div>
             </div>
-            
-            
           </div>
         </div>
       </div>

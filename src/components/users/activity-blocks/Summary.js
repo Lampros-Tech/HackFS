@@ -1,5 +1,5 @@
 import React from "react";
-
+import i1 from "../100_USER_BADGE.png";
 import "../userstyle/summary.scss";
 
 export default function Summary() {
@@ -80,23 +80,10 @@ export default function Summary() {
           <div className="title">
             <h3>Badges</h3>
           </div>
-          {/* <span className="view-all-rpl-btn">view all badges</span> */}
         </div>
         <div className="card">
           <div className="logged-in-scroll-card">
-            {/* run this code to create tags list  */}
-            {/* . */}
-            {/* . */}
-            {/* . */}
-
-            <div className="div-creator">
-              <div className="inside-div-creator">
-                <div className="tag-name">tag</div>
-                <div className="tag-score">
-                  <div className="tag-score-digit"> Tag</div> Score
-                </div>
-              </div>
-            </div>
+            <img src={i1} width={50} height={50} alt="Badge1"></img>
 
             {/* till here */}
           </div>
