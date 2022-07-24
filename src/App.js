@@ -39,8 +39,8 @@ import "./App.scss";
 import Stack from "./artifacts/contracts/Stack.sol/Stack.json";
 import customToken from "./artifacts/contracts/customToken.sol/customToken.json";
 
-const StackAddress = "0xC28073c8A4f780533CE7490F4a6ea5C08eE834E5";
-const customTokenAddress = "0xE21b5e2f12f6396EcD355574134606202f3f859B";
+const StackAddress = "0x9cF0B7cCCa7B21Fd9304CbaeCDBaa67eb49fC688";
+const customTokenAddress = "0x7B1eA7dFAc0ac660C6e2e2E24291A0a6Ef804825";
 
 const App = () => {
   const { activate, deactivate } = useWeb3React();
@@ -76,7 +76,7 @@ const App = () => {
       window.location.reload();
     });
 
-    if (chainId !== 80001) {
+    if (chainId !== 4) {
       alert("Please connect to mumbai network");
     }
     window.ethereum.on("accountsChanged", async function (accounts) {

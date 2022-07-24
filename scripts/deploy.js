@@ -1,15 +1,15 @@
 const hre = require("hardhat");
 
 async function main() {
-  const mainContract = await hre.ethers.getContractFactory("Stack");
-  const stack = await mainContract.deploy();
+  // const mainContract = await hre.ethers.getContractFactory("Stack");
+  // const stack = await mainContract.deploy();
 
-  await stack.deployed();
+  // await stack.deployed();
 
-  console.log("MainContract deployed to:", stack.address); // 0x59841E54b680B6844BcCac30eaB05a39Fb9219Ad
+  // console.log("MainContract deployed to:", stack.address); // 0x59841E54b680B6844BcCac30eaB05a39Fb9219Ad
 
   const customtoken = await hre.ethers.getContractFactory("customToken");
-  const custom = await customtoken.deploy(1000, stack.address);
+  const custom = await customtoken.deploy(1000);
 
   await custom.deployed();
 
