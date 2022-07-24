@@ -165,68 +165,6 @@ export default function UserProfile({ mainContract, account }) {
                   </div>
                 </div>
 
-                <div className="div-creator">
-                  <div className="inside-div-creator">
-                    <div className="tag-name">Web development in React</div>
-                    <div className="tag-score">
-                      <div className="tag-score-digit"> Tag</div> Score
-                    </div>
-                  </div>
-                </div>
-
-                <div className="div-creator">
-                  <div className="inside-div-creator">
-                    <div className="tag-name">{tag}</div>
-                    <div className="tag-score">
-                      <div className="tag-score-digit"> Tag</div> Score
-                    </div>
-                  </div>
-                </div>
-
-                <div className="div-creator">
-                  <div className="inside-div-creator">
-                    <div className="tag-name">Web development in React</div>
-                    <div className="tag-score">
-                      <div className="tag-score-digit"> Tag</div> Score
-                    </div>
-                  </div>
-                </div>
-
-                <div className="div-creator">
-                  <div className="inside-div-creator">
-                    <div className="tag-name">{tag}</div>
-                    <div className="tag-score">
-                      <div className="tag-score-digit"> Tag</div> Score
-                    </div>
-                  </div>
-                </div>
-
-                <div className="div-creator">
-                  <div className="inside-div-creator">
-                    <div className="tag-name">Web development in React</div>
-                    <div className="tag-score">
-                      <div className="tag-score-digit"> Tag</div> Score
-                    </div>
-                  </div>
-                </div>
-
-                <div className="div-creator">
-                  <div className="inside-div-creator">
-                    <div className="tag-name">{tag}</div>
-                    <div className="tag-score">
-                      <div className="tag-score-digit"> Tag</div> Score
-                    </div>
-                  </div>
-                </div>
-
-                <div className="div-creator">
-                  <div className="inside-div-creator">
-                    <div className="tag-name">Web development in React</div>
-                    <div className="tag-score">
-                      <div className="tag-score-digit"> Tag</div> Score
-                    </div>
-                  </div>
-                </div>
                 {/* . */}
                 {/* . */}
                 {/* . */}

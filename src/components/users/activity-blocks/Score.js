@@ -16,14 +16,16 @@ export default function Score() {
           </div>
         </div>
         <div className="card">
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos ipsum
-            dicta fugit totam eum voluptate beatae fuga, quaerat consectetur
-            ipsam magnam rerum velit provident et accusantium sapiente saepe
-            temporibus sed numquam! Iusto dolorem ea perferendis nulla quaerat
-            eius sit dolor, incidunt odit, natus impedit. Suscipit iure nostrum
-            nesciunt. Culpa, odit?
-          </p>
+          <div className="div-creator">
+            <div className="inside-div-creator">
+              <div className="total-likes">Score</div>
+              <div className="qa-list">
+                Who's the person with more answers than Jon Skeet? When will
+                they catch him in rep terms?
+              </div>
+              <div className="qa-date">24 July 2022</div>
+            </div>
+          </div>
         </div>
       </div>
     </>

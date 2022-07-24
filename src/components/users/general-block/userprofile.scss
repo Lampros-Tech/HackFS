@@ -190,9 +190,7 @@
   overflow-x: hidden;
   overflow-y: scroll;
   padding: 0.2rem 0%;
-
 }
-
 
 .div-creator {
   border-bottom: 1px solid #f2f2f2;
@@ -205,8 +203,7 @@
 
 .inside-div-creator {
   display: flex;
-  justify-content: space-between;
-  padding: 0% 1rem;
+  padding: 0% 0.6rem;
 }
 
 .tag-name {
@@ -224,6 +221,7 @@
 }
 
 .tag-score {
+  margin-left: auto;
   display: flex;
   flex-wrap: nowrap;
   color: #383b30;

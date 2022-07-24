@@ -3,6 +3,11 @@ import React from "react";
 import "../userstyle/summary.scss";
 
 export default function Summary() {
+  // var list = `Who's the person with more answers than Jon Skeet? When will
+  //               they catch him in rep terms? Who's the person with more answers
+  //               than Jon Skeet? When will they catch him in rep terms?`;
+
+  // var resultList = list.slice(0, 70) + "...";
   return (
     <div className="summary-right-block">
       <div className="answers-block">
@@ -25,10 +30,12 @@ export default function Summary() {
 
             <div className="div-creator">
               <div className="inside-div-creator">
-                <div className="tag-name">tag</div>
-                <div className="tag-score">
-                  <div className="tag-score-digit"> Tag</div> Score
+                <div className="total-likes">Likes</div>
+                <div className="summary-qa-list">
+                  Who's the person with more answers than Jon Skeet? When will
+                  they catch him in rep terms?
                 </div>
+                <div className="qa-date">24 July'22</div>
               </div>
             </div>
 
@@ -56,13 +63,14 @@ export default function Summary() {
 
             <div className="div-creator">
               <div className="inside-div-creator">
-                <div className="tag-name">tag</div>
-                <div className="tag-score">
-                  <div className="tag-score-digit"> Tag</div> Score
+                <div className="total-likes">Likes</div>
+                <div className="summary-qa-list">
+                  Who's the person with more answers than Jon Skeet? When will
+                  they catch him in rep terms?
                 </div>
+                <div className="qa-date">24 July'22</div>
               </div>
             </div>
-
             {/* till here */}
           </div>
         </div>
@@ -172,10 +180,12 @@ export default function Summary() {
 
             <div className="div-creator">
               <div className="inside-div-creator">
-                <div className="tag-name">tag</div>
-                <div className="tag-score">
-                  <div className="tag-score-digit"> Tag</div> Score
+                <div className="total-likes">Likes</div>
+                <div className="summary-qa-list">
+                  Who's the person with more answers than Jon Skeet? When will
+                  they catch him in rep terms?
                 </div>
+                <div className="qa-date">24 July'22</div>
               </div>
             </div>
 

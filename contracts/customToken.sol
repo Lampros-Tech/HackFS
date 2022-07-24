@@ -11,16 +11,15 @@ contract customToken is ERC20 {
     uint256 tokenPrice = 0.00001 ether;
     uint256 withdrawEligibleScore = 10000;
     address maincontract;
-    Stack s = Stack(maincontract);
 
-    constructor(uint256 _initialSupply, address mainContract)
-        ERC20("ASK2WEB3 Token", "ASK")
-    {
+    constructor(uint256 _initialSupply) ERC20("ASK2WEB3 Token", "ASK") {
         owner = payable(msg.sender);
         _mint(owner, _initialSupply);
         initialSupply = _initialSupply;
-        mainContract = maincontract;
+        // maincontract = _mainContract;
     }
+
+    Stack s = Stack(0x9cF0B7cCCa7B21Fd9304CbaeCDBaa67eb49fC688);
 
     function decimals() public pure override returns (uint8) {
         return 0;
