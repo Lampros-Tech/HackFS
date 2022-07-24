@@ -48,20 +48,34 @@ const CryptoArticle = ({ account, mainContract }) => {
         <div className="crypto-article">
           <div className="leftcolumn">
             <div className="article">
-              <h2>Bitcoin</h2>
+              <h2>Articles</h2>
               <div>
                 {src.map((inde) => {
                   return (
                     <div className="fakeimg">
                       <img className="crypto-img" src={inde} />
                       <p>title</p>
-                      <button id="readmore" onClick={navigateToDisplay}>
+                      <button id="read-more" onClick={navigateToDisplay}>
                         Read More
                       </button>
                     </div>
                   );
                 })}
               </div>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. A
+                illum enim incidunt, corporis atque quod maiores ex ipsum
+                voluptate consequatur ducimus. A atque dolorem in magni
+                reiciendis commodi similique alias quo beatae ex soluta fuga eos
+                possimus, sit rerum quis. Quisquam quam ducimus libero pariatur.
+                Officia odio alias similique. Quis at debitis ipsum deserunt
+                sequi? Beatae exercitationem eius, vitae autem vero harum
+                veritatis quas qui ab fuga delectus consequatur, maxime
+                doloremque, est repudiandae fugiat iure? Ipsa itaque recusandae
+                blanditiis. Hic excepturi labore, soluta laborum animi fuga
+                numquam repellendus facilis sunt ratione sed sequi, in iure
+                nostrum dolorum saepe voluptatem voluptates!
+              </p>
             </div>
           </div>
         </div>

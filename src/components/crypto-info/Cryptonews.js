@@ -32,13 +32,7 @@ const Cryptonews = () => {
     <>
       <div className="crypto-news">
         <div className="rightcolumn">
-          <div className="news">
-            <h2>News</h2>
-            {/* {first7Apidata?.map((data, _index) => (
-            <h2>TITLE </h2>
-            {/* {first7ApiData?.map((data, _index) => (
-              <div key={_index}>
-
+          <div className="article">
             <h2>Popular News</h2>
             {first7Apidata?.map((data, _index) => (
               <div className="apidata" key={_index}>
@@ -47,7 +41,6 @@ const Cryptonews = () => {
                 </a>
               </div>
             ))}
-            <div className="fakeimg-1">Image</div> */}
           </div>
         </div>
       </div>

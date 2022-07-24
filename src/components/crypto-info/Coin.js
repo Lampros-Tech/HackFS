@@ -13,11 +13,11 @@ function Coin({ name, icon, price, symbol }) {
         </div>
 
         <div className="price">
-          <h3>{price}</h3>
+          <h3 className="coin-h3-style">{price}</h3>
         </div>
 
         <div className="symbol">
-          <h3>{symbol}</h3>
+          <h3 className="coin-h3-style">{symbol}</h3>
         </div>
       </div>
     </>
