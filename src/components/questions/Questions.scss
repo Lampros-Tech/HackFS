@@ -412,6 +412,9 @@
   background-color: #ffffff;
   padding-left: 5%;
 }
+.DisplayFlex{
+  display: flex;
+}
 .right-section {
   padding: 5px;
   width: 30%;
@@ -419,8 +422,14 @@
   height: auto;
   position: fixed;
   right: 0%;
+  overflow-x: auto;
  
   
   
  
+}
+.top-members
+{
+  height: calc(100vh - 296px);
+  overflow:scroll ;
 }
