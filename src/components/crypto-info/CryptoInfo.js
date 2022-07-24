@@ -9,7 +9,6 @@ import Cryptonews from "./Cryptonews";
 import "./Cryptoinfo-style/News.scss";
 import CryptoDisplayArticle from "./CryptoDisplayArticle";
 
-
 const CryptoInfo = ({ account, mainContract }) => {
   const [listOfCoins, setListOfCoins] = useState([]);
   useEffect(() => {
@@ -44,8 +43,5 @@ const CryptoInfo = ({ account, mainContract }) => {
     </>
   );
 };
-
-
-
 
 export default CryptoInfo;

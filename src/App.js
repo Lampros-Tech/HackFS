@@ -76,8 +76,8 @@ const App = () => {
       window.location.reload();
     });
 
-    if (chainId !== 4) {
-      alert("Please connect to rinkeby network");
+    if (chainId !== 80001) {
+      alert("Please connect to mumbai network");
     }
     window.ethereum.on("accountsChanged", async function (accounts) {
       setAccount(connected);
