@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import useravtar from "./man.png";
 import SingleUserProfile from "./general-block/SingleUserProfile";
 import SingleUserActivity from "./general-block/SingleUserActivity";
+import LoadingAnimation from "./general-block/LoadingAnimation";
 
 import "./userstyle/profile.scss";
 import "./general-block/userprofile.scss";
@@ -46,7 +47,7 @@ const SingleUser = ({ mainContract }) => {
     // setLoading(false);
   }, [mainContract]);
   if (isLoading) {
-    return "loading";
+    return <LoadingAnimation />;
   }
 
   return (
@@ -57,6 +58,7 @@ const SingleUser = ({ mainContract }) => {
           <div className="show-at-bottom">
             <div className="first-block">
               <img
+                className="user-profile-image"
                 src={imageUrl}
                 alt="user avatar"
                 height="84px"

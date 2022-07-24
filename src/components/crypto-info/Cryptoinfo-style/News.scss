@@ -1,13 +1,13 @@
 .rightcolumn {
   //   float: left;
-  width: 60%;
+  width: 50%;
   // border: 1px solid black;
   margin-top: 50px;
   margin-bottom: 20px;
   margin-left: 20%;
   padding-left: 30px;
   padding-right: 30px;
-  height: 70%;
+  height: 70vh;
   border-left: none;
   position: sticky;
   padding-top: 4px;
@@ -19,7 +19,7 @@
 }
 .crypto-news {
   min-width: 50%;
-  height: 100vh;
+  height: 70vh;
   position: sticky;
 }
 .news {
@@ -37,7 +37,7 @@
   background-color: white;
   padding-right: 5px;
   padding-left: 10px;
-  padding-top: 4px;
+  padding-top: none;
   color: blue;
 }
 p:hover {

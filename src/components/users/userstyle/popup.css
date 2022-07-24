@@ -1,16 +1,19 @@
 .tox-notifications-container {
   display: none;
 }
+
 h1 {
   font-size: 1rem;
   font-weight: 700;
   margin: 0;
 }
+
 h3 {
   margin: 0.4rem 0%;
   font-size: 0.8rem;
   font-weight: 700;
 }
+
 .modalBackground {
   width: 100vw;
   height: 100vh;
@@ -27,10 +30,12 @@ img.uploaded_image-editprofile {
   width: 84px;
   height: 84px;
 }
+
 .upload-profile-picture {
   display: inline-flex;
   justify-content: center;
 }
+
 /* .img {
   display: inline-flex;
   float: right;
@@ -61,9 +66,11 @@ img.uploaded_image-editprofile {
   height: auto;
   padding: 2% 2%;
 }
+
 textarea.input-edit-profile-about-me {
   resize: none;
 }
+
 .modalContainer .title {
   display: inline-flex;
   text-align: center;
@@ -72,11 +79,13 @@ textarea.input-edit-profile-about-me {
   align-items: center;
   color: #808080;
 }
+
 svg.svg-close {
   height: 1rem;
   width: 1rem;
   cursor: pointer;
 }
+
 svg.svg-close:hover {
   fill: red;
   transform: rotate(180deg);
@@ -95,6 +104,21 @@ svg.svg-close:hover {
   font-size: 25px;
   cursor: pointer;
 } */
+button.reset-btn {
+  padding: 0.2rem 0.4rem;
+  margin: 0 1rem;
+  border: none;
+  font-size: 0.8rem;
+  background: #005edd;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+button.reset-btn:hover {
+  background: #f6ae2d;
+  color: #ffffff;
+}
 
 .modalContainer .footer {
   flex: 20%;
@@ -104,20 +128,21 @@ svg.svg-close:hover {
 }
 
 .modalContainer .footer button {
-  width: 4.5rem;
-  height: 2.5rem;
+  width: 4rem;
+  height: 1.5rem;
   margin: 0.5rem;
   border: none;
-  background-color: #64d488;
+  background-color: #f6ae2d;
   color: white;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 0.7rem;
   cursor: pointer;
 }
 
 #cancelBtn {
-  background-color: crimson;
+  background-color: #ee4266;
 }
+
 .upload-profile-picture {
   width: 100%;
   border: 2px solid #eee;
@@ -126,10 +151,12 @@ svg.svg-close:hover {
   text-align: center;
   overflow: hidden;
 }
+
 .svg-profile-picture {
   height: 84px;
   width: 84px;
 }
+
 .upload-image {
   width: 84px;
   height: 84px;

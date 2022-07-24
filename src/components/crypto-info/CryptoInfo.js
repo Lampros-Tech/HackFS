@@ -7,6 +7,8 @@ import CryptoArticle from "./CryptoArticle";
 import "./Cryptoinfo-style/Article.scss";
 import Cryptonews from "./Cryptonews";
 import "./Cryptoinfo-style/News.scss";
+import CryptoDisplayArticle from "./CryptoDisplayArticle";
+
 
 const CryptoInfo = ({ account, mainContract }) => {
   const [listOfCoins, setListOfCoins] = useState([]);
@@ -37,8 +39,16 @@ const CryptoInfo = ({ account, mainContract }) => {
       <div className="crypto-main-container">
         <CryptoArticle mainContract={mainContract} account={account} />
         <Cryptonews />
+        <CryptoDisplayArticle />
       </div>
     </>
   );
 };
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> 2ea92c2347de88bcd614ec69dc3d9e52f84833f6
 export default CryptoInfo;

@@ -10,6 +10,7 @@
   display: flex;
   justify-content: center;
   z-index: 0;
+  margin-top: 50px;
 }
 
 .background-opacity {
@@ -29,11 +30,13 @@
   background: rgb(39, 41, 48, 0.7);
   z-index: -1;
 }
+
 .inside-cover-image {
   width: 70%;
   align-content: center;
   position: relative;
 }
+
 // .show-at-bottom {
 //   display: grid;
 // }
@@ -70,21 +73,25 @@
     height: 84px;
     padding: 2px;
   }
+
   .user-info {
     flex-direction: column;
     margin-left: 2%;
     color: #ffffff;
     width: 50%;
+
     h1 {
       margin: 1.5% 0;
       font-size: 20px;
     }
+
     h3 {
       margin: 1% 0;
       font-size: 15px;
       font-weight: normal;
     }
   }
+
   .btns {
     width: auto;
     margin-left: auto;
@@ -117,6 +124,7 @@
   // margin-top: 2%;
   margin: 0.25%;
   padding: 5px 0;
+
   .nav-user-bar {
     background: #ffffff;
     padding: 20px 0px;
@@ -132,14 +140,17 @@
       padding: 10px 10px;
     }
   }
+
   .active {
     background: #005edd;
     color: white;
   }
+
   .active:hover {
     background: #f6ae2d;
     color: white;
   }
+
   button {
     margin: 0.25%;
     padding: 5px 10px;
@@ -150,6 +161,7 @@
     cursor: pointer;
     outline: none;
   }
+
   button:hover {
     background: #f6ae2d;
     color: #ffffff;
@@ -168,17 +180,21 @@
   // border-left: 2px solid #005edd;
   border-radius: 0%;
 }
+
 svg.svg-for-mail {
   margin: 0px 5px 0px 0px;
 }
+
 @media only screen and (min-width: 1200px) {
   .inside-cover-image {
     width: 1170px;
   }
+
   .main-container {
     width: 1170px;
   }
 }
+
 @media only screen and (max-width: 768px) {
   .inside-cover-image {
     width: 100%;

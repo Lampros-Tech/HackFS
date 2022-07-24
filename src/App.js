@@ -30,6 +30,7 @@ import FindUsers from "./components/users/FindUsers";
 import SingleUser from "./components/users/SingleUser";
 import Login from "./components/login/Login";
 import ByToken from "./components/users/token/ByToken";
+import CryptoDisplayArticle from "./components/crypto-info/CryptoDisplayArticle";
 
 /********************* CSS CLASS ********************/
 import "./index.css";
@@ -295,6 +296,18 @@ const App = () => {
                 path="/buytoken"
                 element={
                   <ByToken
+                    tokenContract={tokenContract}
+                    mainContract={mainContract}
+                    web3Handler={web3Handler}
+                    account={account}
+                  />
+                }
+              />
+
+              <Route
+                path="/displayarticle"
+                element={
+                  <CryptoDisplayArticle
                     tokenContract={tokenContract}
                     mainContract={mainContract}
                     web3Handler={web3Handler}

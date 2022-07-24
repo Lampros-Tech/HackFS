@@ -28,6 +28,7 @@
       cursor: pointer;
       outline: none;
     }
+
     // button:nth-of-type(1) {
     //   // border-right: 1px solid #838c95;
     // }
@@ -36,18 +37,23 @@
       background: #f6ae2d;
       color: #ffffff;
     }
+
     button.active {
       background: #005edd;
       color: #ffffff;
     }
   }
 }
+
 h1.all-users-title {
   color: #005edd;
+  margin-top: 100px;
 }
+
 a.all-user-link:-webkit-any-link {
   text-decoration: none;
 }
+
 .search {
   max-width: calc(var(calc(50rem / 12)) * 3) !important;
   position: relative;
@@ -78,11 +84,13 @@ a.all-user-link:-webkit-any-link {
   cursor: pointer;
   font-size: 0.5rem;
 }
+
 svg.search-svg {
   fill: #fff;
   height: 1.5rem;
   width: 1.5rem;
 }
+
 .all-user-cards {
   // max-width: 1200px;
   padding-top: 1rem;
@@ -103,12 +111,15 @@ svg.search-svg {
   justify-content: flex-start;
   background-color: #ffffff;
 }
+
 svg.all-user-svg {
   height: 0.8rem;
   width: 0.8rem;
   margin-right: 5%;
 }
+
 .all-user-profile-image {
+
   // width: 30%;
   img {
     border-radius: 100px;
@@ -118,15 +129,18 @@ svg.all-user-svg {
     width: 4rem;
   }
 }
+
 .all-user-profile-right {
   padding-left: 1rem;
   width: 90%;
+
   h3 {
     font-weight: 700;
     color: #005edd;
     padding: 0%;
     margin: 0%;
   }
+
   h4 {
     font-weight: 600;
     padding: 5% 0%;
@@ -138,6 +152,7 @@ svg.all-user-svg {
     font-size: 0.8rem;
   }
 }
+
 // @media only screen and (min-width: 1200px) {
 //   .all-user-cards {
 //     grid-template-columns: repeat(4, 1fr);

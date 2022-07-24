@@ -8,10 +8,10 @@ const Cryptonews = () => {
   useEffect(() => {
     const options = {
       method: "GET",
-      url: "https://crypto-news-live3.p.rapidapi.com/news",
+      url: "https://crypto-news-live8.p.rapidapi.com/news/bitcoinnews",
       headers: {
         "X-RapidAPI-Key": "fbb16cf004msh1af9515587b6182p19a6c2jsn2ae4a5a1e3b6",
-        "X-RapidAPI-Host": "crypto-news-live3.p.rapidapi.com",
+        "X-RapidAPI-Host": "crypto-news-live8.p.rapidapi.com",
       },
     };
     axios
@@ -26,16 +26,22 @@ const Cryptonews = () => {
   }, []);
 
   console.log(apiData);
-  const first7Apidata = apiData?.slice(0, 11);
+  const first7Apidata = apiData?.slice(0, 8);
 
   return (
     <>
       <div className="crypto-news">
         <div className="rightcolumn">
           <div className="news">
+<<<<<<< HEAD
             <h2>News</h2>
             {first7Apidata?.map((data, _index) => (
               <div key={_index}>
+=======
+            <h2>Popular News</h2>
+            {first7Apidata?.map((data, _index) => (
+              <div className="apidata" key={_index}>
+>>>>>>> 2ea92c2347de88bcd614ec69dc3d9e52f84833f6
                 <a href={data.url}>
                   <p>{data.title}</p>
                 </a>
