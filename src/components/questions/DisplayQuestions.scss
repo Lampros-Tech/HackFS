@@ -22,7 +22,7 @@
   height: auto;
   position: fixed;
   right: 0%;
- 
+  overflow: auto;
   
   
  
@@ -260,7 +260,7 @@
   font-size: 30px;
 }
 .profile-img-1{
-  float: left;
+  
  border: 3px solid #2196F3;
   border-radius: 50%;
 }
@@ -271,6 +271,7 @@
 .cards{
   background-color: #f2f2f2;
   border-radius: none;
+  overflow-x: auto;
 }
 
 

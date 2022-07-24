@@ -5,7 +5,6 @@ import { WithContext as ReactTags } from "react-tag-input";
 import { create } from "ipfs-http-client";
 import membericon from "./group.png";
 import staticon from "./stats.png";
-import { connect } from "@tableland/sdk";
 
 const KeyCodes = {
   comma: 188,
@@ -55,15 +54,6 @@ const AddQuestions = ({ mainContract, account }) => {
     console.log(title);
     const tx = await mainContract.addQuestion(title, questionCID, questionTags);
     await tx.wait();
-
-    // try {
-    //   const tableland = await connect({ network: "testnet", chain: "polygon-mumbai" });
-    //   const writeRes = await tableland.write(`INSERT INTO QuestionTitle_80001_620 (cid, title) VALUES (${questionCID}, ${StringTitle});`);
-    //   console.log("Data inserted successfully...");
-    // }
-    // catch (e) {
-    //   console.log("Error inserting data into TABLELAND:",String(e));
-    // }
   }
 
   const handleTagClick = (index) => {
@@ -93,7 +83,8 @@ const AddQuestions = ({ mainContract, account }) => {
             <div className="title">
               <div className="title-heading">Title:</div>
               <div className="title_instruction">
-                Be spacific and Imagine you are asking question to another person.
+                Be spacific and Imagine you are asking question to another
+                person.
               </div>
               <div className="title_textfield">
                 <input
@@ -109,7 +100,8 @@ const AddQuestions = ({ mainContract, account }) => {
             <div className="body">
               <div className="body_title">Body:</div>
               <div className="body_instruction">
-                Include all information someone would need to aswer the question.
+                Include all information someone would need to aswer the
+                question.
               </div>
               <div className="body_textfield">
                 <input
@@ -177,15 +169,15 @@ const AddQuestions = ({ mainContract, account }) => {
                     content_style:
                       "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
                   }}
-                // tinymce.init({
-                //     selector: 'textarea',  // change this value according to your HTML
-                //     plugins: 'image',
-                //     toolbar: 'image',
-                //     image_list: [
-                //       { title: 'My image 1', value: 'https://www.example.com/my1.gif' },
-                //       { title: 'My image 2', value: 'http://www.moxiecode.com/my2.gif' }
-                //     ]
-                //   });
+                  // tinymce.init({
+                  //     selector: 'textarea',  // change this value according to your HTML
+                  //     plugins: 'image',
+                  //     toolbar: 'image',
+                  //     image_list: [
+                  //       { title: 'My image 1', value: 'https://www.example.com/my1.gif' },
+                  //       { title: 'My image 2', value: 'http://www.moxiecode.com/my2.gif' }
+                  //     ]
+                  //   });
                 />
               </div>
             </div>
@@ -212,7 +204,6 @@ const AddQuestions = ({ mainContract, account }) => {
         </div>
         <div className="right-section">
           <div className="sidebar-heading">
-
             <h2>
               <img src={staticon} alt />
               Stats
@@ -259,7 +250,7 @@ const AddQuestions = ({ mainContract, account }) => {
               
             </div>
            */}
-            <div class="cards">
+            <div class="cards-main">
               <div class="card card-1">
                 <h3 class="card__title">
                   <img
@@ -272,7 +263,7 @@ const AddQuestions = ({ mainContract, account }) => {
                 </h3>
               </div>
             </div>
-            <div class="cards">
+            <div class="cards-main">
               <div class="card card-1">
                 <h3 class="card__title">
                   <img
@@ -285,7 +276,7 @@ const AddQuestions = ({ mainContract, account }) => {
                 </h3>
               </div>
             </div>
-            <div class="cards">
+            <div class="cards-main">
               <div class="card card-1">
                 <h3 class="card__title">
                   <img
@@ -298,7 +289,7 @@ const AddQuestions = ({ mainContract, account }) => {
                 </h3>
               </div>
             </div>
-            <div class="cards">
+            <div class="cards-main">
               <div class="card card-1">
                 <h3 class="card__title">
                   <img
@@ -311,7 +302,7 @@ const AddQuestions = ({ mainContract, account }) => {
                 </h3>
               </div>
             </div>
-            <div class="cards">
+            <div class="cards-main">
               <div class="card card-1">
                 <h3 class="card__title">
                   <img
@@ -324,8 +315,6 @@ const AddQuestions = ({ mainContract, account }) => {
                 </h3>
               </div>
             </div>
-
-
           </div>
         </div>
       </div>

@@ -24,8 +24,6 @@ export default function UserProfile({ mainContract, account }) {
     setDesignation(userDesignation);
     const userAbout = await mainContract.getUserDescription(account);
     setAbout(userAbout);
-    const userTags = await mainContract.getUserTags(account);
-    setTag(userTags);
     // console.log(tag);
     let userScore = await mainContract.getTotalScore(account);
     userScore = parseInt(userScore._hex, 16);
@@ -48,6 +46,17 @@ export default function UserProfile({ mainContract, account }) {
     userTips = parseInt(userTips._hex, 16);
     setTips(userTips);
 
+    const userTags = await mainContract.getUserTags(account);
+    for (let i = 0; i < userTags.length; i++) {
+      // console.log(userTags[i]);
+      let score_tags = await mainContract.addressToTagToScore(
+        account,
+        userTags[i]
+      );
+      score_tags = parseInt(score_tags._hex, 16);
+      tag.push([userTags[i], score_tags]);
+    }
+    setTag(tag);
     setLoading(false);
   };
 
@@ -125,15 +134,7 @@ export default function UserProfile({ mainContract, account }) {
             <div className="card">
               <div className="card-inner-div">
                 <div className="card-inner-content">
-                  <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Quos ipsum dicta fugit totam eum voluptate beatae fuga,
-                    quaerat consectetur ipsam magnam rerum velit provident et
-                    accusantium sapiente saepe temporibus sed numquam! Iusto
-                    dolorem ea perferendis nulla quaerat eius sit dolor,
-                    incidunt odit, natus impedit. Suscipit iure nostrum
-                    nesciunt. Culpa, odit?
-                  </p>
+                  <p></p>
                 </div>
               </div>
             </div>
@@ -155,16 +156,19 @@ export default function UserProfile({ mainContract, account }) {
                 {/* . */}
                 {/* . */}
                 {/* . */}
-
-                <div className="div-creator">
-                  <div className="inside-div-creator">
-                    <div className="tag-name">{tag}</div>
-                    <div className="tag-score">
-                      <div className="tag-score-digit"> Tag</div> Score
+                {tag.map((inde) => {
+                  return (
+                    <div className="div-creator">
+                      <div className="inside-div-creator">
+                        <div className="tag-name">{inde[0]}</div>
+                        <div className="tag-score">
+                          <div className="tag-score-digit"> {inde[1]}</div>{" "}
+                          Score
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-
+                  );
+                })}
                 {/* . */}
                 {/* . */}
                 {/* . */}
@@ -176,7 +180,6 @@ export default function UserProfile({ mainContract, account }) {
             <div className="card-title">
               <div className="title">
                 <h3>Posts</h3>
-                {/* <span className="view-all">view all answers</span> */}
               </div>
               <div className="btns-grp">
                 <div className="filter-btns-all">

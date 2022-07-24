@@ -10,7 +10,7 @@ import Score from "../activity-blocks/Score";
 
 import "../general-block/useractivity.scss";
 
-export default function UserActivity() {
+export default function UserActivity({ account, mainContract }) {
   const [showSummary, setSummary] = useState(true);
   const [showAnswers, setAnswers] = useState(false);
   const [showQuestions, setQuestions] = useState(false);
@@ -151,13 +151,27 @@ export default function UserActivity() {
           </div>
         </div>
         <div className="right-block">
-          {showSummary ? <Summary /> : null}
-          {showAnswers ? <Answers /> : null}
-          {showQuestions ? <Questions /> : null}
-          {showBadges ? <Badges /> : null}
-          {showScore ? <Score /> : null}
-          {showArticles ? <Articles /> : null}
-          {showTags ? <Tags /> : null}
+          {showSummary ? (
+            <Summary account={account} mainContract={mainContract} />
+          ) : null}
+          {showAnswers ? (
+            <Answers account={account} mainContract={mainContract} />
+          ) : null}
+          {showQuestions ? (
+            <Questions account={account} mainContract={mainContract} />
+          ) : null}
+          {showBadges ? (
+            <Badges account={account} mainContract={mainContract} />
+          ) : null}
+          {showScore ? (
+            <Score account={account} mainContract={mainContract} />
+          ) : null}
+          {showArticles ? (
+            <Articles account={account} mainContract={mainContract} />
+          ) : null}
+          {showTags ? (
+            <Tags account={account} mainContract={mainContract} />
+          ) : null}
         </div>
       </section>
     </>

@@ -59,6 +59,7 @@ const Chat = ({ id }) => {
         return(
             <>
               <div className="chat-app">
+                
                   <div className="chat-app-left">
                         <div className="chats-title">
                           Chats
