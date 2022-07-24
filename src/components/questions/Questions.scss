@@ -39,49 +39,41 @@
 .tag {
   border-radius: 10px;
 }
-.question_heading
-{
-    text-align: center;
-    font-size: 2rem;
-    font-weight: 500;
-    width: 100%;
-    margin-top: 20px;
-    color: rgb(5, 20, 34);
+.question_heading {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 500;
+  width: 100%;
+  margin-top: 20px;
+  color: rgb(5, 20, 34);
 }
-.input_title
-{
-    width: 100%;
-    height: 20px;
-    padding: 5px;
-    height: 20px;
+.input_title {
+  width: 100%;
+  height: 20px;
+  padding: 5px;
+  height: 20px;
 }
-.tittle-heading
-{
-    font-size: 1.5rem;
-    margin-bottom:10px ;
+.tittle-heading {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
 }
-.body
-{
-    margin-top:20px;
-    
+.body {
+  margin-top: 20px;
 }
-.body_tittle
-{
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+.body_tittle {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
 }
-.body_textfield
-{
-    margin-bottom: 20px;
+.body_textfield {
+  margin-bottom: 20px;
 }
-.Question_fields
-{
-    width:80%;
-    margin: 0 auto;
-    margin-bottom:20px;
+.Question_fields {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
-.tag{
-  border-radius: 10px ;
+.tag {
+  border-radius: 10px;
   border-color: #f88d8d;
   border-style: dashed;
   border-width: 2px;
@@ -271,14 +263,12 @@
   width: 30%;
   padding: 7px;
 }
-.profile-picture
-{
+.profile-picture {
   width: 80px;
   height: 100px;
   border: #000 1px dotted;
 }
-.profile-name
-{
+.profile-name {
   width: 100%;
   height: 100px;
   border: #000 1px dotted;
@@ -289,26 +279,22 @@
 .rotate {
   transform: rotate(180deg);
 }
-.Instruction-title
-{
+.Instruction-title {
   margin-bottom: 20px;
   font-size: 1.5rem;
 }
-.Answers
-{
+.Answers {
   width: 80%;
   margin: 0 auto;
-  padding:10px;
+  padding: 10px;
   margin-top: 20px;
 }
-.Answer-component
-{
+.Answer-component {
   border: #000 2px solid;
   padding: 10px;
 }
 
-.Answer-heading
-{
+.Answer-heading {
   margin-top: 20px;
   margin-bottom: 20px;
   width: 100%;
@@ -316,42 +302,34 @@
   font-size: 1.5rem;
 }
 
-.Answer_title
-{
+.Answer_title {
   border-bottom: #000 1px dashed;
   padding: 5px;
-  font-size:1rem;
+  font-size: 1rem;
   margin-bottom: 10px;
   text-align: justify;
 }
-.Answer-description
-{
+.Answer-description {
   padding: 5px;
   text-align: justify;
 }
-.Answer-engagement
-{
+.Answer-engagement {
   display: flex;
   border-top: #000 0.5px dashed;
   margin-top: 20px;
   padding-top: 20px;
-
 }
-.answer-voting
-{
+.answer-voting {
   width: 25% !important;
 }
-.flex-grow
-{
+.flex-grow {
   flex-grow: 1;
 }
-.Text-area
-{
+.Text-area {
   text-align: center;
   margin-top: 20px;
 }
-.featured-image
-{
+.featured-image {
   margin: 0 auto;
   border: #000 1px solid;
   max-width: 250px;
@@ -363,51 +341,45 @@
   margin-top: 20px;
 }
 
-.aa_input-featured-image
-{
+.aa_input-featured-image {
   width: 80%;
   height: 20px;
 }
-.uploaded_image
-{
-  margin:0 auto;
+.uploaded_image {
+  margin: 0 auto;
   display: block;
   width: 200px !important;
   height: auto !important;
   overflow: hidden !important;
   margin-bottom: 10px;
 }
-.upload-to-cloud-svg
-{
-  width:200px;
-  height:auto;
+.upload-to-cloud-svg {
+  width: 200px;
+  height: auto;
 }
-.submit-answer
-{
-  width:80%;
-  margin:0  auto;
+.submit-answer {
+  width: 80%;
+  margin: 0 auto;
   text-align: center;
-  
 }
-.submit-answer-btn
-{
+.submit-answer-btn {
   margin-top: 20px;
   padding: 10px;
 }
-.tox-tinymce{
+.tox-tinymce {
   height: 610px;
 }
-.ReactTags__tagInputField{
+.ReactTags__tagInputField {
   border: 2px solid black;
   height: 50px;
   border-radius: 4px;
 }
-.input_title{
+.input_title {
   border: 2px solid black;
   height: 50px;
   border-radius: 4px;
 }
-.left-section{
+.left-section {
   width: 70%;
   background-color: #ffffff;
   padding-left: 5%;
@@ -417,16 +389,25 @@
 }
 .right-section {
   padding: 5px;
-  width: 30%;
+  width: 10%;
   background-color: #ffffff;
   height: auto;
-  position: fixed;
+  position: sticky;
   right: 0%;
+<<<<<<< HEAD
   overflow-x: auto;
  
   
   
  
+=======
+}
+
+.top-members {
+  overflow: scroll !important;
+  height: calc(100vh - 296.56px);
+  margin-bottom: 400px ;
+>>>>>>> 5722ad64a2e3ba0169fdd7490a3727cd2cfd8b28
 }
 .top-members
 {

@@ -250,7 +250,7 @@ const AddQuestions = ({ mainContract, account }) => {
               
             </div>
            */}
-            <div class="cards">
+            <div class="cards-main">
               <div class="card card-1">
                 <h3 class="card__title">
                   <img
@@ -263,7 +263,7 @@ const AddQuestions = ({ mainContract, account }) => {
                 </h3>
               </div>
             </div>
-            <div class="cards">
+            <div class="cards-main">
               <div class="card card-1">
                 <h3 class="card__title">
                   <img
@@ -276,7 +276,7 @@ const AddQuestions = ({ mainContract, account }) => {
                 </h3>
               </div>
             </div>
-            <div class="cards">
+            <div class="cards-main">
               <div class="card card-1">
                 <h3 class="card__title">
                   <img
@@ -289,7 +289,7 @@ const AddQuestions = ({ mainContract, account }) => {
                 </h3>
               </div>
             </div>
-            <div class="cards">
+            <div class="cards-main">
               <div class="card card-1">
                 <h3 class="card__title">
                   <img
@@ -302,7 +302,7 @@ const AddQuestions = ({ mainContract, account }) => {
                 </h3>
               </div>
             </div>
-            <div class="cards">
+            <div class="cards-main">
               <div class="card card-1">
                 <h3 class="card__title">
                   <img
