@@ -19,19 +19,12 @@ export default function Questions() {
         <div className="card">
           <div className="div-creator">
             <div className="inside-div-creator">
-              <div className="tag-name">tags</div>
-              <div className="tag-score">
-                <div className="tag-score-digit"> Tag</div> Score
+              <div className="total-likes">Likes</div>
+              <div className="qa-list">
+                Who's the person with more answers than Jon Skeet? When will
+                they catch him in rep terms?
               </div>
-            </div>
-          </div>
-
-          <div className="div-creator">
-            <div className="inside-div-creator">
-              <div className="tag-name">tags</div>
-              <div className="tag-score">
-                <div className="tag-score-digit"> Tag</div> Score
-              </div>
+              <div className="qa-date">24 July 2022</div>
             </div>
           </div>
         </div>
