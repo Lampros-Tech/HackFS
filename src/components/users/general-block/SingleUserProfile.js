@@ -3,6 +3,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useLocation } from "react-router";
 import LoadingAnimation from "./LoadingAnimation";
+import i1 from "../100_USER_BADGE.png";
 
 export default function SingleUserProfile({ mainContract }) {
   const location = useLocation();
@@ -123,7 +124,9 @@ export default function SingleUserProfile({ mainContract }) {
             <div className="card">
               <div className="card-inner-div">
                 <div className="card-inner-content">
-                  <p></p>
+                  <p>
+                    <img src={i1} width={50} height={50} alt="Badge1"></img>
+                  </p>
                 </div>
               </div>
             </div>
@@ -141,21 +144,19 @@ export default function SingleUserProfile({ mainContract }) {
             </div>
             <div className="card">
               <div className="logged-in-scroll-card">
-                {/* run this code to create tags list  */}
-                {/* . */}
-                {/* . */}
-                {/* . */}
-
-                <div className="div-creator">
-                  <div className="inside-div-creator">
-                    <div className="tag-name">{tag}</div>
-                    <div className="tag-score">
-                      <div className="tag-score-digit"> Tag</div> Score
+                {tag.map((inde) => {
+                  return (
+                    <div className="div-creator">
+                      <div className="inside-div-creator">
+                        <div className="tag-name">{inde[0]}</div>
+                        <div className="tag-score">
+                          <div className="tag-score-digit"> {inde[1]}</div>{" "}
+                          Score
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-
-                {/* till here only */}
+                  );
+                })}
               </div>
             </div>
           </div>

@@ -3,6 +3,7 @@ import "../general-block/userprofile.scss";
 import { useEffect } from "react";
 import LoadingAnimation from "./LoadingAnimation";
 import i1 from "../100_USER_BADGE.png";
+import { useCallback } from "react";
 
 export default function UserProfile({ mainContract, account }) {
   // const [show, setShow] = useState(true);
@@ -60,6 +61,8 @@ export default function UserProfile({ mainContract, account }) {
     setTag(tag);
     setLoading(false);
   };
+
+  const addTags = useCallback(() => {}, [tag]);
 
   useEffect(() => {
     getOtherData();
@@ -155,10 +158,6 @@ export default function UserProfile({ mainContract, account }) {
             </div>
             <div className="card">
               <div className="logged-in-scroll-card">
-                {/* run this code to create tags list  */}
-                {/* . */}
-                {/* . */}
-                {/* . */}
                 {tag.map((inde) => {
                   return (
                     <div className="div-creator">
@@ -172,10 +171,6 @@ export default function UserProfile({ mainContract, account }) {
                     </div>
                   );
                 })}
-                {/* . */}
-                {/* . */}
-                {/* . */}
-                {/* run this code to create tags list - till here */}
               </div>
             </div>
           </div>
