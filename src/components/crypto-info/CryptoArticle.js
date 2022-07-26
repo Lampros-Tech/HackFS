@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import Axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 const CryptoArticle = ({ account, mainContract }) => {
   const [isLoading, setLoading] = React.useState(true);
@@ -21,12 +22,13 @@ const CryptoArticle = ({ account, mainContract }) => {
     articleNumbers = parseInt(articleNumbers._hex, 16);
     console.log(articleNumbers);
     for (let i = 1; i <= articleNumbers; i++) {
-      const cid = await mainContract.getArticle(i);
-      const cidOfImage = cid.article_image_cid;
+      const article = await mainContract.getArticle(i);
+      const cidOfImage = article.article_image_cid;
+      const title = article.article_title;
       if (cidOfImage == "No Image Found") {
-        src.push(pic);
+        src.push([pic, title, i]);
       } else {
-        src.push(cidOfImage);
+        src.push([cidOfImage, title, i]);
       }
     }
     setsrc(src);
@@ -53,11 +55,16 @@ const CryptoArticle = ({ account, mainContract }) => {
                 {src.map((inde) => {
                   return (
                     <div className="fakeimg">
-                      <img className="crypto-img" src={inde} />
-                      <p>title</p>
-                      <button id="readmore" onClick={navigateToDisplay}>
-                        Read More
-                      </button>
+                      <img className="crypto-img" src={inde[0]} />
+                      <p>{inde[1]}</p>
+                      {console.log("id" + inde[2])}
+                      <Link
+                        className="all-user-link"
+                        to={"/displayarticle/"}
+                        state={{ id: inde[2] }}
+                      >
+                        <button id="readmore">Read More</button>
+                      </Link>
                     </div>
                   );
                 })}
