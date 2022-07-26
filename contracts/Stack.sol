@@ -438,7 +438,7 @@ contract Stack {
         return addressToUserInfo[user];
     }
 
-    function getUserCID(address user) public view returns (string memory){
+    function getUserCID(address user) public view returns (string memory) {
         return addressToUserProfileInfo[user].userImageCID;
     }
 }

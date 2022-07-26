@@ -126,7 +126,7 @@ const Profile = ({ mainContract, account }) => {
                 >
                   Edit Profile
                 </button>
-                <button>Claim Rewards</button>
+                <button onClick={() => {}}>Claim Rewards</button>
               </div>
             </div>
           </div>

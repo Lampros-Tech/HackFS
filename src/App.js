@@ -3,6 +3,9 @@ import React, { useState, useRef, useEffect } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom"; // react-router v4/v5
 import Cookies from "universal-cookie";
 
+import { useAccount, useSigner,useConnect, useDisconnect } from 'wagmi'
+import { InjectedConnector } from 'wagmi/connectors/injected'
+
 /********************* WEB3 DEPENDENCIES ********************/
 import { WalletLinkConnector } from "@web3-react/walletlink-connector";
 // import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
@@ -39,10 +42,11 @@ import "./App.scss";
 import Stack from "./artifacts/contracts/Stack.sol/Stack.json";
 import customToken from "./artifacts/contracts/customToken.sol/customToken.json";
 
-const StackAddress = "0x9cF0B7cCCa7B21Fd9304CbaeCDBaa67eb49fC688";
-const customTokenAddress = "0x7B1eA7dFAc0ac660C6e2e2E24291A0a6Ef804825";
+const StackAddress = "0x6cc1A5F4C7187e5C6D52Fb6c51fcE68f52E7d8F8";
+const customTokenAddress = "0x869A6aD54952b2F3C4215d27789d8DF1b3F5d730";
 
 const App = () => {
+
   const { activate, deactivate } = useWeb3React();
   const [openWalletOption, setOpenWalletOption] = useState(false);
   // const [address, setAddress] = useState("");
@@ -76,7 +80,7 @@ const App = () => {
       window.location.reload();
     });
 
-    if (chainId !== 4) {
+    if (chainId !== 80001) {
       alert("Please connect to mumbai network");
     }
     window.ethereum.on("accountsChanged", async function (accounts) {
@@ -155,11 +159,14 @@ const App = () => {
     }
   }, [connected]);
 
+      
+
   const connectWallet = async () => {
     try {
       if (!ethereum) {
         sethaveMetamask(false);
       }
+      
       const accounts = await ethereum.request({
         method: "eth_requestAccounts",
       });
@@ -260,7 +267,7 @@ const App = () => {
                   />
                 }
               />
-              <Route path="/message/:id" element={<Chat id={1} />} />
+              <Route path="/message" element={<Chat />} />
               <Route
                 path="/profile"
                 element={

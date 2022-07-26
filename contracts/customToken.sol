@@ -6,20 +6,24 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "./Stack.sol";
 
 contract customToken is ERC20 {
+
+   
+
     address payable owner;
     uint256 initialSupply;
     uint256 tokenPrice = 0.00001 ether;
     uint256 withdrawEligibleScore = 10000;
     address maincontract;
-
-    constructor(uint256 _initialSupply) ERC20("ASK2WEB3 Token", "ASK") {
+    
+    constructor(uint256 _initialSupply)
+        ERC20("ASK2WEB3 Token", "ASK")
+    {
         owner = payable(msg.sender);
         _mint(owner, _initialSupply);
         initialSupply = _initialSupply;
         // maincontract = _mainContract;
     }
-
-    Stack s = Stack(0x9cF0B7cCCa7B21Fd9304CbaeCDBaa67eb49fC688);
+    Stack s = Stack(0x6cc1A5F4C7187e5C6D52Fb6c51fcE68f52E7d8F8);
 
     function decimals() public pure override returns (uint8) {
         return 0;

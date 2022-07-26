@@ -123,15 +123,7 @@ export default function SingleUserProfile({ mainContract }) {
             <div className="card">
               <div className="card-inner-div">
                 <div className="card-inner-content">
-                  <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Quos ipsum dicta fugit totam eum voluptate beatae fuga,
-                    quaerat consectetur ipsam magnam rerum velit provident et
-                    accusantium sapiente saepe temporibus sed numquam! Iusto
-                    dolorem ea perferendis nulla quaerat eius sit dolor,
-                    incidunt odit, natus impedit. Suscipit iure nostrum
-                    nesciunt. Culpa, odit?
-                  </p>
+                  <p></p>
                 </div>
               </div>
             </div>
@@ -171,7 +163,6 @@ export default function SingleUserProfile({ mainContract }) {
             <div className="card-title">
               <div className="title">
                 <h3>Posts</h3>
-                {/* <span className="view-all">view all answers</span> */}
               </div>
               <div className="btns-grp">
                 <div className="filter-btns-all">
