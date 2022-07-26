@@ -10,6 +10,7 @@ const FindUsers = ({ account, mainContract }) => {
   const getUseres = async () => {
     const id_array = await mainContract.getAllUsers();
     // console.log(id_array.length);
+    setsrc([]);
     for (let i = 0; i < id_array.length; i++) {
       const name = await mainContract.getUserName(id_array[i]);
       const userInfoStruct = await mainContract.getUserInfo(id_array[i]);

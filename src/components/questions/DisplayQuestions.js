@@ -21,7 +21,9 @@ const DisplayQuestions = ({ account, mainContract }) => {
   };
 
   useEffect(() => {
-    displayQuestions();
+    if (mainContract) {
+      displayQuestions();
+    }
   }, [mainContract]);
 
   if (isLoading) {
@@ -73,7 +75,7 @@ const DisplayQuestions = ({ account, mainContract }) => {
           </div> */}
         </div>
 
-        <Sidebar />
+        <Sidebar mainContract={mainContract} />
       </div>
     </>
   );

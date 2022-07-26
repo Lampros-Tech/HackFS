@@ -44,7 +44,9 @@ function AllQuestions({ account, mainContract }) {
   };
 
   useEffect(() => {
-    allQuestions();
+    if (mainContract) {
+      allQuestions();
+    }
   }, [mainContract]);
 
   if (isLoading) {

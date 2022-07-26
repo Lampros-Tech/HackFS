@@ -5,7 +5,7 @@ import { WithContext as ReactTags } from "react-tag-input";
 import { create } from "ipfs-http-client";
 import membericon from "./group.png";
 import staticon from "./stats.png";
-import Sidebar from "./Sidebar"
+import Sidebar from "./Sidebar";
 
 const KeyCodes = {
   comma: 188,
@@ -203,7 +203,7 @@ const AddQuestions = ({ mainContract, account }) => {
             </div>
           </div>
         </div>
-       <Sidebar/>
+        <Sidebar mainContract={mainContract} />
       </div>
     </>
   );

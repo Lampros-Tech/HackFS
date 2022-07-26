@@ -104,13 +104,13 @@ const AddArticle = ({ mainContract }) => {
     <>
       <div className="main">
         <div className="left-section">
-
           <div className="question_heading">Add the artical</div>
           <div className="Question_fields">
             <div className="title">
               <div className="title-heading">Title:</div>
               <div className="title_instruction">
-                Be spacific and Imagine you are asking writing article to someone
+                Be spacific and Imagine you are asking writing article to
+                someone
               </div>
               <div className="title_textfield">
                 <input
@@ -227,15 +227,15 @@ const AddArticle = ({ mainContract }) => {
                     content_style:
                       "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
                   }}
-                // tinymce.init({
-                //     selector: 'textarea',  // change this value according to your HTML
-                //     plugins: 'image',
-                //     toolbar: 'image',
-                //     image_list: [
-                //       { title: 'My image 1', value: 'https://www.example.com/my1.gif' },
-                //       { title: 'My image 2', value: 'http://www.moxiecode.com/my2.gif' }
-                //     ]
-                //   });
+                  // tinymce.init({
+                  //     selector: 'textarea',  // change this value according to your HTML
+                  //     plugins: 'image',
+                  //     toolbar: 'image',
+                  //     image_list: [
+                  //       { title: 'My image 1', value: 'https://www.example.com/my1.gif' },
+                  //       { title: 'My image 2', value: 'http://www.moxiecode.com/my2.gif' }
+                  //     ]
+                  //   });
                 />
               </div>
             </div>
@@ -259,11 +259,9 @@ const AddArticle = ({ mainContract }) => {
               </button>
             </div>
           </div>
-
         </div>
-        <Sidebar/>
+        <Sidebar mainContract={mainContract} />
       </div>
-
     </>
   );
 };
