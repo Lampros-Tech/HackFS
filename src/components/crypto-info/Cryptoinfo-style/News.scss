@@ -1,34 +1,40 @@
-.rightcolumn {
-  //   float: left;
-  width: 50%;
-  // border: 1px solid black;
-  margin-top: 50px;
-  margin-bottom: 20px;
-  margin-left: 20%;
-  padding-left: 30px;
-  padding-right: 30px;
-  height: 70vh;
-  border-left: none;
+.crypto-news {
+  min-width: 35%;
+  height: fit-content;
+  overflow: scroll;
   position: sticky;
-  padding-top: 4px;
+  top: 9rem;
+}
+
+.rightcolumn {
+  margin-top: 50px;
+  height: 75vh;
+
   justify-content: center;
-  padding-bottom: 5px;
   background-color: white;
 
   // margin-right:40px;
 }
-.crypto-news {
-  min-width: 50%;
-  height: 70vh;
-  position: sticky;
-}
-.news {
-  padding-top: 10px;
-  padding-bottom: 2px;
-  padding-left: 5px;
-  font-size: small;
-  // background-color: white;
-}
+
+// .news {
+//   padding-top: 10px;
+//   padding-bottom: 2px;
+//   padding-left: 5px;
+//   font-size: small;
+//   // background-color: white;
+//   h2 {
+//     position: sticky;
+//     top: 0px;
+//     background-color: #ffffff;
+//     height: 3rem;
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: center;
+//     color: #005edd;
+//     font-size: 1rem;
+//   }
+// }
+
 .apidata {
   border: 1px solid gray;
   border-left: none;
