@@ -1,11 +1,20 @@
-.main-sidebar{
-display: flex;
-justify-content: flex-end;
-float: right;
-
-}
-.sidebar-container{
-    display: flex;
-    justify-content: flex-end;
-    
-}
+.right-section {
+    padding: 5px;
+    width: 30%;
+    background-color: #ffffff;
+    height: auto;
+    position: sticky;
+    right: 0%;
+  }
+  
+  .top-members {
+    overflow: scroll !important;
+    height: calc(100vh - 296.56px);
+    margin-bottom: 400px ;
+  }
+  .top-members
+  {
+    height: calc(100vh - 296px);
+    overflow:scroll ;
+  }
+  
