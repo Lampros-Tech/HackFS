@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import Axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 const CryptoArticle = ({ account, mainContract }) => {
   const [isLoading, setLoading] = React.useState(true);
@@ -21,12 +22,13 @@ const CryptoArticle = ({ account, mainContract }) => {
     articleNumbers = parseInt(articleNumbers._hex, 16);
     console.log(articleNumbers);
     for (let i = 1; i <= articleNumbers; i++) {
-      const cid = await mainContract.getArticle(i);
-      const cidOfImage = cid.article_image_cid;
+      const article = await mainContract.getArticle(i);
+      const cidOfImage = article.article_image_cid;
+      const title = article.article_title;
       if (cidOfImage == "No Image Found") {
-        src.push(pic);
+        src.push([pic, title, i]);
       } else {
-        src.push(cidOfImage);
+        src.push([cidOfImage, title, i]);
       }
     }
     setsrc(src);
@@ -53,29 +55,19 @@ const CryptoArticle = ({ account, mainContract }) => {
                 {src.map((inde) => {
                   return (
                     <div className="fakeimg">
-                      <img className="crypto-img" src={inde} />
-                      <p>title</p>
-                      <button id="read-more" onClick={navigateToDisplay}>
-                        Read More
-                      </button>
+                      <img className="crypto-img" src={inde[0]} />
+                      <p>{inde[1]}</p>
+                      <Link
+                        className="all-user-link"
+                        to={"/displayarticle/"}
+                        state={{ id: inde[2] }}
+                      >
+                        <button id="read-more">Read More</button>
+                      </Link>
                     </div>
                   );
                 })}
               </div>
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. A
-                illum enim incidunt, corporis atque quod maiores ex ipsum
-                voluptate consequatur ducimus. A atque dolorem in magni
-                reiciendis commodi similique alias quo beatae ex soluta fuga eos
-                possimus, sit rerum quis. Quisquam quam ducimus libero pariatur.
-                Officia odio alias similique. Quis at debitis ipsum deserunt
-                sequi? Beatae exercitationem eius, vitae autem vero harum
-                veritatis quas qui ab fuga delectus consequatur, maxime
-                doloremque, est repudiandae fugiat iure? Ipsa itaque recusandae
-                blanditiis. Hic excepturi labore, soluta laborum animi fuga
-                numquam repellendus facilis sunt ratione sed sequi, in iure
-                nostrum dolorum saepe voluptatem voluptates!
-              </p>
             </div>
           </div>
         </div>
