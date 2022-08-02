@@ -10,7 +10,7 @@ const data = {
         {
             title: "What is Ask2Web3?",
             content: `It is a community-based platform that will help users find solutions to their queries. Users will have the option to connect with the expert for that technology stack.
-             Users can get vanity points and rewards based on their contributions.`,
+             Users can claim vanity points and rewards based on their contributions.`,
         },
         {
             title: "How to set up my profile?",
@@ -88,7 +88,7 @@ const Home = () => {
                     <div className="landing">
                         <img src={Logo} className="logo"/> 
                         <div className="tag-line">
-                            Your one stop space fo all queries on Web3
+                            Your one stop space for all queries on Web3
                         </div>  
                     </div>
                     <div className="user-guide">
